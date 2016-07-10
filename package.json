@@ -1,0 +1,31 @@
+{
+  "name": "babelute",
+  "version": "0.0.1",
+  "description": "Chained mediators pattern for (much) better software design. A whole new world.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomocas/babelute.git"
+  },
+  "keywords": [
+    "mediator",
+    "chained-mediator",
+    "chained-syntax",
+    "ontology",
+    "domain-language",
+    "software-design",
+    "model",
+    "document",
+    "semantic",
+    "concept"
+  ],
+  "author": "Gilles Coomans",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nomocas/babelute/issues"
+  },
+  "homepage": "https://github.com/nomocas/babelute#readme"
+}
