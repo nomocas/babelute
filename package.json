@@ -1,6 +1,6 @@
 {
   "name": "babelute",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Chained mediators pattern for (much) better software design. A whole new world.",
   "main": "index.js",
   "scripts": {
