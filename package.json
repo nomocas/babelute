@@ -18,7 +18,8 @@
     "model-driven",
     "modeling",
     "document",
-    "semantic"
+    "semantic",
+    "fluent-interface"
   ],
   "author": "Gilles Coomans",
   "license": "MIT",
