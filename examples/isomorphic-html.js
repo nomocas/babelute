@@ -12,16 +12,16 @@ var Babelute = require('../index');
 
 // logical atoms
 Babelute
-	.toLexic('html', ['attr', 'class', 'id', 'text', 'click', 'bloupi'])
+	.toLexic('html', ['attr', 'class', 'id', 'text', 'click'])
 	.toLexic('html', 'tag', function(name, children) {
-		return this._append('tag', [name, children], function() {
+		return this._append('tag', [name, children], null, function() {
 			return name + '(' + Babelute.arrayToString(children) + ')';
 		});
 	});
 
 // tags (compounds)
 // (should be completed)
-['div', 'h1', 'h2', 'section', 'span']
+['div', 'h1', 'h2', 'section', 'span', 'button']
 .forEach(function(tagName) {
 	Babelute.toLexic('html', tagName, function() {
 		return this.tag(tagName, [].slice.call(arguments));
@@ -42,9 +42,9 @@ Babelute.toActions('html:dom', {
 	__restrictions__: {
 		html: true
 	},
-	tag: function(opts, subject, args /*tagName, babelutes*/ ) {
+	tag: function(opts, node, args /*tagName, babelutes*/ ) {
 		var child = document.createElement(args[0]);
-		subject.appendChild(child);
+		node.appendChild(child);
 		args[1].forEach(function(templ) {
 			if (typeof templ === 'string')
 				this.appendChild(document.createTextNode(templ));
@@ -52,20 +52,20 @@ Babelute.toActions('html:dom', {
 				templ._output(opts.actions, this);
 		}, child);
 	},
-	text: function(opts, subject, args /*value*/ ) {
-		subject.appendChild(document.createTextNode(args[0]));
+	text: function(opts, node, args /*value*/ ) {
+		node.appendChild(document.createTextNode(args[0]));
 	},
-	class: function(opts, subject, args /*className*/ ) {
-		subject.classList.add(args[0]);
+	class: function(opts, node, args /*className*/ ) {
+		node.classList.add(args[0]);
 	},
-	attr: function(opts, subject, args /*name, value*/ ) {
-		subject.setAttribute(args[0], args[1]);
+	attr: function(opts, node, args /*name, value*/ ) {
+		node.setAttribute(args[0], args[1]);
 	},
-	id: function(opts, subject, args /*value*/ ) {
-		subject.id = args[0];
+	id: function(opts, node, args /*value*/ ) {
+		node.id = args[0];
 	},
-	click: function(opts, subject, args) {
-		subject.addEventListener('click', args[0]);
+	click: function(opts, node, args) {
+		node.addEventListener('click', args[0]);
 	}
 });
 
@@ -81,13 +81,13 @@ Babelute.toActions('html:string', {
 		html: true
 	},
 	__defaultSubject__: function(opts) {
-		return new TagObjDescriptor();
+		return new TagDescriptor();
 	},
-	__finalise__: function(opts, subject) {
-		return subject.children;
+	__finalise__: function(opts, tag) {
+		return tag.children;
 	},
-	tag: function(opts, subject, args /*tagName, babelutes*/ ) {
-		var child = new TagObjDescriptor(),
+	tag: function(opts, tag, args /*tagName, babelutes*/ ) {
+		var child = new TagDescriptor(),
 			actions = opts.actions;
 		args[1].forEach(function(templ) {
 			if (templ && templ.__babelute__)
@@ -96,24 +96,24 @@ Babelute.toActions('html:string', {
 				this.children += templ;
 		}, child);
 		if (child.children)
-			tagOutput(subject, child, args[0]);
+			tagOutput(tag, child, args[0]);
 	},
-	text: function(opts, subject, args /*value*/ ) {
-		subject.children += args[0];
+	text: function(opts, tag, args /*value*/ ) {
+		tag.children += args[0];
 	},
-	class: function(opts, subject, args /*className*/ ) {
-		subject.classes += ' ' + args[0];
+	class: function(opts, tag, args /*className*/ ) {
+		tag.classes += ' ' + args[0];
 	},
-	attr: function(opts, subject, args /*name, value*/ ) {
-		subject.attributes += ' ' + args[0] + '="' + args[1] + '"';
+	attr: function(opts, tag, args /*name, value*/ ) {
+		tag.attributes += ' ' + args[0] + '="' + args[1] + '"';
 	},
-	id: function(opts, subject, args /*value*/ ) {
-		subject.attributes = ' id="' + args[0] + '"' + subject.attributes;
+	id: function(opts, tag, args /*value*/ ) {
+		tag.attributes = ' id="' + args[0] + '"' + tag.attributes;
 	}
 });
 
 // for tags string construction
-var TagObjDescriptor = function(tagName) {
+var TagDescriptor = function(tagName) {
 	this.children = '';
 	this.classes = '';
 	this.style = '';
@@ -123,25 +123,46 @@ var TagObjDescriptor = function(tagName) {
 var openTags = /br/, // should be completed
 	strictTags = /span|script|meta|div|i/;
 
-function tagOutput(descriptor, child, name) {
+function tagOutput(tag, child, name) {
 	var out = '<' + name + child.attributes;
 	if (child.style)
 		out += ' style="' + child.style + '"';
 	if (child.classes)
 		out += ' class="' + child.classes + '"';
 	if (child.children)
-		descriptor.children += out + '>' + child.children + '</' + name + '>';
+		tag.children += out + '>' + child.children + '</' + name + '>';
 	else if (openTags.test(name))
-		descriptor.children += out + '>';
+		tag.children += out + '>';
 	else if (strictTags.test(name))
-		descriptor.children += out + '></' + name + '>';
+		tag.children += out + '></' + name + '>';
 	else
-		descriptor.children += out + '/>';
+		tag.children += out + '/>';
 }
 
 
 /**********************************************
  ***************** USAGE **********************
+ **********************************************/
+
+var h = Babelute.initializer('html');
+
+var myBabelute = h()
+	.h1('title h1')
+	.if(true, h().div('hello world'))
+	.div('some content')
+	.h2('title h2')
+	.section(
+		h().class('my-class')
+		.div(h().id('foo'), 'bar zoo')
+	)
+	.button('boum', h().click(function(e) {
+		console.log('click !');
+	}));
+
+var output = myBabelute._output('html:string');
+
+/**********************************************
+ ***************** Test **********************
  **********************************************/
 
 Babelute
