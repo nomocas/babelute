@@ -1,7 +1,7 @@
 {
   "name": "babelute",
-  "version": "0.0.2",
-  "description": "Chained mediators pattern for (much) better software design. A whole new world.",
+  "version": "0.0.3",
+  "description": "Internal Domain Specific Language javascript framework",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -11,16 +11,14 @@
     "url": "git+https://github.com/nomocas/babelute.git"
   },
   "keywords": [
-    "mediator",
-    "chained-mediator",
-    "chained-syntax",
-    "ontology",
-    "domain-language",
-    "software-design",
-    "model",
+    "internal-DSL",
+    "domain-specific-language",
+    "method-chaining",
+    "domain-specific-modeling",
+    "model-driven",
+    "modeling",
     "document",
-    "semantic",
-    "concept"
+    "semantic"
   ],
   "author": "Gilles Coomans",
   "license": "MIT",
