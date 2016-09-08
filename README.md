@@ -120,11 +120,6 @@ From persistence, to meta-programing, to shadow document.
 - DSL-DB
 
 
-
-
-
-
-
 # Babelute examples
 ```javascript
 var b = require('babelute').b;
