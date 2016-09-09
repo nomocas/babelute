@@ -15,7 +15,7 @@ Babelute
 	.toLexic('html', ['attr', 'class', 'id', 'text', 'click'])
 	.toLexic('html', 'tag', function(name, children) {
 		return this._append('tag', [name, children], null, function() {
-			return name + '(' + Babelute.arrayToString(children) + ')';
+			return { name: name, args: children };
 		});
 	});
 
