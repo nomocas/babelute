@@ -109,7 +109,10 @@ console.timeEnd('html:string\t'); // +- 90 ms for 10k. so 9 us for each. so 335 
 
 console.time('stringify\t');
 for (var i = 0; i < 10000; ++i)
-	templ.stringify();
+	templ.stringify({
+		beautify: false,
+		maxLength: 20
+	});
 console.timeEnd('stringify\t'); // +- 130 ms for 10k. so 13 us for each. so 480 ns per node
 
 console.time('JSON stringify\t');
