@@ -97,13 +97,15 @@
 // core class and statics
 var Babelute = require('./lib/babelute');
 
+// Babelute First Degree
+require('./lib/first-level-babelute');
+
 // serializer to Babelute DSL
 require('./lib/stringify');
 
 // Babelute DSL parser
 Babelute.parser = require('./lib/parser');
 
-// Babelute Document
-require('./lib/document');
+
 
 module.exports = Babelute;
