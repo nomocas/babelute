@@ -49,5 +49,9 @@ Babelute.toActions('html:dom', {
 });
 
 Babelute.prototype.$htmlToDOM = function(node) {
-	return this.$output('html:dom', node);
+	var self = this;
+	requestAnimationFrame(function() {
+		self.$output('html:dom', node);
+	});
+	return node;
 };
