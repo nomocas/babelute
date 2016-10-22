@@ -116,9 +116,8 @@ function setLocals($target, node) {
 	for (var i in node.props)
 		setProp($target, i, node.props[i]);
 	if (node.on)
-		node.on.forEach(function(event) {
-			$target.addEventListener(event.name, event.callback);
-		});
+		for (var i = 0, len = node.on.length; i < len; ++i)
+			$target.addEventListener(node.on[i].name, node.on[i].callback);
 }
 
 function removeElement(vnode) {
