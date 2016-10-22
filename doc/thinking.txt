@@ -1,3 +1,190 @@
+/*
+
+	_output2: function(env, subjects) {
+		if (typeof env === 'string')
+			env = {
+				actions: Babelute.getActions(env)
+			};
+		var dico = env.actions,
+			handler,
+			index = -1,
+			f;
+		if (!subjects)
+			subjects = [dico.__defaultSubject__ ? dico.__defaultSubject__(env) : {}];
+
+		var subjectsLength = subjects.length;
+
+		while (handler = this._lexems[++index]) {
+			if (dico.__restrictions__ && !dico.__restrictions__[handler.lexic])
+				continue;
+			f = typeof handler.name === 'string' ? (dico[handler.name] || actionsDico.default[handler.name]) : handler.name;
+			if (!f)
+				continue;
+
+			if (subjectsLength === 1)
+				f(env, subjects[0], handler.args);
+			else
+			// hack to avoid func.apply(...)
+				switch (subjectsLength) {
+				case 1:
+					f(env, handler.args, subjects[0]);
+					break;
+				case 2:
+					f(env, handler.args, subjects[0], subjects[1]);
+					break;
+				case 3:
+					f(env, handler.args, subjects[0], subjects[1], subjects[3]);
+					break;
+				case 4:
+					f(env, handler.args, subjects[0], subjects[1], subjects[3], subjects[3]);
+					break;
+				case 5:
+					f(env, handler.args, subjects[0], subjects[1], subjects[3], subjects[3], subjects[4]);
+					break;
+			}
+		}
+		if (dico.__finalise__)
+			return dico.__finalise__(env, subjects);
+		return subject;
+	},
+
+ */
+
+
+
+
+~html:
+	address('country', 'town', 'street', 'number'){
+		h2($town, 
+			id('bar') class('foo')
+			span($country, class('zoo'))
+		)
+		div($street, ', ', $number)
+	}
+
+#object:
+object(
+	id()
+	foreignId(
+		'target_collection',
+		required()
+		patchable()
+	)
+	string(
+		'bloupi',
+		default('')
+		required()
+	)
+	date(
+		'creationDate',
+		default(@now())
+	)
+)
+
+
+
+Liens avec ADN et génétic
+
+babelute montre la complexité et la difficulté de la génétique.
+
+ADN = atome logique = babelute qui sera interprété dans un context propre
+
+possible marqueur lexic #tata:  en scope
+
+Point de vue théorique : il existe autant de language intermédiaire qu'on veut entre deux états
+
+
+
+# Implications
+
+Description Driven
+
+Agility
+	Start, Focus, Direction, Parallelism, Atomicity, Communication, Ultra Fast Iterations, 
+
+Design
+	Atomicity and Modularity
+
+	Atomicity and RISC/CISC
+
+	Reusability and Sharing
+
+	Testability
+
+	Perenity and Openness
+
+	Completness and non-ambiguity
+
+	Design Mind Direction
+
+	Un language est bcp plus stable qu'un API : language = choix juste des mots minimaux
+
+Search Engine, ontology and IA
+	AST powaaa
+	Noam Chomsky
+	Marvin Minsky and Frames
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ *
+ * Formally, as any lexem could receive others babelutes as arguments, 
+ * we obtain an array of lexems that could hold (as arguments) others array of lexems and/or primitives values.
+ * Which could be seen as a forest of trees 
+ * where each node (aka lexem) could hold others forest of trees, 
+ * and where tree's leaf are primitives values (string, number, boolean, object, array, function).
+
+
+
+
+
+Leaky Abstractions Law (Joel Spolsky - http://www.joelonsoftware.com/Articles/LeakyAbstractions.html)
+
+The law of leaky abstractions means that whenever somebody comes up with a wizzy new code-generation tool that is supposed to make us all ever-so-efficient, you hear a lot of people saying "learn how to do it manually first, then use the wizzy tool to save time." Code generation tools which pretend to abstract out something, like all abstractions, leak, and the only way to deal with the leaks competently is to learn about how the abstractions work and what they are abstracting. So the abstractions save us time working, but they don't save us time learning.
+
+And all this means that paradoxically, even as we have higher and higher level programming tools with better and better abstractions, becoming a proficient programmer is getting harder and harder.
+
+
+
+
+
+
+OO at the right place
+
+https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4#.gmfsnqz7p
+
+smaller is better
+only when realy needed
+no interaction rule when inherit : no super call or (too much) dependencies between class tree APIs
+use functional programming to complete classes behaviour
+minimal inheritance depth (0 or 1. when 2 : twice check of no-interaction rule)
+only for low level
+not for exposition
+lower in tree : higher in completness 
+
+
+
+
+
+
+
+
+
+
 # Examples to refactor following changes
 
 

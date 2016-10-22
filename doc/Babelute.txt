@@ -1,0 +1,90 @@
+# Babelute
+
+Javascript Internal DSMM Framework.
+
+DSMM is the beginning of a new era.
+It deeply changes the way of thinking developpement process, code and design.
+Because it simply mimics the way of we think.
+
+Before diving in high level abstractions, I'll ask you to answer seriously a really practical question :
+
+Imagine a (big) customer from food industry which makes cakes and pies and comes to your office and ask you to rewrite all their IT stuffs about their receipts.
+They want receipts that should be defined and used internaly (by pros) or externaly (by noobs).
+That should automatically gives dietetic score, composition, alergen list, time and weight estimation, and overall price.
+That should be exposed on their website or mobile app and downloadable as pdf or svg in many languages.
+And, why not, if they could drive a robot to make pies it could be interesting. :)
+
+How much time to make a valuable demo and an estimation, with only those limited informations, to get the job ?
+How to start, how to iterate, what to design, etc. ?
+
+Depending on your speciality (back-end, front-end, full-stack, UIX, ...) you will imagine plenty of solutions with big bunches of technologies, frameworks, db models, restful apis, patterns, views, forms, styles, UIX, etc.
+
+And you where right. Finally it will be all this.
+
+But how to start and iterate ?
+What could be a valuable demo ? 
+Could we provide almost all needed functionalities in this demo ?
+How to make it as a real iteration base (to not throw it away just after demo time) ?
+And... How much time it could take to provide ?
+
+Even if the mission is not so complex, those are dificults questions.
+
+Let's try with the classical approach :
+
+
+
+
+
+What I'm pretty sure is that you'll never answer a couple of hours...
+
+But in fact, that's the time needed to provide a simple but meaningfull and valuable demo, which will serve as base for further iterations (whatever technology stack have we choosed), and that allows us to estimate and plan next steps.
+
+Better, in that time, we will resolve the receipts modeling problem for any type of cooking (not only for pies and cake).
+And we would be able to propose our solution to the community as a standard candidate for Cooking Modeling, usable by anyone in plenty of cases.
+(Same thing for dietetic/composition/alergen/weight/time/price/... repports.)
+
+Naturally, we'll make things really usable and reusable, not only for you that create the system, but for anyone that understand a little bit in cooking.
+
+And even more, our datas will be much more smart and precise than any classical Model.
+
+In short, to achieve this, we (only) need :
+- an Internal Abstract DSL for receipts modeling.
+- a bunch of translations and output rules for :
+	- html/svg/pdf representations
+	- dietetic/composition/alergen/weight/time/price repports
+	- i18n
+	- robot driving
+- a DSL sentence editor for writing receipts 
+
+And that's it...
+
+Of course none of them will be perfect, but that's not the point.
+What's really important here, is that we could directly iterate on the higher level to be sure that we understoud the problem at the right place : aka the receipt model.
+
+
+
+
+http://www.marmiton.org/recettes/recette_tarte-aux-pommes-a-l-alsacienne_11457.aspx
+
+
+A particular tree with plenty of applications.
+
+- allow translations/transormations
+- allow environment dependent interpretations/outputs
+
+- seen as AST
+	- allow meta-programation
+	- allow full introspection
+	- allow auto testing
+
+- seen as Data
+	- universal
+	- complete
+	- highest precision
+	- ontologic
+
+- seen as documents
+
+- seen as web ontology
+
+- allow documentation and reports auto generations
