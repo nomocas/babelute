@@ -14,16 +14,16 @@ Babelute.toActions('fs:fs', {
 	__restrictions__: {
 		fs: true
 	},
-	isWritable: function(env, cwd, arg /* path */ ) {
+	isWritable: function(cwd, arg /* path */ ) {
 		return is('writable', cwd, args[0], 2);
 	},
-	isExecutable: function(env, cwd, args) {
+	isExecutable: function(cwd, args) {
 		return is('executable', cwd, args[0], 1);
 	},
-	isReadable: function(env, cwd, args) {
+	isReadable: function(cwd, args) {
 		return is('readable', cwd, args[0], 4);
 	},
-	exists: function(env, cwd, args /* path, assertion */ ) {
+	exists: function(cwd, args /* path, assertion */ ) {
 		var path = args[0],
 			assertion = args[1];
 		if (path === true && !assertion) {
@@ -39,7 +39,7 @@ Babelute.toActions('fs:fs', {
 		};
 		return path.forEach ? Promise.all(path.map(check)) : check(tmp);
 	},
-	cd: function(env, cwd, args) {
+	cd: function(cwd, args, env) {
 		var babelute = args[1],
 			newCwd = pathUtil.resolve(normalize(cwd, args[0]));
 		return fs.exists(newCwd, true)
@@ -47,38 +47,38 @@ Babelute.toActions('fs:fs', {
 				return babelute.$output(env, newCwd);
 			});
 	},
-	touch: function(env, cwd, args) {
+	touch: function(cwd, args) {
 
 	},
-	rename: function(env, cwd, args) {
+	rename: function(cwd, args) {
 		return fs.rename(normalize(cwd, args[0]), normalize(cwd, args[1]));
 	},
-	chown: function(env, cwd, args /* path, uid, gid */ ) {
+	chown: function(cwd, args /* path, uid, gid */ ) {
 		return fs.chown(normalize(cwd, args[0] || '.'), args[1], args[2]);
 	},
-	chmod: function(env, cwd, args /* path, mode */ ) {
+	chmod: function(cwd, args /* path, mode */ ) {
 		return fs.chmod(normalize(cwd, args[0] || '.'), args[1]);
 	},
-	link: function(env, cwd, args /* src, dest */ ) {
+	link: function(cwd, args /* src, dest */ ) {
 		return fs.link(normalize(cwd, args[0]), normalize(cwd, args[1]));
 	},
-	unlink: function(env, cwd, args) {
+	unlink: function(cwd, args) {
 		return fs.unlink(normalize(cwd, args[0]));
 	},
-	rmdir: function(env, cwd, args) {
+	rmdir: function(cwd, args) {
 		return fs.rmdir(normalize(cwd, args[0]));
 	},
 	/**
 	 * 
 	 */
-	dir: function(env, cwd, args) {
+	dir: function(cwd, args, env) {
 		var path = normalize(cwd, args[0]),
 			p = fs.mkdir(path);
 		return args[1] ? p.then(function(s) {
 			return args[1].$output(env, path);
 		}) : p;
 	},
-	jsonFile: function(env, cwd, args) {
+	jsonFile: function(cwd, args) {
 		var path = normalize(cwd, args[0]);
 		return fs.readFile(path, {
 			type: 'json'
@@ -89,7 +89,7 @@ Babelute.toActions('fs:fs', {
 			});
 		});
 	},
-	jsFile: function(env, cwd, args) {
+	jsFile: function(cwd, args) {
 		var path = normalize(cwd, args[0]);
 		return fs.readFile(path, {
 			type: 'text'
@@ -100,7 +100,7 @@ Babelute.toActions('fs:fs', {
 			});
 		});
 	},
-	htmlFile: function(env, cwd, args) {
+	htmlFile: function(cwd, args) {
 		var path = normalize(cwd, args[0]);
 		return fs.readFile(path, {
 			type: 'json'
@@ -111,8 +111,8 @@ Babelute.toActions('fs:fs', {
 			});
 		});
 	},
-	fileContent: function(env, cwd, args) {},
-	appendTo: function(env, cwd, args) {
+	fileContent: function(cwd, args) {},
+	appendTo: function(cwd, args) {
 
 	}
 });

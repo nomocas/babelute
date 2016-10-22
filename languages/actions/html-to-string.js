@@ -49,7 +49,7 @@ Babelute.toActions('html:string', {
 		'html:string': true
 	},
 	// Actions
-	tag: function(env, tag, args /* tagName, babelutes */ ) {
+	tag: function(tag, args /* tagName, babelutes */ , env) {
 		var child = new TagDescriptor(),
 			actions = env.actions,
 			babelutes = args[1],
@@ -67,22 +67,22 @@ Babelute.toActions('html:string', {
 		}
 		tagOutput(tag, child, args[0]);
 	},
-	text: function(env, tag, args /* value */ ) {
+	text: function(tag, args /* value */ ) {
 		tag.children += encodeHtmlSpecialChars(args[0]);
 	},
-	class: function(env, tag, args /* className */ ) {
+	class: function(tag, args /* className */ ) {
 		tag.classes += ' ' + args[0];
 	},
-	attr: function(env, tag, args /* name, value */ ) {
+	attr: function(tag, args /* name, value */ ) {
 		var value = args[1];
 		// tag.attributes += ' ' + args[0] + '="' + (typeof value === 'string' ? encodeHtmlSpecialChars(value) : value) + '"';
 		tag.attributes += ' ' + args[0] + '="' + (typeof value === 'string' ? value.replace(/"/g, '\\"').replace(/</g, '&lt;').replace(/>/g, '&gt;') : value) + '"';
 	},
-	id: function(env, tag, args /* value */ ) {
+	id: function(tag, args /* value */ ) {
 		tag.attributes = ' id="' + args[0] + '"' + tag.attributes;
 	},
-	onHtmlString: function(env, tag, args) {
-		args[0](env, tag);
+	onHtmlString: function(tag, args) {
+		args[0](tag);
 	}
 });
 

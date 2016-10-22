@@ -23,7 +23,7 @@ Babelute.toLexic('html', ['view'])
 			html: true,
 			'html:vdom': true
 		},
-		view: function(env, vnode, args) {
+		view: function(vnode, args, env) {
 			var opts = args[0],
 				oldTree,
 				rootNode,
@@ -57,7 +57,7 @@ Babelute.toLexic('html', ['view'])
 
 			doRender();
 		},
-		tag: function(opts, vnode, args /* tagName, babelutes */ ) {
+		tag: function(vnode, args /* tagName, babelutes */ , env) {
 			var descriptor = {
 				properties: {},
 				children: [],
@@ -67,26 +67,26 @@ Babelute.toLexic('html', ['view'])
 				if (typeof templ === 'undefined')
 					return;
 				if (templ.__babelute__)
-					templ.$output(opts, descriptor);
+					templ.$output(env, descriptor);
 				else
 					descriptor.children.push(templ); // auto escaped when added to dom.
 			});
 			var tag = vh(args[0] + descriptor.selector, descriptor.properties, descriptor.children);
 			vnode.children.push(tag);
 		},
-		text: function(opts, vnode, args /* value */ ) {
+		text: function(vnode, args /* value */ ) {
 			vnode.children.push(args[0]);
 		},
-		class: function(opts, vnode, args /* className */ ) {
+		class: function(vnode, args /* className */ ) {
 			vnode.properties.selector += '.' + args[0];
 		},
-		attr: function(opts, vnode, args /* name, value */ ) {
+		attr: function(vnode, args /* name, value */ ) {
 			vnode.properties[args[0]] = args[1];
 		},
-		id: function(opts, vnode, args /* value */ ) {
+		id: function(vnode, args /* value */ ) {
 			vnode.properties.selector += '#' + args[0];
 		},
-		on: function(opts, vnode, args /* eventName, callback */ ) {
+		on: function(vnode, args /* eventName, callback */ ) {
 			vnode.properties['ev-' + args[0]] = args[1];
 		}
 	});

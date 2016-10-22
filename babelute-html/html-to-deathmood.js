@@ -6,7 +6,7 @@ require('../languages/html');
 
 Babelute.toLexic('html', 'view')
 	.toActions('html:deathmood', {
-		view: function(env, vnode, args /* opts */ ) {
+		view: function(vnode, args /* opts */ , env) {
 			var state;
 			const opts = args[0],
 				frag = {
@@ -32,7 +32,7 @@ Babelute.toLexic('html', 'view')
 			state = new State(opts.getInitialState ? opts.getInitialState() : {}, render);
 			doRender();
 		},
-		tag: function(env, vnode, args /*name, babelutes*/ ) {
+		tag: function(vnode, args /*name, babelutes*/ , env) {
 			const tag = {
 				type: args[0],
 				props: {},
@@ -50,24 +50,24 @@ Babelute.toLexic('html', 'view')
 					});
 			}, tag);
 		},
-		attr: function(env, vnode, args /* name, value */ ) {
+		attr: function(vnode, args /* name, value */ ) {
 			vnode.props[args[0]] = args[1];
 		},
-		prop: function(env, vnode, args /* name, flag */ ) {
+		prop: function(vnode, args /* name, flag */ ) {
 			vnode.props[args[0]] = args[1];
 		},
-		class: function(env, vnode, args /* name */ ) {
+		class: function(vnode, args /* name */ ) {
 			vnode.props.className = (vnode.props.className || '') + ' ' + args[0];
 		},
-		id: function(env, vnode, args /* value */ ) {
+		id: function(vnode, args /* value */ ) {
 			vnode.props.id = args[0];
 		},
-		text: function(env, vnode, args /* value */ ) {
+		text: function(vnode, args /* value */ ) {
 			vnode.children.push({
 				text: args[0]
 			});
 		},
-		on: function(env, vnode, args /* event, callback */ ) {
+		on: function(vnode, args /* event, callback */ ) {
 			vnode.on = vnode.on || [];
 			vnode.on.push({
 				name: args[0],

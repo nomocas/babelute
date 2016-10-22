@@ -11,7 +11,7 @@ require('../languages/html');
 
 Babelute.toLexic('html', ['view'])
 	.toActions('html:dom', {
-		view: function(env, node, args) {
+		view: function(node, args, env) {
 			var rendered,
 				state;
 			const opts = args[0],
@@ -42,7 +42,7 @@ Babelute.toLexic('html', ['view'])
 		}
 	})
 	.toActions('html:string', {
-		view: function(env, descriptor, args) {
+		view: function(descriptor, args, env) {
 			const opts = args[0];
 			opts.render(new State(opts.getInitialState ? opts.getInitialState() : {})).$output(env, descriptor);
 		}
