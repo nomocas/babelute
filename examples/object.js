@@ -1,1 +1,0 @@
-var Babelute = require('../index');

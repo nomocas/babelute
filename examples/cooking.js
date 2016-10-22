@@ -46,16 +46,16 @@ var babelute = b('cooking').melanger(...).cuire('...', b('cooking').melanger(...
 
 var toHtml = bablute._translation('cooking:html');
 
-toHTML._output('html:dom', myNode);
-var stringResult = toHTML._output('html:string');
+toHTML.$output('html:dom', myNode);
+var stringResult = toHTML.$output('html:string');
 
-bablute._translation('cooking:graphics')._output('svg');
-bablute._translation('cooking:dietetic')._output('object');
+bablute._translation('cooking:graphics').$output('svg');
+bablute._translation('cooking:dietetic').$output('object');
 
 var mBD = bd()
 	.babelute('cooking')
-	._append('mix', [zoo, bar])
-	._append('cuire', [bloupi, foo])
+	.mix(zoo, bar)
+	.cuire(bloupi, foo)
 	._use('foo:bar')
 
 mBD._translation('cooking')._translation('cooking:html');
