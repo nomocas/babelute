@@ -110,13 +110,11 @@ function updateLocals($target, newNode, oldNode) {
 	// remove all olds and add all news events listener : not really performance oriented 
 	// but do the job for multiple events handler with same name (aka click)
 	if (oldNode.on)
-		oldNode.on.forEach(function(event) {
-			$target.removeEventListener(event.name, event.callback);
-		});
+		for (var j = 0, len = oldNode.on.length; j < len; ++j)
+			$target.removeEventListener(oldNode.on[j].name, oldNode.on[j].callback);
 	if (newNode.on)
-		newNode.on.forEach(function(event) {
-			$target.addEventListener(event.name, event.callback);
-		});
+		for (var j = 0, len = newNode.on.length; j < len; ++j)
+			$target.addEventListener(newNode.on[j].name, newNode.on[j].callback);
 }
 
 function setLocals($target, node) {
