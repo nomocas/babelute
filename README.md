@@ -147,14 +147,14 @@ Babelute.toActions('foo:bar', {
 		subject.second = 'Hello '+ args[0] + ' ! ' + (args[1] ? 'Greetings.' : '');
 	},
 	myThirdMethod:function(env, subject, args){
-		subject.third = args[0]._output(env, {}); // sub-babelute usage
+		subject.third = args[0].$output(env, {}); // sub-babelute usage
 	}
 });
 
 //...
 
 // then output sentence with your semantics
-var output = myBabelute._output('foo:bar', {});
+var output = myBabelute.$output('foo:bar', {});
 // => {first:true, second:'Hello John ! Greetings.', third:{ second:'Hello Biloud !' } }
 
 ```
