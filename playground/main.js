@@ -49,6 +49,11 @@ Babelute.toLexic('myhtml', {
 			h.class('product-row')
 			.h3(product.title)
 			.div(product.label)
+			.text('floupi doupi')
+			.div('second text')
+			.click(function(e) {
+				console.log('heu')
+			})
 		);
 	},
 	searchBar: function(filter, updateFilter) {
@@ -66,8 +71,6 @@ Babelute.toLexic('myhtml', {
  * usage
  */
 
-
-
 function render3() {
 	var t = h.div('world' + Math.random(),
 		h.attr('bloupi', 'foo')
@@ -81,7 +84,7 @@ function render3() {
 			h.attr('bloupi', 'foo')
 			.h3('hooooooo' + Math.random())
 			.section('hello',
-				h.div('hoooooojjjjjjo')
+				h.attr('bloupi', 'foo').div('hoooooojjjjjjo')
 			)
 			.click(function(e) {
 				console.log('heu')
@@ -90,20 +93,29 @@ function render3() {
 	return t;
 }
 
+function getProducts() {
+	var products = [];
+	for (var i = 0; i < 100; ++i)
+		products.push({
+			title: 'hoooo' + Math.random(),
+			label: 'hissss'
+		}, {
+			title: 'haaa',
+			label: 'huussss'
+		}, {
+			title: 'hiiio',
+			label: 'heeessss'
+		});
+	return products;
+}
+
+
+
 function render2() {
 	return h
 		.text('bloupiiii')
 		.div(h.span('hiii'))
-		.filterableProductsTable([{
-			title: 'hoooo' + Math.random(),
-			label: 'hissss'
-		}, {
-			title: 'haaa' + Math.random(),
-			label: 'huussss'
-		}, {
-			title: 'hiiio' + Math.random(),
-			label: 'heeessss'
-		}])
+		.filterableProductsTable(getProducts())
 		.div('yeeeeeehaaaaa');
 }
 
@@ -135,7 +147,7 @@ function testJSON(max, render) {
 		JSON.stringify(render());
 	}
 	time = new Date().valueOf() - time;
-	console.log('JSON', time)
+	console.log('JSON : %s - %s', time, time / max);
 }
 
 function testStringify(max, render) {
@@ -144,7 +156,7 @@ function testStringify(max, render) {
 		render()._stringify();
 	}
 	time = new Date().valueOf() - time;
-	console.log('Serialize', time)
+	console.log('Serialize : %s - %s', time, time / max);
 }
 
 function testString(max, render) {
@@ -153,7 +165,7 @@ function testString(max, render) {
 		render().$htmlToString();
 	}
 	time = new Date().valueOf() - time;
-	console.log('html:string', time)
+	console.log('html:string : %s - %s', time, time / max);
 }
 
 function testDom(max, render) {
@@ -163,8 +175,7 @@ function testDom(max, render) {
 		render().$htmlToDOM($root)
 	}
 	time = new Date().valueOf() - time;
-	$root.innerHTML = '';
-	console.log('html:dom', time)
+	console.log('html:dom : %s - %s', time, time / max);
 }
 
 function testVdom(max, render) {
@@ -175,7 +186,7 @@ function testVdom(max, render) {
 		nt = render().$htmlToVDOM($root, nt)
 	}
 	time = new Date().valueOf() - time;
-	console.log('html:vdom', time)
+	// console.log('html:vdom', time)
 }
 
 function testDeathmood(max, render) {
@@ -186,29 +197,95 @@ function testDeathmood(max, render) {
 		nt = render().$htmlToDeathmood($root, nt);
 	}
 	time = new Date().valueOf() - time;
-	console.log('deathmood1', time)
+	console.log('html:deathmood : %s - %s', time, time / max);
+	return nt;
 }
 
 
 function runAll(max, render) {
-	console.log('________________');
-	// testJSON(max, render);
-	// testStringify(max, render);
-	// testString(max, render);
-	testDeathmood(max, render);
-	// testDom(max, render);
+	console.log('________________ %sx', max);
+	testJSON(max, render);
+	testStringify(max, render);
+	testString(max, render);
+	testDeathmood(max, render); // 152, 148, 100 - 320, 800, 275 -   400, 1400, 426 ---   544, 2033, 618  --- 258, 337, 111
+	testDom(max, render); // 178, 219, 161  -  496, 1001, 320 --  535, 1650, 476 - 587, 2127, 651  --- 684, 872, 166
 	// testVdom(max, render);
 }
 
+var currentRender = render2;
 
 var $root = document.getElementById('root'),
-	$reload = document.getElementById('test-button');
+	$singleDOMTest = document.getElementById('single-dom-test-button'),
+	$singleDeathMoodTest = document.getElementById('single-deathmood-test-button'),
+	$domTest = document.getElementById('test-dom-button'),
+	$deathmoodTest = document.getElementById('test-deathmood-button'),
+	$all = document.getElementById('test-all-button'),
+	$clear = document.getElementById('clear-button');
 
-$reload.addEventListener('click', function() {
-	runAll(1, render3);
+
+var maxTest = 200,
+	testDelay = 50;
+
+$domTest.addEventListener('click', function() {
+	$root.innerHTML = '';
+	var count = 0,
+		totalTime = 0,
+		intervalID = setInterval(function() {
+			var time = new Date().valueOf();
+			$root.innerHTML = '';
+			currentRender().$htmlToDOM($root);
+			time = new Date().valueOf() - time;
+			totalTime += time;
+			count++;
+			if (count === maxTest) {
+				console.log('dom 100x : %s - %s', totalTime, totalTime / maxTest)
+				clearInterval(intervalID);
+			}
+		}, testDelay);
+});
+$deathmoodTest.addEventListener('click', function() {
+	$root.innerHTML = '';
+	var count = 0,
+		totalTime = 0,
+		nt,
+		intervalID = setInterval(function() {
+			var time = new Date().valueOf();
+			nt = currentRender().$htmlToDeathmood($root, nt);
+			time = new Date().valueOf() - time;
+			totalTime += time;
+			count++;
+			if (count === maxTest) {
+				console.log('deathmood 100x : %s - %s', totalTime, totalTime / maxTest)
+				clearInterval(intervalID);
+			}
+		}, testDelay);
 });
 
+$all.addEventListener('click', function() {
+	$root.innerHTML = '';
+	runAll(100, currentRender);
+});
 
-runAll(1, render3);
+var nt;
+$singleDeathMoodTest.addEventListener('click', function() {
+	var time = new Date().valueOf();
+	nt = currentRender().$htmlToDeathmood($root, nt);
+	time = new Date().valueOf() - time;
+	console.log('single deathmood test', time)
+});
+$singleDOMTest.addEventListener('click', function() {
+	var time = new Date().valueOf();
+	$root.innerHTML = '';
+	currentRender().$htmlToDOM($root)
+	time = new Date().valueOf() - time;
+	console.log('single dom test', time)
+});
+
+$clear.addEventListener('click', function() {
+	$root.innerHTML = '';
+	nt = null;
+});
+
+// runAll(1, currentRender);
 
 //
