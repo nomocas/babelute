@@ -77,8 +77,10 @@ function update($parent, newNode, oldNode) {
 	} else if (newNode.type) // is not a text node, no type change
 		updateElement(newNode, oldNode);
 
-	else // is a text node
-		newNode.node = oldNode.node; // forward node to new vnode
+	else { // is a text node
+		newNode.node = oldNode.node; // forward dom node to new vnode
+		oldNode.node = null; // help GC
+	}
 }
 
 function updateElement(newNode, oldNode) {
@@ -88,12 +90,17 @@ function updateElement(newNode, oldNode) {
 		updateLocals(oldNode.node, newNode, oldNode);
 		// forward node to new vdom, set subparent as tag's node (so normal recursion)
 		subParent = newNode.node = oldNode.node;
-	} else // is fragment : forward parent in new vnode, set subParent as $parent (transparent recursion)
+		oldNode.node = null; // help GC
+	} else { // is fragment : forward parent in new vnode, set subParent as $parent (transparent recursion)
 		subParent = newNode.parent = oldNode.parent;
-
+		// oldNode.parent = null; // help GC :  Unresolved : if this line is uncommented : no more events listeners !
+	}
 	const len = Math.max(newNode.children.length, oldNode.children.length);
 	for (var i = 0; i < len; i++)
 		update(subParent, newNode.children[i], oldNode.children[i]);
+	oldNode.children = null; // help GC
+	oldNode.props = null;
+	oldNode.on = null;
 }
 
 function updateLocals($target, newNode, oldNode) {
