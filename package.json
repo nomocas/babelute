@@ -1,7 +1,7 @@
 {
   "name": "babelute",
   "version": "0.1.0",
-  "description": "Internal Domain Specific Language javascript framework",
+  "description": "Internal Domain Specific (Multi)Modeling javascript framework",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
