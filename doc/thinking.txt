@@ -1,99 +1,48 @@
-/*
+ 
+ Information Theory :
 
-	_output2: function(env, subjects) {
-		if (typeof env === 'string')
-			env = {
-				actions: Babelute.getActions(env)
-			};
-		var dico = env.actions,
-			handler,
-			index = -1,
-			f;
-		if (!subjects)
-			subjects = [dico.__defaultSubject__ ? dico.__defaultSubject__(env) : {}];
+ 	Qualities :
+ 		transmissibility
+ 		optimality
+ 		compressability
+ 
+# UUS Lexic Definition Language		
 
-		var subjectsLength = subjects.length;
+```
+#address:html+
+	address(
+		// meta-infos
+		#aright
+		description('address to html translation')
+		string('country')
+		string('town')
+		string('street')
+		string('number'),
 
-		while (handler = this._lexems[++index]) {
-			if (dico.__restrictions__ && !dico.__restrictions__[handler.lexic])
-				continue;
-			f = typeof handler.name === 'string' ? (dico[handler.name] || actionsDico.default[handler.name]) : handler.name;
-			if (!f)
-				continue;
-
-			if (subjectsLength === 1)
-				f(env, subjects[0], handler.args);
-			else
-			// hack to avoid func.apply(...)
-				switch (subjectsLength) {
-				case 1:
-					f(env, handler.args, subjects[0]);
-					break;
-				case 2:
-					f(env, handler.args, subjects[0], subjects[1]);
-					break;
-				case 3:
-					f(env, handler.args, subjects[0], subjects[1], subjects[3]);
-					break;
-				case 4:
-					f(env, handler.args, subjects[0], subjects[1], subjects[3], subjects[3]);
-					break;
-				case 5:
-					f(env, handler.args, subjects[0], subjects[1], subjects[3], subjects[3], subjects[4]);
-					break;
-			}
-		}
-		if (dico.__finalise__)
-			return dico.__finalise__(env, subjects);
-		return subject;
-	},
-
- */
-
-
-
-
-~html:
-	address('country', 'town', 'street', 'number'){
-		h2($town, 
-			id('bar') class('foo')
-			span($country, class('zoo'))
-		)
-		div($street, ', ', $number)
-	}
-
-#object:
-object(
-	id()
-	foreignId(
-		'target_collection',
-		required()
-		patchable()
+		// semantic
+		#html
+			h2(@town,
+				id('bar') 
+				class('foo')
+				span(@country, class('zoo'))
+			)
+			div(@street, ', ', @number)
+			hr
+			p('...')
 	)
-	string(
-		'bloupi',
-		default('')
-		required()
-	)
-	date(
-		'creationDate',
-		default(@now())
-	)
-)
+```
 
 
 
 Liens avec ADN et génétic
 
-babelute montre la complexité et la difficulté de la génétique.
+Babelute montre la complexité et la difficulté de la génétique.
 
-ADN = atome logique = babelute qui sera interprété dans un context propre
+ADN = séquence atomes logiques (bases) = babelute qui sera interprété dans un context propre
 
 possible marqueur lexic #tata:  en scope
 
-Point de vue théorique : il existe autant de language intermédiaire qu'on veut entre deux états
-
-
+Point de vue théorique : il existe autant de language intermédiaire qu'on veut entre deux états.
 
 # Implications
 
@@ -117,22 +66,13 @@ Design
 
 	Design Mind Direction
 
-	Un language est bcp plus stable qu'un API : language = choix juste des mots minimaux
+	Un language est bcp plus stable qu'un API : DSL = choix juste des mots minimaux
 
 Search Engine, ontology and IA
 	AST powaaa
 	Noam Chomsky
 	Marvin Minsky and Frames
 	
-
-
-
-
-
-
-
-
-
 
 
 
@@ -911,7 +851,15 @@ app()... ==> mean take current concurrent user => how to get it : glocal so bewa
 
 
 
-	
+IDE Tools
+
+Babelute Syntax coloration
+Babelute-autocomplete
+Babelute-linter
+
++ Babelute TextExpander snippets
+
+
 	
 
 	

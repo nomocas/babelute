@@ -1,0 +1,64 @@
+question recettes cuisines
+
+
+DSL et DS(M)M
+
+==> commencons par simple-html
+
+==> lexic
+	- atomes
+	- shortcut
+	- compounds
+
+	CISC/RISC
+
+==> actions
+	- dom
+	- string
+
+==> usage
+
+==> aright
+	-> actions = validate
+
+==> that's DSM
+
+==> babelute-documentation
+	-> actions : write lexic and actions
+
+	==> translations : doc->html, aright->html
+
+==> that's DSMM
+	==> real full workable MDD
+
+Open one last door : 
+
+==> Stringify
+	- first degree
+
+==> elenpi
+	-> Full DSL (DSMM) framework (Internal and External)
+
+==> pause !
+
+
+==> Lets make pies...
+
+
+
+
+
+
+
+==> Sentences is the most accurate and complete form of description.
+==> best quality data
+
+
+==> pause !! 
+
+
+Welcome in the meaningful sharing era !!
+
+==> Smart(est) Data means lot of things. 
+
+
