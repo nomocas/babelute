@@ -26,7 +26,5 @@
     "url": "https://github.com/nomocas/babelute/issues"
   },
   "homepage": "https://github.com/nomocas/babelute#readme",
-  "dependencies": {
-    "elenpi": "^0.3.0"
-  }
+  "dependencies": {}
 }

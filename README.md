@@ -1,27 +1,142 @@
-# Babelute
+# Babelute.js
 
-Internal Domain Specific Language javascript framework based on Method Chaining 
-and dedicated to Domain Specific (multi)Modeling (DSM).
+> "A Babelut(t)e is a sort of long toffee flavoured with honey or vergeoise (demerara sugar) from [...] Flanders, Belgium".
 
-or How to design and code as you think...
-And boost your productivity as never.
+> __Etymology__ : "[A french word that] is likely to come from the Flemish "babbelen", speaking a lot, and "uit", finished because when you eat the toffee, you cannot speak anymore (either because you are enjoying it or because you cannot open the mouth).[...]"
 
-Really small, simple, incredibly powerful and super fast.
+> src : [wikipedia](https://en.wikipedia.org/wiki/Babelutte)
 
-(documentation in progress)
 
-## Aim
+### Internal Domain Specific (Multi)Modeling js framework
 
-The aim of Babelute is to provide :
-- a simple "(meta) meta language" (a grammar - based on Method Chaining) and tools for Domain Specific Language definition
-- tools for managing dictionaries (called lexics) of those DSL (namespaces, translations between languages, real semantics depending to specific context, etc)
-- helpers for writing structured "sentences" (called "babelutes") in those DSL (always based on Method Chaining)
-- ways to interpret/run sentences depending on a particular context (sentence-to-sentence or sentence-to-specific-actions)
-- ways to execute Babelute sentences immediatly (and only once - classical simple Method Chaining)
-- ways to execute Babelute sentences on demand (sentence's elements are kept in local array), and therefor they could be seen as multi-purpose template. (where they release all their potential)
-- tools to make Babelute sentences handelable and editable
-- a lightweight optimal serialised form of Babelute sentences and the associated parser/stringifier
+> __42__ &asymp; [ lexem( lexicon, word, arguments ), ... ]
 
+Really small, simple, incredibly powerful and super fast __Internal DSLs__ tools.
+
+Babelute.js provides helpers to :
+- define and manage Internal DSLs for __modeling__ any kind of problems
+- with a simple (meta)grammar - based on Method Chaining - for writing __structured unambiguous "sentences"__ (called __babelutes__)
+- and to provide ways :
+	- to manage __dictionaries of related lexems__ that form DSL semantic fields (called __lexicons__)
+	- to translate DSL sentences to other DSL sentences (through __dedicated bridge-DSLs__ with their own lexic(on)s)
+	- to interpret sentences in many context with specific __fine grained concreet semantics__ (called __pragmatics__)
+
+
+What is the final usage ?
+
+So at usage (when you use DSLs written with Babelute) : you talk a lot ("babbelen" in Flemish), by writting structured sentences, using different DSLs to __describe__ things accuratly and generally, at higher level possible... Then maybe you "still talking" by __translating__ your sentences to more specific DSL sentences...
+And then you stop talking ("babbel uit") and you simply __do concreetly__ what you've said in a particular context. (You interpret sentences through choosen __pragmatics.__)
+
+ Describe generally, maybe translate specifically, then act concreetly as needed. That's the main idea...
+
+```javascript
+var b = Babelute.initializer('my-lexicon'),
+	babelute = b.letsTalk(b.describing('things').accuratly(true)); // talk generally
+
+var output = myInterpreter.doSomethingWith(babelute);	// then interpret concreetly as you wish
+```
+Alone, Babelute provides no usable DSL. Only tools necessary to handle/create sentences and to define DSLs lexics, translations between them, and output actions.
+
+## Core Libraries
+
+- babelute
+- babelute-facade-actions
+- babelute-uus
+
+## Understanding by examples
+
+Low Level DSLs (Developement related domains) :
+- [babelute-aright](https://github.com/nomocas/babelute-aright) : Objects and types validation DSL (ultra-fast, ultra-modular)
+- [babelute-html](https://github.com/nomocas/babelute-html) : HTML5 DSL and its isomorphic render-engines. (modern, __world's fastest__, React-like templating)
+- [babelute-fs](https://github.com/nomocas/babelute-fs) : File System Description DSL and its runners.
+- [babelute-lexic-dl](https://github.com/nomocas/babelute-doc) : Babelute Lexic Definition DSL and its generators.
+
+High Level DSLs (Human related domains) :
+- [babelute-cooking](https://github.com/nomocas/babelute-cooking) : High Level Cooking DSL demo and its bunch of transformations and DSLs targets.
+
+# Theory part
+
+## So What does it try to resolve
+
+Domain Specific Modeling
+- [[1]](https://metacase.com/webinar/Domain_Specific_Modeling_76_cases_of_MDD_that_works_Nov2009.pdf) DSM : 76 cases of MDD That works
+- [[2]](http://s3.amazonaws.com/academia.edu.documents/42473462/Domain_specific_modeling20160209-12929-16vmdfi.pdf?AWSAccessKeyId=AKIAJ56TQJRTWSMTNPEA&Expires=1481808605&Signature=33JXUlf1xs9BZBWjiDjGo3XTJ7I%3D&response-content-disposition=inline%3B%20filename%3DDomain_specific_modeling.pdf) Domain specific modeling (Robert France, Bernhard Rumpe, 2005)
+- [[4]](http://www.dsmforum.org/why.html) DSM Forum
+
+Domain Specific MultiModeling
+
+> Domain-specific multimodeling[1] is a software development paradigm where each view is made explicit as a separate domain-specific language (DSL).
+src : [wikipedia](https://en.wikipedia.org/wiki/Domain-specific_multimodeling)
+
+- [[1]](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.453.9934&rep=rep1&type=pdf) Hessellund, Anders (2009). "Domain-Specific Multimodeling". IT University of Copenhagen, Denmark. 2009.
+
+
+DSM is true, practical MDD that rocks. Yeah... Finally ! ;)
+
+MDD is where (Meta)Models are the only first class citizens and where everything else is transformations and could be thrown and replaced at any time.
+
+Classical MDD is broadly based on UML (Meta)Modeling and propriatary transformations tool boxes.
+The main idea is to maintain and focus on the business (Meta)Models through years and to provide automated transformation pipes (from UML to code) to produce runable and testable Apps (any sort of...) that will evolve and die much faster than (Meta)Models.
+
+Great idea ! But... Until now, it hasn't produce all promised benefits (precise and complete UML modeling is quite heavy and make things less clear than needed (too generic), and transformations rules are hard to maintain or to closely coupled with monolithics propriatary environnement). So for the moment it's clearly far more  expensive than good Agile approach...
+
+With DSM, Models and instances are not seen as UML nor Object any more. Models are DSLs and instances are sentences (even graphical) of those DSLs.
+DSMM says that we could express any DSL by another one __when we need to precise things in a particular context__.
+
+Babelute tries to provide tools for defining meta-models (DSLs definitions) and transformations/translations between them with simple Method Chaining pattern.
+
+Which kind of things could be modeled ? __Everything that could be describe with words__ and __simple parameters__ (i.e. where an __Internal DSL__ could be found).
+
+By example, describing a mouvement accuratly with only words is highly difficult and in many case impossible, and so Internal DSL based on words lexics __only__ seems not to be the best (or complete) solution. (we would need coordinate system and mathematics objects to do it)
+
+But the "logic" behind the movement could be expressed with words that could be mixed with coordinate system or any other DSL (algebra is a DSL by example). 
+```javascript
+var m = Babelute.initializer('myMovementLexic');
+
+m.moveTo(12, 30, m.duration(200).bounce(3))
+.delay(300)
+.oscillateHorizontally(20 /* pix left and right */, 150 /* ms for each cycle */)
+.cinematic('3x - 2 = y');
+```
+
+Or in [UUS](https://github.com/nomocas/babelute-uus) style :
+
+```
+#myMovementLexic:
+	moveTo(12, 30, duration(200) bounce(3))
+	delay(300)
+	oscillateHorizontally(20 /* pix left and right */, 150 /* ms for each cycle */)
+	cinematic("3x - 2 = y")
+```
+
+What is sure, there will never be a lexical Internal DSL for expressing RegExp by example.
+
+## Creating Lexics
+
+### Logical Atoms 
+
+Reduction principle
+
+### Shortcut
+
+### Compounds words
+
+RIS vs CIS
+
+### Extending lexics
+
+### Atomic-Babelute vs First-Degree-Babelute
+
+## Implementing Actions
+
+## Advice for creating DSL
+
+- write sentences (what you finally want) before all
+- be descriptive
+- be DRY
+- be pure
+- maximize holded informations
+- think transformability
 
 ## Fluent Interfaces as DSL
 
@@ -31,7 +146,7 @@ The term "Fluent Interface" comes from Martin Fowler's [2005 article](http://mar
 Fluent interfaces does not mean necessary Method Chaining. It's just one way to achieve it.
 And Method Chaining doesn't mean necessary Internal DSL.
 
-Fluent Internal DSL are much more about choosing right words with right semantics for optimaly expressing particular problems through readable and meaningful sentences. Not simply chaining calls.
+Fluent Internal DSL are much more about choosing right words with right semantics for optimally expressing particular problems through readable and meaningful sentences. Not simply chaining calls.
 
 Examples of Domain Specific Language expressed with Method Chaining :
 
@@ -48,7 +163,7 @@ create.select(AUTHOR.FIRST_NAME, AUTHOR.LAST_NAME, count())
       .limit(2)
       .offset(1)
 ```
-
+Other example not expressed with Method Chaining : 
 RTF Doc construction in JAVA : https://github.com/ullenboom/jrtf/
 ```java
 rtf().section(
@@ -68,41 +183,11 @@ Further reading :
 - https://msdn.microsoft.com/en-us/magazine/ee291514.aspx
 - https://books.google.be/books?id=EhOXBQAAQBAJ&pg=PA403&lpg=PA403&dq=method+chaining+DSL&source=bl&ots=vMd25Y86E1&sig=d7SbHZoiLA8X1g4nsoo5Ph5kHTA&hl=fr&sa=X&ved=0ahUKEwiR_-32usvOAhUSahoKHTk2C9Y4ChDoAQgwMAM#v=onepage&q=method%20chaining%20DSL&f=false
 
-## DSM
-
-Model Driven approach. (Model First, automation, standard)
-
 ## Translation Chain : From High Level to Code Level
 
 Community of Abstract and Concreet DSLs.
 
-## DSL as "Template"
-
-Method Chaining along with Command Design Pattern to build Facade.
-
-RSIC vs CISC
-
 Auto-parsing
-
-## Template as Document
-
-From persistence, to meta-programing, to shadow document.
-
-### Order means everything
-
-### Lightweight optimal serialised form
-
-#### Introduce elenpi
-
-#### Persitence
-
-### Document edition and meta-programing
-
-#### Chained DSL Facade as Document Pilot
-
-#### GUI for all
-
-### Document instanciation, data-binding and Shadow Document
 
 ## Todo soon
 
@@ -113,61 +198,75 @@ From persistence, to meta-programing, to shadow document.
 ## Further
 
 - coordination problem and method
-- Link with ontologies
-- Inference Engine
-- DSL repository
-- Web exposition
-- DSL-DB
 
 
 # Babelute examples
+
+Rem : don't try to appreciate the usefulness of the "family" DSL. It's just a dummy example.
 ```javascript
-var b = require('babelute').b;
+var Babelute = require('babelute');
 
-// define language "foo" with 3 words
-Babelute.toLexic('family', ['myMethod', 'mySecondMethod', 'myThirdMethod']);
+// Define a lexic called "family" with 7 words
+Babelute.toLexic('family', ['me', 'brother', 'sister', 'parent', 'man', 'women', 'age']);
 
-// you could directly write sentences with it
-var myBabelute = b('foo')
-	.myMethod()
-	.mySecondMethod('John', true)
-	.myThirdMethod(
-		b('foo')
-		.mySecondMethod('Biloud', false);
-	);
+var f = Babelute.initializer('family');
+
+// You could directly write sentences with it
+var myFamily = f
+	.me('Bob', f.man().age(30))
+	.parent('dad', f.man().age(52))
+	.parent('mum', f.woman().age(50))
+	.brother('John', f.age(28))
+	.sister('Eva', f.age(25));
+
+// That's it : your family is defined and could be used in many cases.
 
 //...
 
-// then provides semantics for those words
-Babelute.toActions('foo:bar', {
-	myMethod:function(env, subject, args){
-		subject.first = true;
+// Then provides semantics for those words.
+// by example what to do when transforming family sentences to object.
+Babelute.toActions('family:object', {
+	me:function(subject, args, env){
+		subject.me = args[1].$output(env, {	name:args[0] });
 	},
-	mySecondMethod:function(env, subject, args){
-		subject.second = 'Hello '+ args[0] + ' ! ' + (args[1] ? 'Greetings.' : '');
+	parent:function(subject, args, env){
+		subject.parents = subject.parents || [];
+		subject.parents.push(args[1].$output(env, { name:args[0] }));
 	},
-	myThirdMethod:function(env, subject, args){
-		subject.third = args[0].$output(env, {}); // sub-babelute usage
+	brother:function(subject, args, env){
+		subject.brothers = subject.brothers || [];
+		subject.brothers.push(args[1].$output(env, { name:args[0], gender:'man' }));
+	},
+	sister:function(subject, args, env){
+		subject.sisters = subject.sisters || [];
+		subject.sisters.push(args[1].$output(env, { name:args[0], gender:'woman' }));
+	},
+	man:function(subject, args){
+		subject.gender = 'man';
+	},
+	woman:function(subject, args){
+		subject.gender  = 'woman';
+	},
+	age:function(subject, args){
+		subject.age  = args[0];
 	}
 });
 
 //...
 
-// then output sentence with your semantics
-var output = myBabelute.$output('foo:bar', {});
-// => {first:true, second:'Hello John ! Greetings.', third:{ second:'Hello Biloud !' } }
+// then get output from sentence with your concreet semantic
+var output = myFamily.$output('family:object', {});
+// => 
 
 ```
 
-
 More coming really soon.
-
 
 ## Licence
 
 The [MIT](http://opensource.org/licenses/MIT) License
 
-Copyright (c) 2016 Gilles Coomans <gilles.coomans@gmail.com>
+Copyright (c) Gilles Coomans <gilles.coomans@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
