@@ -1,7 +1,7 @@
 {
-  "name": "es6-rb-mc-k-i-boilerplate",
-  "version": "0.0.1",
-  "description": "Full ES6 module boilerplate with rollup/babel and mocha/chai/karma/istanbul",
+  "name": "babelute",
+  "version": "0.3.0",
+  "description": "Internal Domain Specific (Multi)Modeling javascript framework",
   "main": "dist/bundles/babelute.js",
   "module": "dist/bundles/babelute.mjs",
   "jsnext:main": "dist/bundles/babelute.mjs",
@@ -26,11 +26,25 @@
     "instrument": false
   },
   "keywords": [
-    "es6",
-    "boilerplate",
-    "test",
-    "coverage"
+    "internal-DSL",
+    "DSL",
+    "domain-specific-language",
+    "method-chaining",
+    "domain-specific-modeling",
+    "model-driven",
+    "modeling",
+    "semantic",
+    "pragmatics",
+    "fluent-interface"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomocas/babelute.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nomocas/babelute/issues"
+  },
+  "homepage": "https://github.com/nomocas/babelute#readme",
   "author": "Gilles Coomans",
   "license": "MIT",
   "dependencies": {},
@@ -61,3 +75,4 @@
     "uglify-js": "^2.7.5"
   }
 }
+
