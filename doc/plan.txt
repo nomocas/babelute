@@ -45,11 +45,6 @@ Open one last door :
 ==> Lets make pies...
 
 
-
-
-
-
-
 ==> Sentences is the most accurate and complete form of description.
 ==> best quality data
 
@@ -62,3 +57,23 @@ Welcome in the meaningful sharing era !!
 ==> Smart(est) Data means lot of things. 
 
 
+
+
+
+
+
+
+
+Usage idea : 
+
+
+
+	meta programming and def-dsl-meta-language (ddml)
+
+		use UUS ddml version to produce pure js
+			add assertion in front of produce methods for aguments checking in dev mode
+
+
+
+
+	cli to achieve it or bundle tools plugins	

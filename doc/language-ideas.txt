@@ -1,18 +1,18 @@
 
 // painless web app build tools chain facade
 
-build
+toolsChain
 .sass('./app.scss', {
 	path:[...]
 })
 .css('./bloupi.css')
 .postCSS('autoprefixer','lost')
 .commonJS('js/main.js')
-.es6('js/es6.js', build.lint({ ... }))
+.es6('js/es6.js', toolsChain.lint({ ... }))
 .babel('...')
 .shim('jquery','lodash')
 .images('./images', ...)
-.html('./index.html', build.moustach({ ... }))
+.html('./index.html', toolsChain.moustach({ ... }))
 .output({
 	css:'build/app.css',
 	js:'build/app.js',
@@ -60,19 +60,16 @@ multiply(4, power('x', 2)).plus(1).equal('y')
 
 x = root((y - 1)/4, 2)
 
-root(divid(var('y').minus(1), 4), 2).equal('x')
+squareRoot(divid(variable('y').minus(1), 4)).equal('x')
 
 On pouvait faire la structure d'une babelute avant Babelute.
 
 L'intéret de Babelute c'est d'être le pont entre le pratico-pratique ET le Machine Intelligence.
 
-
-
-
 Writting papers :
 
-#mycompany-letters+
-	delivredProduct(customer, productId, time)
+#mycompany-letters
+	+delivredProduct(customer, productId, time)
 	{
 		companiesInfos
 		clientInfos(@customer)
@@ -82,6 +79,7 @@ Writting papers :
 			about(productReturn(@productId))
 			delivred(@time)
 			out,
+
 			productDetail(@productId)
 		)
 	}
@@ -91,3 +89,65 @@ added db entry : date + #mycompany@1.12.34 delivredLetter('John Doe', '1234', '2
 
 ==> Customer Contract Pattern !!
 
+#report
++myReport(count[int], title[string], content[babelute]){
+	title(@title)
+	count(@count)
+	now
+	_use(@content)
+	footer
+}
+
+myReport(12, 'fooo', bar)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RQL Builder
+
+SQL Builder
+
+ElasticQuery Builder
+
+Loopback Query Builder
+
+#css
+	theme:black
+	position:absolute
+	border: solid white
+
+c.sel('.my-selector',
+	c.theme('black')
+	.smallscreen(
+		c.height('3rem')
+	)
+	.bigscreen(
+		c.height('10rem')
+		.border('1px solid white')
+	)
+	.position('absolute')
+	.left('10px')
+	.sel('> div', c.color('white'))
+	._each(colors, (color) => {
+		return c.sel('.foo--${ color }',
+			c.color(color);
+		);
+	})
+	._lexicon('foundation')
+	.postArticleButton('bright', 'big')
+	.sidePanel('left', c.lostColumn(1/3))
+)

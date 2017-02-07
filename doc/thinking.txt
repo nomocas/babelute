@@ -859,7 +859,25 @@ Babelute-linter
 
 + Babelute TextExpander snippets
 
++ so much things
 
-	
+
+//_____________________________________
+
+
+Les DSL ca sert a séparer le grain de l'ivraie.
+
+Cacher la technique le plus loin possible
+
+Babelute = garder chaque niveau clean et verbale le plus longtemps possible
+	technique tout en bas
+
+Dothat 
+	c3po + rql : cacher les détails des ressources
+
+	app-pilot : cacher details client/server
+
+
+
 
 	

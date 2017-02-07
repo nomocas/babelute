@@ -1,30 +1,63 @@
 {
-  "name": "babelute",
-  "version": "0.1.0",
-  "description": "Internal Domain Specific (Multi)Modeling javascript framework",
-  "main": "index.js",
+  "name": "es6-rb-mc-k-i-boilerplate",
+  "version": "0.0.1",
+  "description": "Full ES6 module boilerplate with rollup/babel and mocha/chai/karma/istanbul",
+  "main": "dist/bundles/babelute.js",
+  "module": "dist/bundles/babelute.mjs",
+  "jsnext:main": "dist/bundles/babelute.mjs",
   "scripts": {
-    "test": "mocha"
+    "prebuild": "eslint src test",
+    "build": "npm run es5-build && npm run bundles-build && uglifyjs dist/bundles/babelute.js -m -o dist/bundles/babelute.min.js",
+    "es5-build": "babel src -d dist/es5",
+    "es5-watch": "babel src -d dist/es5 -w",
+    "bundles-build": "rollup -c",
+    "bundles-watch": "rollup -c -w",
+    "pretest": "npm run build",
+    "test": "mocha",
+    "karma": "NODE_ENV=production karma start",
+    "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha test/*.js",
+    "prepublish": "NODE_ENV=production npm test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nomocas/babelute.git"
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "keywords": [
-    "internal-DSL",
-    "domain-specific-language",
-    "method-chaining",
-    "domain-specific-modeling",
-    "model-driven",
-    "modeling",
-    "semantic",
-    "fluent-interface"
+    "es6",
+    "boilerplate",
+    "test",
+    "coverage"
   ],
   "author": "Gilles Coomans",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nomocas/babelute/issues"
-  },
-  "homepage": "https://github.com/nomocas/babelute#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "babel-cli": "^6.14.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-istanbul": "^2.0.2",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-unassert": "^2.1.2",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0",
+    "babelrc-rollup": "^3.0.0",
+    "chai": "^3.5.0",
+    "cross-env": "^2.0.1",
+    "eslint": "^3.15.0",
+    "eslint-plugin-import": "^2.2.0",
+    "karma": "^1.4.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-rollup-preprocessor": "^3.0.3",
+    "mocha": "^3.0.2",
+    "nyc": "^8.1.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-watch": "^3.2.2",
+    "uglify-js": "^2.7.5"
+  }
 }

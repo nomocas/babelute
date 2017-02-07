@@ -2,6 +2,28 @@
 
 Javascript Internal DSMM Framework.
 
+
+> The only way we’ll be able to keep up with the exponentially increasing complexity will be to decrease the complexity of understanding programs. To maintain the goliath apps of tomorrow, we must learn to build more expressive code. We must learn to write programs that are easier to reason about, debug, create, analyze, and understand. __Eric Elliott__
+
+Third Programming Revolution = DDD, DS(M)M
+	add abstractions levels
+	purify them
+	think top-bottom
+
+
+Internal-DSL-for-DS(M)M framework
+	Internal, external and Leaky Abstractions
+
+Revolution 3.1 : UUS
+
+	UUS = serialized form of DSL structured sentences : principal aim : store and exchange sentences easily.
+
+	technologie agnostic and sharing era
+	Semantic Web
+	Machine Learning
+	Human Language Parser
+	ET Messages
+
 DSMM is the beginning of a new era.
 It deeply changes the way of thinking developpement process, code and design.
 Because it simply mimics the way that we think.
@@ -9,7 +31,7 @@ Because it simply mimics the way that we think.
 Before diving in high level abstractions, I'll ask you to answer seriously a really practical question :
 
 Imagine a (big) customer from food industry which makes cakes and pies and comes to your office and ask you to rewrite all their IT stuffs about their receipts.
-They want receipts that should be defined and used internaly (by pros) or externaly (by noobs).
+They want receipts that should be defined and used internaly (by employee) or externaly (by noobs).
 That should automatically gives dietetic score, composition, alergen list, time and weight estimation, and overall price.
 That should be exposed on their website or mobile app and downloadable as pdf or svg in many languages.
 And, why not, if they could drive a robot to make pies it could be interesting. :)
@@ -39,11 +61,6 @@ To provide a demo, we need two or three things :
 
 Let's take a look to well-known receipt plateform to get inspiration : 
 http://www.marmiton.org/recettes/recette_tarte-aux-pommes-a-l-alsacienne_11457.aspx
-
-
-
-
-
 
 
 
@@ -151,7 +168,7 @@ So let's check all by points of view :
 	==> Could be a new DB core principle... or plugged it everywhere we could store a string... 
 
 - seen as Structured Document Model (xml like, and so (x)html or any other variant)
-	- First Degree
+	- First Level
 	- allow update/modification
 	- allow query
 	- allow generic GUI
@@ -334,7 +351,7 @@ or DSM/Babelute Tools Theory
 
 
 
-
+https://en.wikipedia.org/wiki/Fluent_interface
 
 Tools Theory
 
@@ -426,6 +443,13 @@ Universal Unambigous Sentences
 	Level Of Abstraction
 
 
+
+Third revolution : 
+
+http://www.developerdotstar.com/mag/articles/PDF/DevDotStar_Kelly_DomainModeling.pdf
+
+
+
 Critère de comparaison de DSL :
 
 	- active or not (factual/instructional, description/action)
@@ -463,11 +487,19 @@ https://bi.snu.ac.kr/~scai/Info/AI/Fusion,%20Propagation,%20and%20Structuring%20
 
 http://philsci-archive.pitt.edu/2536/1/iimd.pdf
 
+http://www.secc.org.eg/RECOCAPE/Documents/SECC_Tutorials_MDD_Getting-started-with-MDD-and-DSM.pdf
 
  * Domain Specific (Multi)Modeling (using DSL at all levels) solves many software design problems.
  * From developpement process (how to start, what and how to design, how to iterate, ...) 
  * to how to understand, design and articulate business related problems and/or pure code logics.
 
+What is Domain-Specific Modeling?
+
+Domain-Specific Modeling raises the level of abstraction beyond programming by specifying the solution directly using domain concepts. The final products are generated from these high-level specifications. This automation is possible because both the language and generators need fit the requirements of only one company and domain. Your expert defines them, your developers use them.
+
+Industrial experiences of DSM consistently show it to be 5-10 times faster than current practices, including current UML-based implementations of MDA. As Booch et al. say* "the full value of MDA is only achieved when the modeling concepts map directly to domain concepts rather than computer technology concepts." For example, DSM for cell phone software would have concepts like "Soft key button", "SMS" and "Ring tone", and generators to create calls to corresponding code components. DSM fulfils the promise of model-driven development.
+
+Since your expert specifies the code generators - for your domain and your components - the resulting code is better than most developers write by hand. No "one size fits all" generated code, no stubs, no "round trip" problems. Instead, full, top quality code. DSM does to code what compilers did to assembly language.
 
 
 
@@ -477,5 +509,17 @@ ektheatrízo (exposed on stage)
 enaíthrios (fully exposed)
 diafrazo (show plainly)
 
-
 Good DSL developpement is the exact opposite than Cryptography
+
+
+Le fait de laisser la place à l'interprétation ultétrieur permet de variabiliser le programme lui même.
+
+Quad on écrit avec le DSL : on choisit des mot comme des variables qui pourront prendre plein de "valeus" différentes.
+
+avec babelute-html (ou idem si css)
+	quand j'utilise le mot .monComponent(...) 
+
+	je permet de redéfinir le mot de manière libre
+
+
+Il faut voir Babelute comme un esprima selectif ultra lightweight
