@@ -287,3 +287,7 @@ function translate(babelute, BabeluteClass, targets) {
 	return b;
 }
 
+Lexicon.b = function(name, returnFirstLevel){
+	return new (Lexicon.get(name)[returnFirstLevel ? 'FirstLevel' : 'Atomic'])();
+};
+
