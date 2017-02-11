@@ -1,52 +1,56 @@
-# ES6 module boilerplate with full ES6 test suits and coverage
+# Babelute.js
 
-Largely inspired from https://github.com/bcoe/es2015-coverage. Added : rollup bundling and karma runner + clean and complete.
+> __42__ &asymp; _[ lexem( lexicon, name, arguments ), ... ]_
 
-- ES6 sources
-- transpiled with [babel](https://babeljs.io) (to dist/es5/*)
-- bundled with [rollup](https://github.com/rollup/rollup) (to dist/bundles/*)
-- ES6 tests with [mocha](https://mochajs.org) and [chai](http://chaijs.com/) (runned directly from es6 with [babel-register](https://babeljs.io/docs/usage/babel-register/))
-- [karma](http://karma-runner.github.io) runner with on-the-fly rollup/babel bundling
-- Code coverage with [istanbul](https://istanbul.js.org/) and [nyc](https://github.com/istanbuljs/nyc) directly from ES6 tests and sources (no bundle)
+### Internal Domain Specific (Multi)Modeling js framework
 
-- [eslint](http://eslint.org) ES6 base config for src and test
-
-## Usage
-
-clone this repo then :
-
-```
-> npm i
-```
-
-then :
-
-- build : `> npm run build`
-- test :  `> mocha` or `> npm test`
-- karma : `> npm run karma`
-- cover : `> npm run cover`
-- es5-watch : `> npm run es5-watch`
-- bundles-watch : `> npm run bundles-watch`
+Really small, simple, incredibly powerful and super fast __Internal DSLs__ tools.
 
 
-Don't forget to change :
-- package.json : infos (Module name, author, etc)
-- karma.conf.js and rollup.config.js : change __MY__PROJECT__ to the UMD module name of your choice
+> "_A Babelut(t)e is a sort of long toffee flavoured with honey or vergeoise (demerara sugar) from [...] Flanders, Belgium_".
+
+> __Etymology__ : "_[A french word that] is likely to come from the Flemish "babbelen", speaking a lot, and "uit", finished because when you eat the toffee, you cannot speak anymore (either because you are enjoying it or because you cannot open the mouth).[...]_" - src : [wikipedia](https://en.wikipedia.org/wiki/Babelutte)
 
 
-## Bundling with third party libs
+Babelute.js core library (this lib) provides helpers to :
+- define and manage Internal DSLs for __modeling__ any kind of problems
+- with a simple (meta)grammar - based on Method Chaining - for writing __structured unambiguous "sentences"__ (called __babelutes__)
+- and to provide ways :
+	- to manage __dictionaries of related lexems__ that form DSL semantic fields (called __lexicons__)
+	- to translate DSL sentences to other DSL sentences (through __dedicated bridge-DSLs__ with its/their own lexicon(s))
+	- to interpret sentences in many context with specific __fine grained dedicated semantics__ (called __pragmatics__)
 
-If you want to do so (for UMD modules either for distribution or karma tests), you should use :
-- [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve)
-- [rollup-plugin-commonjs](https://github.com/rollup/rollup-plugin-commonjs)
 
+What is the final usage ?
+
+So at usage (when you use DSLs written with Babelute) : you talk a lot ("babbelen" in Flemish), by writting structured sentences, using different DSLs to __describe__ things accuratly and generally, at higher level possible... Then maybe you "still talking" by __translating__ your sentences to more specific DSL sentences...
+And then you stop talking ("babbel uit") and you simply __do concreetly__ what you've said in a particular context. (You interpret sentences through choosen __pragmatics.__)
+
+ Describe generally, maybe translate specifically, then act concreetly as needed. That's the main idea...
+
+
+## Core Libraries
+
+- babelute (this lib)
+- [babelute-uus](https://github.com/nomocas/babelute-uus) : Universal Unambiguous Sentences proposal : Welcome in Sharing Era.
+
+## Understanding by examples
+
+Low Level DSLs (Developement related domains) :
+- [babelute-aright](https://github.com/nomocas/babelute-aright) : Objects and types validation DSL (ultra-fast, ultra-modular)
+- [babelute-html](https://github.com/nomocas/babelute-html) : HTML5 DSL and its isomorphic render-engines. (modern, __world's fastest__, one-way-binding templating (React philosophy))
+- [babelute-fs](https://github.com/nomocas/babelute-fs) : File System Description DSL and its runners.
+- [babelute-lexic-dl](https://github.com/nomocas/babelute-doc) : Babelute Lexic Definition DSL and its generators.
+
+High Level DSLs (Human related domains) :
+- [babelute-cooking](https://github.com/nomocas/babelute-cooking) : High Level Cooking DSL demo and its bunch of transformations and DSLs targets.
 
 
 ## Licence
 
 The [MIT](http://opensource.org/licenses/MIT) License
 
-Copyright 2017 (c) Gilles Coomans
+Copyright (c) Gilles Coomans <gilles.coomans@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
