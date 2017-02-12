@@ -1,0 +1,2253 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"proto",
+				"prototype\t(lexicon.js)"
+			],
+			[
+				"pra",
+				"pragmas"
+			],
+			[
+				"Fac",
+				"FacadePragmatics\t(index.js)"
+			],
+			[
+				"firstL",
+				"firstLevelInitializer\t(babelute.js)"
+			],
+			[
+				"Init",
+				"Initializer\t(babelute.js)"
+			],
+			[
+				"str",
+				"stringify"
+			],
+			[
+				"node",
+				"node_modules"
+			],
+			[
+				"__b",
+				"__babelute__"
+			],
+			[
+				"dev",
+				"developOneLevel"
+			],
+			[
+				"__",
+				"__babelutelexem__\t(babelute.js)"
+			],
+			[
+				"parent",
+				"parentLexicon"
+			],
+			[
+				"addToI",
+				"addToInitializer"
+			],
+			[
+				"Fi",
+				"FirstLevel〔namespace〕"
+			],
+			[
+				"Firs",
+				"FirstLevel"
+			],
+			[
+				"Atm",
+				"Atomic"
+			],
+			[
+				"base",
+				"baseLexicon"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"Fir",
+				"FirstLevel"
+			],
+			[
+				"constr",
+				"constructor\t(babelute.js)"
+			],
+			[
+				"bo",
+				"border-radius"
+			],
+			[
+				"com",
+				"communities"
+			],
+			[
+				"documn",
+				"documents"
+			],
+			[
+				"comm",
+				"community"
+			],
+			[
+				"Doc",
+				"Document"
+			],
+			[
+				"commun",
+				"communities\t(community.js)"
+			],
+			[
+				"comunity",
+				"community\t(browser.js)"
+			],
+			[
+				"communi",
+				"communities\t(document.js)"
+			],
+			[
+				"madein",
+				"madeinMonogram\t(madein-uikit-v2.js)"
+			],
+			[
+				"ov",
+				"overflow-y"
+			],
+			[
+				"max",
+				"max-height\t(_facet.scss)"
+			],
+			[
+				"docume",
+				"document\t(facet.js)"
+			],
+			[
+				"avatar",
+				"avatarThumbnail\t(ba-madein.js)"
+			],
+			[
+				"document-au",
+				"document-author-name\t(document.js)"
+			],
+			[
+				"doc",
+				"document\t(facet.js)"
+			],
+			[
+				"bor",
+				"border-top\t(_document.scss)"
+			],
+			[
+				"r",
+				"return"
+			],
+			[
+				"render",
+				"rendered"
+			],
+			[
+				"init",
+				"initialized"
+			],
+			[
+				"isFacetD",
+				"isFacetDoc\t(document.js)"
+			],
+			[
+				"isF",
+				"isFacetDoc"
+			],
+			[
+				"pro",
+				"protocols"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"Po",
+				"Posters\t(browser-protocols.js)"
+			],
+			[
+				"Docu",
+				"Documents\t(browser-protocols.js)"
+			],
+			[
+				"inli",
+				"inline-block\t(_madein-uikit.scss)"
+			],
+			[
+				"first",
+				"firstChild\t(index.js)"
+			],
+			[
+				"foll",
+				"followed"
+			],
+			[
+				"follow",
+				"follower"
+			],
+			[
+				"follo",
+				"followers\t(facet.js)"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"current",
+				"currentId"
+			],
+			[
+				"paret",
+				"parentNode\t(browser.js)"
+			],
+			[
+				"prev",
+				"preventDefault\t(facet.js)"
+			],
+			[
+				"upd",
+				"updated\t(document.js)"
+			],
+			[
+				"content",
+				"contentEditable"
+			],
+			[
+				"des",
+				"descriptor\t(html-to-string.js)"
+			],
+			[
+				"yamvish",
+				"yamvish-uikit\t(document.js)"
+			],
+			[
+				"ya",
+				"yamvish"
+			],
+			[
+				"protocol",
+				"protocols\t(document.js)"
+			],
+			[
+				"ba",
+				"background\t(facet.js)"
+			],
+			[
+				"isD",
+				"isFacetDoc"
+			],
+			[
+				"facetIma",
+				"facetMainImageUploadButton"
+			],
+			[
+				"object",
+				"objectPath"
+			],
+			[
+				"ini",
+				"initializer\t(html-to-dom-diffing.js)"
+			],
+			[
+				"firs",
+				"firstDegreeInitializer\t(foundation-6.js)"
+			],
+			[
+				"loadNext",
+				"loadNextPage"
+			],
+			[
+				"delay",
+				"delayBeforeReact"
+			],
+			[
+				"proro",
+				"prototype〔variable〕"
+			],
+			[
+				"Ax",
+				"AxiosClient"
+			],
+			[
+				"navi",
+				"navigateTo\t(document.js)"
+			],
+			[
+				"extend",
+				"extendActions"
+			],
+			[
+				"Faca",
+				"FacadeActions"
+			],
+			[
+				"toA",
+				"toAgora"
+			],
+			[
+				"desc",
+				"descriptor\t(poster.js)"
+			],
+			[
+				"err",
+				"error\t(index.js)"
+			],
+			[
+				"over",
+				"overflow-x"
+			],
+			[
+				"geona",
+				"geonameId"
+			],
+			[
+				"coll",
+				"collectionManager\t(browser.js)"
+			],
+			[
+				"re",
+				"relative"
+			],
+			[
+				"drop",
+				"dropdown"
+			],
+			[
+				"stop",
+				"stopPropagation(): void\tEvent"
+			],
+			[
+				"cal",
+				"callback\t(api.js)"
+			],
+			[
+				"fami",
+				"familyId"
+			],
+			[
+				"min-",
+				"min-height"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"eva-b",
+				"eva-bar-topic:show\t(eva.js)"
+			],
+			[
+				"cou",
+				"countryCode"
+			],
+			[
+				"ex",
+				"exports\t(alternates-client.js)"
+			],
+			[
+				"expo",
+				"exports\t(html-dif-first-degree.js)"
+			],
+			[
+				"visi",
+				"visibleTodos"
+			],
+			[
+				"cance",
+				"cancelAnimationFrame( handle: long ): void\tWindow"
+			],
+			[
+				"fun",
+				"function with name"
+			],
+			[
+				"should",
+				"shouldExpand"
+			],
+			[
+				"pre",
+				"preventDefault(): void\tEvent"
+			],
+			[
+				"check",
+				"checkbox"
+			],
+			[
+				"hashc",
+				"hashchange"
+			],
+			[
+				"console",
+				"console.log()"
+			],
+			[
+				"First",
+				"FirstDegree\t(html-dif-first-degree.js)"
+			],
+			[
+				"bab",
+				"babelute"
+			],
+			[
+				"canc",
+				"cancelAnimationFrame"
+			],
+			[
+				"rende",
+				"rendered"
+			],
+			[
+				"cons",
+				"console"
+			],
+			[
+				"output",
+				"outputBabelute"
+			],
+			[
+				"up",
+				"updateLabel"
+			],
+			[
+				"anim",
+				"animatedRender"
+			],
+			[
+				"ch",
+				"children"
+			],
+			[
+				"string",
+				"stringify\t(main.js)"
+			],
+			[
+				"Ba",
+				"Babelute"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"mout",
+				"mounted"
+			],
+			[
+				"req",
+				"require"
+			],
+			[
+				"call",
+				"callback"
+			],
+			[
+				"remov",
+				"removeChild\t(template.js)"
+			],
+			[
+				"create",
+				"createElement\t(engine.js)"
+			],
+			[
+				"butt",
+				"buttonGroup"
+			],
+			[
+				"hollow",
+				"hollowButton\t(api.js)"
+			],
+			[
+				"whi",
+				"white-space\t(_madein-uikit.scss)"
+			],
+			[
+				"select",
+				"selectLanguage"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"func",
+				"function without name"
+			],
+			[
+				"initializ",
+				"initializers\t(api.js)"
+			],
+			[
+				"targt",
+				"targetContainer\t(api.js)"
+			],
+			[
+				"close",
+				"closeButton\t(api.js)"
+			],
+			[
+				"primary",
+				"primaryButton\t(api.js)"
+			],
+			[
+				"transla",
+				"translate(-50\t(_home.scss)"
+			],
+			[
+				"made-in",
+				"madein-monogram\t(madein-uikit-v2.js)"
+			],
+			[
+				"sign",
+				"signup\t(main.js)"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "ins",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"for",
+				"ESLint Formatter: Format this file"
+			],
+			[
+				"forma",
+				"ESLint Formatter: Format this file"
+			],
+			[
+				"linter",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"giti",
+				"Gitignore: New gitignore"
+			],
+			[
+				"new ",
+				"ANF: New File"
+			],
+			[
+				"re",
+				"SublimeREPL: ECL"
+			],
+			[
+				"sublimelin",
+				"SublimeLinter: Choose Lint Mode"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"esli",
+				"SublimeLinter: Choose Lint Mode"
+			],
+			[
+				"lint",
+				"Package Control: Install Package"
+			],
+			[
+				"esl",
+				"ESLint Formatter: Format this file"
+			],
+			[
+				"add re",
+				"Package Control: Add Repository"
+			],
+			[
+				"browser",
+				"Browser Integration: Close browser"
+			],
+			[
+				"livereload",
+				"LiveReload: Self test"
+			],
+			[
+				"sy json",
+				"Set Syntax: JSON"
+			],
+			[
+				"livere",
+				"Snippet: Insert livereload.js script"
+			],
+			[
+				"git s",
+				"Git: Status"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"g st",
+				"Git: Status"
+			],
+			[
+				"gq",
+				"Git: Quick Commit (current file)"
+			],
+			[
+				"gs",
+				"Git: Add Selected Hunk"
+			],
+			[
+				"g q",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"git pus",
+				"Git: Push"
+			],
+			[
+				"git q",
+				"Git: Quick Commit (current file)"
+			],
+			[
+				"markdo",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"git stau",
+				"Git: Status"
+			],
+			[
+				"git pul",
+				"Git: Pull"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"syjs",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"sjs",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"sy js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"sy sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"git ush",
+				"Git: Push"
+			],
+			[
+				"git csh",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"gi q",
+				"Git: Quick Commit"
+			],
+			[
+				"git a",
+				"Git: Add Current File"
+			],
+			[
+				"git ",
+				"Git: Status"
+			],
+			[
+				"gcsh",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"gi st",
+				"Git: Status"
+			],
+			[
+				"git ad",
+				"Git: Add Current File"
+			],
+			[
+				"gi s",
+				"Git: Status"
+			],
+			[
+				"git stats",
+				"Git: Status"
+			],
+			[
+				"git st",
+				"Git: Status"
+			],
+			[
+				"csh",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"git add",
+				"Git: Add Current File"
+			],
+			[
+				"sypl",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"git q ",
+				"Git: Quick Commit"
+			],
+			[
+				"gits",
+				"Git: Status"
+			],
+			[
+				"gt csh",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"giq",
+				"Git: Quick Commit"
+			],
+			[
+				"gt",
+				"Git: Status"
+			],
+			[
+				"gitcsh",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git c",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"gitq",
+				"Git: Quick Commit"
+			],
+			[
+				"git attu",
+				"Git: Status"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				" gis",
+				"Git: Status"
+			],
+			[
+				"gt ",
+				"Git: Status"
+			],
+			[
+				"git satus",
+				"Git: Status"
+			],
+			[
+				"git sta",
+				"Git: Status"
+			],
+			[
+				"gchs",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"git puhs",
+				"Git: Push"
+			],
+			[
+				"gitpul",
+				"Git: Pull"
+			],
+			[
+				"sy sa",
+				"Set Syntax: Sass"
+			],
+			[
+				"gst",
+				"Git: Status"
+			],
+			[
+				"git sat",
+				"Git: Status"
+			],
+			[
+				"git res",
+				"Git: Reset (hard) HEAD"
+			],
+			[
+				"q",
+				"Git: Quick Commit"
+			],
+			[
+				"gitchs",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"git staus",
+				"Git: Status"
+			],
+			[
+				"gi staus",
+				"Git: Status"
+			],
+			[
+				"sysass",
+				"Set Syntax: Sass"
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
+			[
+				"git stut",
+				"Git: Status"
+			],
+			[
+				"git am",
+				"Git: Amend Commit"
+			],
+			[
+				"git chs",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"gi pus",
+				"Git: Push"
+			],
+			[
+				"git p",
+				"Git: Push"
+			],
+			[
+				"git cs",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"gitstatus",
+				"Git: Status"
+			],
+			[
+				"GI Q",
+				"Git: Quick Commit"
+			],
+			[
+				"GIT S",
+				"Git: Status"
+			],
+			[
+				"git tat",
+				"Git: Status"
+			],
+			[
+				"it push",
+				"Git: Push"
+			],
+			[
+				"gitst",
+				"Git: Status"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"gcs",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"gics",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"gc",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"gis",
+				"Git: Status"
+			],
+			[
+				"git statu",
+				"Git: Status"
+			],
+			[
+				"git re",
+				"Git: Reset (hard) HEAD"
+			],
+			[
+				"gsta",
+				"Git: Status"
+			],
+			[
+				"git ad a",
+				"Git: Add All"
+			],
+			[
+				"g s",
+				"Git: Status"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"git  sta",
+				"Git: Status"
+			],
+			[
+				"sy rio",
+				"Set Syntax: Riot Tag"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"sy riot",
+				"Set Syntax: Riot Tag"
+			],
+			[
+				"sy sas",
+				"Set Syntax: Sass"
+			],
+			[
+				"sy css",
+				"Set Syntax: CSS"
+			],
+			[
+				"sy ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"s",
+				"Set Syntax: CSS"
+			],
+			[
+				"sy html",
+				"Set Syntax: HTML"
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"git tatus",
+				"Git: Status"
+			],
+			[
+				"gt push",
+				"Git: Push"
+			],
+			[
+				"",
+				"ANF: Copy Current File"
+			],
+			[
+				"git tag",
+				"Git: New Tag"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"git pu",
+				"Git: Push"
+			],
+			[
+				"g",
+				"Git: Quick Commit"
+			],
+			[
+				"gi",
+				"Git: Quick Commit"
+			],
+			[
+				"git qu",
+				"Git: Quick Commit"
+			],
+			[
+				"git ul",
+				"Git: Pull"
+			],
+			[
+				"syn cs",
+				"Set Syntax: CSS"
+			],
+			[
+				"git gi",
+				"Gitignore: New gitignore"
+			],
+			[
+				"syn c",
+				"Set Syntax: CSS"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 211.0,
+		"history":
+		[
+			"`",
+			"clear",
+			"view.run_command('check_buddyfile')",
+			"view.run_command(\"example\")",
+			"view.run_command('check_buddyfile')",
+			"view.run_command('close_buddyfile')",
+			"view.run_command('check_buddyfile')",
+			"pprint.pprint(view)",
+			"import pprint",
+			"view.runCommand('check_buddyfile')",
+			"view.runCommand(\"check_buddyfile\")",
+			"view.check_buddyfile()",
+			"view",
+			"insertCharacters (\"hello\\n\")",
+			"insertCharacters \"hello\\n\"",
+			"insertCharacters \"hello\"",
+			"pprint.pprint(sublime)",
+			"pprint",
+			"import pprint",
+			"pprint",
+			"sublime.switchFile .scss",
+			"switchFile .scss",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/dist",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/doc",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/lexicon",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/pragmatics",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/test"
+	],
+	"file_history":
+	[
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/test/.eslintignore",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/untitled.sublime-project",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/User/ESLint-Formatter.sublime-settings",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/package.json",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/test/.eslintrc",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/test/test-lexicon.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/test/test-pragmatics.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/test/test-babelute.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/doc/plan.txt",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/index.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/pragmatics/facade-initializer.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/lexicon/first-level.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/lexicon/lexicon.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/doc/Babelute.txt",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/babelute.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/rollup.config.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/.eslintignore",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/User/View In Browser.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/View In Browser/View In Browser.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/test/chai.js",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/ESLint-Formatter/Default (OSX).sublime-keymap",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/JsFormat/Default (OSX).sublime-keymap",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/JavaScript Completions/helper/helper.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/User/helper.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/User/JsFormat.sublime-settings",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/meta-api.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/.babelrc",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/pragmatics/facade-pragmatics.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/pragmatics/pragmatics-core.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/.tern-project",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/from-json.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/babelute.es6",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/from-json.es6",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/meta-api.es6",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/node_modules/assert/assert.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/dist/babelute.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/test.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/lexicon/first-level.es6",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/ESLint-Formatter/ESLint-Formatter.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/User/Tern.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/User/Nodejs.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/tern_for_sublime/Tern.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/User/ESLint.sublime-settings",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/Grasp/Default.sublime-keymap",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-lexic-dl/todo.txt",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/pragmatics/facade-pragmatics.es6",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/lexicon/lexicon.es6",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/index.es6",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/node_modules/rollup-plugin-commonjs/src/index.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/TODO.txt",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/ESLint/ESLint.sublime-settings",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/.gitignore",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/Nodejs/Nodejs.sublime-settings",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/.nvmrc",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/pragmatics/pragmatics-scopes.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/.eslintrc",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/.npmignore",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/node_modules/estraverse/.babelrc",
+		"/Users/gilles/Library/Application Support/Sublime Text 3/Packages/BrowserIntegration/BrowserIntegration.sublime-settings",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/dothat/package.json",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/index.html",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-html/lib/html-lexicon.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-html/lib/pragmatics/html-to-dom-diffing.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-html/lib/pragmatics/html-to-dom.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-html/lib/pragmatics/html-to-string.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-html/lib/html-meta-lexicon.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-html/todo2.txt",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/lexicon/_use.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/lexicon.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/first-level.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib/translate.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/bloupi/proj/app/initialize.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/doc/second-level.md",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-html/lib/pragmatics/html-scopes.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute-html/index.js",
+		"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/decompose/index.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/TODO.janvier2017.txt",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/models/facet.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss/_madein-uikit.scss",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views/admin/admin.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/browser-protocols.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/models/document.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/models/facet.json",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views/madein-uikit-v2.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/babelute-html/todo.txt",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views/admin/communities-admin-panel.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/models/community.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit/lib/views/poster.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss/views/_mymadein.scss",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views/mymadein.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss/views/_browser.scss",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views/documents-grid.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/babelute-html/lib/pragmatics/html-to-dom-diffing.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss/views/_facet.scss",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views/facet.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss/app.scss",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views/main.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/server-app.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/middleware.json",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/node_modules/cors/lib/index.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/node_modules/loopback/node_modules/strong-remoting/lib/rest-adapter.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/embed-video/index.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-c3po/index.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/statics/bundle.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/helpers/helpers.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/babelute-html/lib/uikit/endless-collection-manager.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish/lib/template.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-app/lib/server/app.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish/lib/output-engine/twopass.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/babelute-html/lib/pragmatics/html-to-string.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/statics/server-bundle.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/babelute-pragmatics/lib/facade-pragmatics.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/dbs/db_data.json",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit/lib/adapters/babelute-dom.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-model/index.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/dbs/db_user.json",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/models/user.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/models/document.json",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit/lib/images.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/browser-app.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/models/poster.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/node_modules/loopback-component-storage/lib/storage-handler.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/node_modules/loopback-component-storage/lib/providers/filesystem/index.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views/error.js",
+		"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss/views/_login.scss"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute/lib",
+			"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/babelute",
+			"/Users/gilles/Documents/works/_OTOOLS/Babelute/node_modules/bloupi/proj/node_modules",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/babelute-html",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/node_modules",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/node_modules",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/server/models",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-foundation",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish/lib",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit/lib/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss/views",
+			"/Users/gilles/Documents/works/_OTOOLS/Babelute/babelute",
+			"/Users/gilles/Documents/works/_OTOOLS/Babelute/babelute/babelute-html",
+			"/Users/gilles/Documents/works/_OTOOLS/Babelute/babelute/languages/actions",
+			"/Users/gilles/Documents/works/_OTOOLS/Babelute/babelute",
+			"/Users/gilles/Documents/works/_OTOOLS/Babelute/babelute/lib",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/packery",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-foundation",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-foundation",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit/lib/adapters",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client-old",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/gulp",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/gulp/tasks",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src",
+			"/Users/gilles/Documents/works/_PLAYGROUND/yamvish-foundation",
+			"/Users/gilles/Documents/works/_PLAYGROUND/Babelute/babelute/dev-test",
+			"/Users/gilles/Documents/works/_PLAYGROUND/Babelute/babelute/languages/actions",
+			"/Users/gilles/Documents/works/_PLAYGROUND/Babelute/babelute/node_modules/virtual-dom",
+			"/Users/gilles/Documents/works/_PLAYGROUND/Babelute/babelute",
+			"/Users/gilles/Documents/works/Olive/SRC/olive-landing-v2/client/node_modules",
+			"/Users/gilles/Documents/works/Olive/SRC/olive-landing-v2/client/src/js/views",
+			"/Users/gilles/Documents/works/Olive/SRC/olive-landing-v2/client/src/js",
+			"/Users/gilles/Documents/works/Olive/SRC/olive-landing-v2",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/src/scss",
+			"/Users/gilles/Documents/works/Made.In/src-vedette-v2/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/scss",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js/views/login-etc",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-router",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-translation",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-transition",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-router",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-app",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/statics",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/node_modules",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/server",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-translation",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish/lib/output-engine",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-router",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish/lib/output-engine",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish/lib",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-transition",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-translation",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-router",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish/lib",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-uikit/lib",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish/lib",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish/lib",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/node_modules/yamvish-uikit",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/scss",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/scss",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/node_modules/loopback-component-storage/lib",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js/views",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client",
+			"/Users/gilles/Documents/works/Made.In/src-vedette/client/src/js"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"new",
+			"\"",
+			".es6",
+			"Coomans",
+			"SecondLevel.prototype",
+			"this.FirstLevel.initializer",
+			"w",
+			"export",
+			"Babelute.",
+			"createInitializer",
+			".init",
+			"createInitializer",
+			"createIni",
+			"Lexem",
+			"var",
+			"assert",
+			"export",
+			"module.ex",
+			"namedExports",
+			"module.ex",
+			"no-con",
+			"assert",
+			"lexicName",
+			"assert",
+			"version",
+			"assert",
+			"targetLexicons",
+			"Babelute.Lexicon",
+			"Babelute.lexicon",
+			"createInitializer",
+			"for",
+			"addMethodsToClass",
+			".lexic",
+			"createInitializer",
+			"initClass",
+			"var",
+			".Babelute",
+			".Cl",
+			"baseLexicon",
+			"flatten",
+			"child",
+			"tagOutput",
+			"_compo_arguments_",
+			"follow",
+			"facet-panel-content",
+			"transition",
+			"include",
+			"domains",
+			"c4c06040-dc38-11e6-81dc-2d385adea31b",
+			"inq",
+			"cb",
+			"avatarThumbnail",
+			"author",
+			"main-facet-avatar",
+			"resumed",
+			"col2",
+			"document-content",
+			"document-header",
+			"col1",
+			"document-header",
+			"toggle-edit-button",
+			"toggleEditIconButton",
+			"document-author",
+			"documentAuthor",
+			"date(",
+			"updateD",
+			"documentAuthor",
+			"browserFooter",
+			"follow",
+			"box-s",
+			"roundedThumbnail",
+			"box",
+			"main-menu",
+			"logged",
+			"gridMasonery",
+			"randomText",
+			"Masonry",
+			"randomText",
+			"gridMasonery",
+			".if",
+			"babelute",
+			".if",
+			"ctx",
+			"fail",
+			"history.replaceState",
+			"ctx",
+			"cors",
+			"require('cors')",
+			"slug",
+			"document-dates",
+			"babeluteDifEngine",
+			"babelute",
+			"followBu",
+			"follow",
+			"babelute",
+			"babelut",
+			"forwardFacetInfosChange",
+			"babelute",
+			"updateDocPublished",
+			"publishDocumentToggleSwitch",
+			"publish",
+			"isFacetDoc",
+			"baseline",
+			"facet.facetId",
+			"ifOwner",
+			"isOwner",
+			"upload",
+			"imageUploadButton",
+			".image",
+			"imageUploadButton",
+			"console",
+			"on data",
+			"forwardFacetInfosChange",
+			"myself",
+			"console",
+			"storage upload finished",
+			"Poster",
+			"reset",
+			"will parse",
+			"document-followers-panel",
+			"documentFollowersPanel",
+			"Facet",
+			"document-preview-header",
+			"back-bu",
+			"backB",
+			"documentBaseline",
+			"slug",
+			"document-preview-edition-buttons"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'",
+			".js",
+			"Coomans",
+			"let",
+			"lexiconName",
+			"targets",
+			".Atomic",
+			"parentLexicon",
+			"tag",
+			"__decompose_spread__",
+			"communities",
+			"next",
+			"document-content",
+			"document-header",
+			"avatarThumbnail",
+			"context",
+			"social-interactions-buttons",
+			"image-upload-button",
+			"var",
+			"dataset",
+			"helpers",
+			"CollectionManager",
+			"h.",
+			"h",
+			"h.",
+			"toLexic",
+			"h.",
+			".class(",
+			"_targetLexics",
+			"remove",
+			"dif",
+			"render",
+			"difBabelutes",
+			"'",
+			"fsp.",
+			"toSearch",
+			".class(",
+			"()\n",
+			"domain",
+			"domains",
+			"c3po",
+			"Topic",
+			"Domain",
+			"{\n      \"type\": \"string\",\n      \"required\": true\n    }",
+			"{\n      \"type\": \"number\",\n      \"required\": true\n    }",
+			"html",
+			"methods",
+			"babelute",
+			"$root",
+			"fdhtml",
+			"$tag",
+			"env",
+			"getUsageMethod",
+			"oldBabelute",
+			"mymadein",
+			"MemoryClient",
+			"use('poster:icon',",
+			"Promise",
+			"execAndForward",
+			"getChildConstructor",
+			"fullfill",
+			"_reason",
+			"_deferreds",
+			"_listeners",
+			"'",
+			"main-loading",
+			"screen-bp(small)",
+			"screen-bp(medium)",
+			".use('uikit:perfectScroll'",
+			"simpleButton",
+			"y",
+			".successWitness(",
+			".use('transition:fade')",
+			"y",
+			"yam.",
+			"y",
+			"yam.",
+			"y",
+			"yam.",
+			"y",
+			"yam.",
+			"y",
+			"yam.",
+			"y",
+			"yam.",
+			"y.",
+			"yam.",
+			"y",
+			"yam.",
+			"y",
+			"../uikit-api",
+			"icon",
+			"y.",
+			"t",
+			"accordionMenu",
+			"vnode",
+			"n(vnode",
+			"tag",
+			"node",
+			"cwd",
+			"n(",
+			", env, scope)",
+			"subject,",
+			"subject, args, env",
+			"env",
+			"vnode",
+			"parent",
+			"removeElement",
+			"updateLocals",
+			"updateNode",
+			"deathmood",
+			"descriptor",
+			"normalize(cwd, args[0])",
+			"env, cwd, args",
+			"h",
+			"m",
+			"addToInitializer",
+			"hd",
+			"f",
+			"h",
+			"hd",
+			"h",
+			"bd",
+			"v",
+			"h",
+			"Promise.all",
+			"getFirstLevelMethod",
+			"scope.errors"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 334.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 167.0
+	},
+	"pinned_build_system": "",
+	"project": "untitled.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"babelrc",
+				"babelute/node_modules/estraverse/.babelrc"
+			],
+			[
+				"doc",
+				"client/src/js/views/document.js"
+			],
+			[
+				"bundle",
+				"client/statics/bundle.js"
+			],
+			[
+				"server",
+				"client/statics/server-bundle.js"
+			],
+			[
+				"server-b",
+				"client/statics/server-bundle.js"
+			],
+			[
+				"helpers",
+				"client/src/js/helpers/helpers.js"
+			],
+			[
+				"documents",
+				"client/src/js/views/document.js"
+			],
+			[
+				"bund",
+				"client/statics/bundle.js"
+			],
+			[
+				"mad",
+				"client/src/js/views/madein-uikit-v2.js"
+			],
+			[
+				"api",
+				"client/node_modules/yamvish-foundation/lib/api.js"
+			],
+			[
+				"serv",
+				"client/statics/server-bundle.js"
+			],
+			[
+				"madein-",
+				"client/src/js/views/madein-uikit-v2.js"
+			],
+			[
+				"madin-ui",
+				"client/src/js/views/madein-uikit-v2.js"
+			],
+			[
+				"browser",
+				"client/src/js/views/browser.js"
+			],
+			[
+				"facet",
+				"client/src/js/views/facet.js"
+			],
+			[
+				"main",
+				"client/src/js/views/main.js"
+			],
+			[
+				"templ",
+				"client/node_modules/yamvish/lib/template.js"
+			],
+			[
+				"foundationapi",
+				"client/node_modules/yamvish-foundation/lib/api.js"
+			],
+			[
+				"l",
+				"lib/lexics.js"
+			],
+			[
+				"",
+				"lib/stringify.js"
+			],
+			[
+				"template",
+				"client/node_modules/yamvish/lib/template.js"
+			],
+			[
+				"each",
+				"node_modules/jshint/node_modules/lodash/collection/each.js"
+			],
+			[
+				"app",
+				"client/src/scss/app.scss"
+			],
+			[
+				"poster",
+				"client/node_modules/yamvish-uikit/lib/views/poster.js"
+			],
+			[
+				"personas",
+				"client/src/js/views/personaes.js"
+			],
+			[
+				"persona",
+				"client/src/js/clients/personas.js"
+			],
+			[
+				"ser",
+				"client/statics/server-bundle.js"
+			],
+			[
+				"poster.sc",
+				"client/node_modules/yamvish-uikit/lib/scss/views/_poster.scss"
+			],
+			[
+				"main.s",
+				"client/src/scss/main.scss"
+			],
+			[
+				"main.scss",
+				"client/src/scss/main.scss"
+			],
+			[
+				"engine",
+				"client/node_modules/yamvish/lib/output-engine/dom/engine.js"
+			],
+			[
+				"context",
+				"client/node_modules/yamvish/lib/context.js"
+			],
+			[
+				"cntext",
+				"node_modules/yamvish/lib/context.js"
+			],
+			[
+				"bun",
+				"client/statics/bundle.js"
+			],
+			[
+				"firstlandin",
+				"client/src/js/views/firstlanding.js"
+			],
+			[
+				"firstland",
+				"client/src/js/clients/firstlanding.js"
+			],
+			[
+				"firs",
+				"server/models/firstlanding.js"
+			],
+			[
+				"made",
+				"client/src/js/views/widgets/madein-uikit.js"
+			],
+			[
+				"servb",
+				"client/statics/server-bundle.js"
+			],
+			[
+				"landing",
+				"client/src/js/views/landing-page.js"
+			],
+			[
+				"how",
+				"client/src/js/views/howitworks.js"
+			],
+			[
+				"_admin",
+				"client/src/scss/views/_admin.scss"
+			],
+			[
+				"admin",
+				"client/src/js/admin/admin.js"
+			],
+			[
+				"join",
+				"client/src/js/views/join-beta.js"
+			],
+			[
+				"howi",
+				"client/src/js/views/howitworks.js"
+			],
+			[
+				"yamtempl",
+				"client/node_modules/yamvish/lib/template.js"
+			],
+			[
+				"yamutils",
+				"client/node_modules/yamvish/lib/utils.js"
+			],
+			[
+				"yamutil",
+				"client/node_modules/yamvish/lib/utils.js"
+			],
+			[
+				"footer",
+				"client/src/js/views/footer.js"
+			],
+			[
+				"bundl",
+				"client/statics/bundle.js"
+			],
+			[
+				"container",
+				"client/node_modules/yamvish/lib/output-engine/dom/container.js"
+			],
+			[
+				"land",
+				"client/js/views/landing-page.js"
+			],
+			[
+				"buttons",
+				"client/node_modules/yamvish-uikit/lib/buttons.js"
+			],
+			[
+				"modal",
+				"client/node_modules/yamvish-uikit/lib/modal.js"
+			],
+			[
+				"dialo",
+				"client/node_modules/yamvish-uikit/lib/dialog.js"
+			],
+			[
+				"dialog",
+				"client/node_modules/yamvish-uikit/lib/dialog.js"
+			],
+			[
+				"pers",
+				"client/js/views/personaes.js"
+			],
+			[
+				"lan",
+				"client/js/views/landing-page.js"
+			],
+			[
+				"form",
+				"client/node_modules/yamvish-uikit/lib/form.js"
+			],
+			[
+				"todo",
+				"client/node_modules/yamvish/todo.txt"
+			],
+			[
+				"_log",
+				"client/scss/views/_login.scss"
+			],
+			[
+				"sign",
+				"client/js/views/signup.js"
+			],
+			[
+				"uikit",
+				"client copy/js/uikit/uikit.js"
+			],
+			[
+				"card",
+				"client/js/uikit_old/card.js"
+			],
+			[
+				"utils",
+				"node_modules/yamvish/lib/utils.js"
+			],
+			[
+				"projects",
+				"src/views/projects.js"
+			],
+			[
+				"project",
+				"src/dummies/projects.js"
+			],
+			[
+				"proje",
+				"src/views/project.js"
+			],
+			[
+				"menu",
+				"www/templates/menu.html"
+			],
+			[
+				"confi",
+				"www/templates/confirmation.html"
+			],
+			[
+				"cirl",
+				"www/templates/circles.html"
+			],
+			[
+				"time",
+				"www/templates/time.html"
+			],
+			[
+				"location",
+				"www/templates/location.html"
+			],
+			[
+				"edit-ki",
+				"www/templates/edit-kid.html"
+			],
+			[
+				"config.",
+				"config.xml"
+			],
+			[
+				"uiki",
+				"client/js/uikit/uikit.js"
+			],
+			[
+				"dia",
+				"client/js/uikit/dialog.js"
+			],
+			[
+				"dialog1",
+				"client/js/uikit/dialog1.js"
+			],
+			[
+				"dial",
+				"client/js/uikit/dialog.scss"
+			],
+			[
+				"document",
+				"client/js/views/document.js"
+			],
+			[
+				"account",
+				"client/scss/views/_account.scss"
+			],
+			[
+				"dom",
+				"client/node_modules/yamvish/lib/output-engine/dom.js"
+			],
+			[
+				"navig",
+				"client/scss/views/_navigation.scss"
+			],
+			[
+				"foo",
+				"client/js/views/footer.js"
+			],
+			[
+				"navi",
+				"client/js/views/navigation.js"
+			],
+			[
+				"_ag",
+				"client/scss/views/_agregate.scss"
+			],
+			[
+				"index",
+				"client/index.html"
+			],
+			[
+				"na",
+				"client/scss/views/_navigation.scss"
+			],
+			[
+				"ham",
+				"client/scss/widgets/_hamburger.scss"
+			],
+			[
+				"uik",
+				"client/js/views/uikit.js"
+			],
+			[
+				"laning",
+				"client/scss/views/_landing.scss"
+			],
+			[
+				"inde",
+				"client/index.html"
+			],
+			[
+				"interpolable",
+				"client/node_modules/yamvish/lib/interpolable.js"
+			],
+			[
+				"naviga",
+				"client/js/views/navigation.js"
+			],
+			[
+				"eva",
+				"client/scss/widgets/_eva.scss"
+			],
+			[
+				"home",
+				"client/js/views/home.js"
+			],
+			[
+				"home.js",
+				"client/js/views/home.js"
+			],
+			[
+				"main.js",
+				"client/js/views/main.js"
+			],
+			[
+				"ind",
+				"client/index.html"
+			],
+			[
+				"_re",
+				"client/scss/_responsive.scss"
+			],
+			[
+				"sty",
+				"statics/css/style.css"
+			],
+			[
+				"flag",
+				"statics/app/api/flag.js"
+			],
+			[
+				"pos",
+				"statics/app/api/poster.js"
+			],
+			[
+				"fla",
+				"statics/app/browser-protocols/flag.js"
+			],
+			[
+				"ma",
+				"statics/app/main.js"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"profile",
+				"statics/app/views/profile.js"
+			],
+			[
+				"map",
+				"statics/app/views/map.js"
+			],
+			[
+				"map-",
+				"statics/app/views/map-ctrl.js"
+			],
+			[
+				"tem",
+				"node_modules/yamvish/lib/template.js"
+			],
+			[
+				"post",
+				"statics/app/views/poster.js"
+			],
+			[
+				"prof",
+				"statics/app/views/profile.js"
+			],
+			[
+				"orql/in",
+				"node_modules/orql/index.js"
+			],
+			[
+				"mainc",
+				"statics/app/main-context.js"
+			],
+			[
+				"pa",
+				"package.json"
+			],
+			[
+				"inter",
+				"node_modules/yamvish/lib/interpolable.js"
+			],
+			[
+				"templa",
+				"node_modules/yamvish/lib/template.js"
+			],
+			[
+				"profil",
+				"statics/app/views/profile.js"
+			],
+			[
+				"te",
+				"node_modules/yamvish/lib/template.js"
+			],
+			[
+				"c3po/index",
+				"node_modules/c3po/index.js"
+			],
+			[
+				"env",
+				"node_modules/yamvish/lib/env.js"
+			],
+			[
+				"inte",
+				"node_modules/yamvish/lib/interpolable.js"
+			],
+			[
+				"contex",
+				"node_modules/yamvish/lib/context.js"
+			],
+			[
+				"maincon",
+				"statics/app/main-context.js"
+			],
+			[
+				"poste",
+				"statics/app/views/poster.js"
+			],
+			[
+				"blocks-node",
+				"node_modules/blocks/node/blocks-node.js"
+			],
+			[
+				"block",
+				"client/bower_components/blocks/dist/blocks.js"
+			],
+			[
+				"profiles",
+				"client/views/profiles.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 240.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -9,10 +9,15 @@ import babelute from '../src/index.js';
 
 const expect = chai.expect;
 
-
+/**
+ * @public
+ * @param  {[type]}   'Babelute Lexicon       tests' [description]
+ * @param  {Function} ()        [description]
+ * @return {[type]}             [description]
+ */
 describe('Babelute Lexicon tests', () => {
 	describe('first test', () => {
-		const testlexicon = new babelute.Lexicon('test-lexicon');
+		const testlexicon = babelute.createLexicon('test-lexicon');
 
 		it('should', () => {
 			expect(testlexicon).to.not.equal(null);
@@ -20,7 +25,7 @@ describe('Babelute Lexicon tests', () => {
 	});
 
 	describe('second test', () => {
-		const lexicon = new babelute.Lexicon('test');
+		const lexicon = babelute.createLexicon('test');
 
 		lexicon
 			.addAtoms(['bloupi', 'foo', 'bar'])
@@ -37,3 +42,4 @@ describe('Babelute Lexicon tests', () => {
 	});
 
 });
+

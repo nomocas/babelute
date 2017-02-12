@@ -1,0 +1,16 @@
+{
+	"source": "./src",
+	"destination": "./doc",
+	"test": {
+		"type": "mocha",
+		"source": "./test"
+	},
+	"coverage": true,
+	"styles": ["./doc-style.css"],
+	"includeSource": true,
+	"manual": {
+		"globalIndex": true,
+		"index": "./README.md",
+		"overview": ["./manual/overview.md"]
+	}
+}

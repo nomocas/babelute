@@ -1,0 +1,49 @@
+
+Todo :
+
+check if _each and _if could be shortcuted to .if and .each in FirstLevel
+
+facade initializer
+	var h = Babelute.facadeInitializer('html', 'html:dom')
+	h('#body').span('bloupi').div('floupi')
+
+
+still to finalise objects and array translations theory
+
+i18n : check different ways to achieve it (external dico or internal _translation)
+	 		
+do simple example with async manager in env
+
+translation/output table
+
+
+
+create PromiseFacadeActions class
+with Promised Facade output style engine
+.output(subject, env);
++ .facadeInitializer()
+
+
+
+
+//_____________ after
+
+CLI : 
+	babelute -l myhtml.js #myhtml:myComponent('hello') -$ html:string > ./my-file.html
+	babelute  myapp.js
+
+	babelute 
+
+		==> open interactive nodejs with myapp loaded and Babelute on root
+
+work on babelute doc pilot : external query DSL ? api ?
+		.0 = args[0]
+		.name = select lexems with matching name
+		.#lexic = select lexems with matching lexic
+		.#lexic:lexem = select lexems with matching lexic and lexem name
+		.*
+		.*(filter)
+		.**(0=is=babelute)
+	 	.**(div|span|#foo:goo.0=is=babelute)
+	
+	add tests

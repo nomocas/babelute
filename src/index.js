@@ -7,29 +7,34 @@
 // core classes and functions
 import {
 	Babelute,
-	Lexem
+	Lexem,
+	fromJSON
 } from './babelute.js';
-import FirstLevel from './lexicon/first-level.js';
 import {
-	Lexicon,
-	Initializer,
+	createLexicon,
+	init,
+	getLexicon,
+	registerLexicon,
 	initializer,
-	firstLevelInitializer
+	developOneLevel
 } from './lexicon/lexicon.js';
-import fromJSON from './from-json.js';
-import Pragmatics from './pragmatics/pragmatics-core.js';
-import FacadePragmatics from './pragmatics/facade-pragmatics.js';
+import { Pragmatics, createPragmatics } from './pragmatics/pragmatics-core.js';
+import { FacadePragmatics, createFacadeInitializer, createFacadePragmatics } from './pragmatics/facade-pragmatics.js';
 import Scopes from './pragmatics/pragmatics-scopes.js';
 
 export default {
+	createLexicon,
+	createPragmatics,
+	createFacadeInitializer,
+	createFacadePragmatics,
+	init,
+	initializer,
+	getLexicon,
+	registerLexicon,
+	developOneLevel,
+	fromJSON,
 	Babelute,
 	Lexem,
-	FirstLevel,
-	Lexicon,
-	Initializer,
-	initializer,
-	firstLevelInitializer,
-	fromJSON,
 	Pragmatics,
 	FacadePragmatics,
 	Scopes

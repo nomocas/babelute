@@ -1,6 +1,5 @@
 /**
  * @author Gilles Coomans <gilles.coomans@gmail.com>
- *
  */
 
 /* global describe, it */
@@ -10,27 +9,18 @@ import babelute from '../src/index.js';
 import chai from 'chai';
 const expect = chai.expect;
 
+const Babelute = babelute.Babelute,
+	Lexem = babelute.Lexem;
+
 describe('Babelute base class and Lexem', () => {
-	const Babelute = babelute.Babelute,
-		Lexem = babelute.Lexem;
+
 
 	describe('simple lexem', () => {
 		const lexem = new Lexem('foo', 'bar', ['zoo']);
 
 		it('should', () => {
 			expect(JSON.stringify(lexem))
-				.equals('{"lexicon":"foo","name":"bar","args":["zoo"],"__babelutelexem__":true}');
-		});
-	});
-
-	describe('lexem log', () => {
-		const lexem = new Lexem('foo', 'bar', ['zoo']);
-
-		const value = lexem.log('foo');
-
-		it('should', () => {
-			expect(value)
-				.equals(undefined);
+				.equals('{"lexicon":"foo","name":"bar","args":["zoo"]}');
 		});
 	});
 
@@ -45,7 +35,7 @@ describe('Babelute base class and Lexem', () => {
 			expect(startLexem)
 				.equals('[]');
 			expect(endLexem)
-				.equals('[{"lexicon":"testlexicon","name":"mylexem","args":[true,false],"__babelutelexem__":true}]');
+				.equals('[{"lexicon":"testlexicon","name":"mylexem","args":[true,false]}]');
 		});
 	});
 	describe('double append', () => {
@@ -60,7 +50,7 @@ describe('Babelute base class and Lexem', () => {
 			expect(startLexem)
 				.equals('[]');
 			expect(endLexem)
-				.equals('[{"lexicon":"testlexicon","name":"mylexem","args":[true,false],"__babelutelexem__":true},{"lexicon":"testlexicon","name":"mylexem2","args":[1,2],"__babelutelexem__":true}]');
+				.equals('[{"lexicon":"testlexicon","name":"mylexem","args":[true,false]},{"lexicon":"testlexicon","name":"mylexem2","args":[1,2]}]');
 		});
 	});
 });

@@ -2,12 +2,12 @@
   "name": "babelute",
   "version": "0.3.0",
   "description": "Internal Domain Specific (Multi)Modeling javascript framework",
-  "main": "dist/bundles/babelute.js",
-  "module": "dist/bundles/babelute.mjs",
-  "jsnext:main": "dist/bundles/babelute.mjs",
+  "main": "dist/es5/index.js",
+  "module": "src/index.js",
+  "jsnext:main": "src/index.js",
   "scripts": {
     "prebuild": "eslint src test",
-    "build": "npm run es5-build && npm run bundles-build && uglifyjs dist/bundles/babelute.js -m -o dist/bundles/babelute.min.js",
+    "build": "npm run es5-build && npm run bundles-build && uglifyjs dist/bundles/index.js -m -o dist/bundles/index.min.js",
     "es5-build": "babel src -d dist/es5",
     "es5-watch": "babel src -d dist/es5 -w",
     "bundles-build": "rollup -c",
@@ -16,7 +16,8 @@
     "test": "mocha",
     "karma": "NODE_ENV=production karma start",
     "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha test/*.js",
-    "prepublish": "NODE_ENV=production npm test"
+    "prepublish": "NODE_ENV=production npm test",
+    "esdoc": "npm test && esdoc"
   },
   "nyc": {
     "require": [
@@ -75,4 +76,3 @@
     "uglify-js": "^2.7.5"
   }
 }
-

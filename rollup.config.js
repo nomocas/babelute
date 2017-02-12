@@ -11,12 +11,12 @@ export default {
   ],
   external: external,
   targets: [{
-    dest: pkg.main,
+    dest: 'dist/bundles/index.js',
     format: 'umd',
     moduleName: 'Babelute',
     sourceMap: true
   }, {
-    dest: pkg.module,
+    dest: 'dist/bundles/index.mjs',
     format: 'es',
     sourceMap: true
   }]

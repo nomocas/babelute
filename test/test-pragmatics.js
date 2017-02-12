@@ -8,7 +8,7 @@ const expect = chai.expect;
 describe('Babelute Pragmatics core tests', () => {
 	describe('simple call', () => {
 
-		const pragmas = new babelute.FacadePragmatics({
+		const pragmas = babelute.createFacadePragmatics({
 			test: true
 		}, {
 			zoo(subject, args) {
@@ -26,7 +26,7 @@ describe('Babelute Pragmatics core tests', () => {
 
 	describe('add pragmas after construction', () => {
 
-		const pragmas = new babelute.FacadePragmatics({
+		const pragmas = babelute.createFacadePragmatics({
 			test: true
 		});
 
@@ -51,7 +51,7 @@ describe('Babelute Pragmatics core tests', () => {
 			}
 		});
 
-		const pragmas = new babelute.FacadePragmatics({
+		const pragmas = babelute.createFacadePragmatics({
 			test: true
 		}, {
 			zoo(subject, args) {
@@ -81,7 +81,7 @@ describe('Babelute Pragmatics core tests', () => {
 			}
 		});
 
-		const pragmas = new babelute.FacadePragmatics({
+		const pragmas = babelute.createFacadePragmatics({
 			test: true
 		}, {
 			zoo(subject, args) {
@@ -108,7 +108,7 @@ describe('Babelute Pragmatics core tests', () => {
 			}
 		});
 
-		const pragmas = new babelute.FacadePragmatics({
+		const pragmas = babelute.createFacadePragmatics({
 			test: true
 		}, {
 			zoo(subject, args) {
@@ -135,7 +135,7 @@ describe('Babelute Pragmatics core tests', () => {
 			}
 		});
 
-		const pragmas = new babelute.FacadePragmatics({
+		const pragmas = babelute.createFacadePragmatics({
 			test: true
 		}, {
 			zoo(subject, args) {
@@ -162,7 +162,7 @@ describe('Babelute Pragmatics core tests', () => {
 			}
 		});
 
-		const pragmas = new babelute.FacadePragmatics({
+		const pragmas = babelute.createFacadePragmatics({
 			test: true
 		}, {
 			zoo(subject, args) {
