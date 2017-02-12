@@ -1,0 +1,883 @@
+ 
+ Information Theory :
+
+ 	Qualities :
+ 		transmissibility
+ 		optimality
+ 		compressability
+ 
+# UUS Lexic Definition Language		
+
+```
+#address:html+
+	address(
+		// meta-infos
+		#aright
+		description('address to html translation')
+		string('country')
+		string('town')
+		string('street')
+		string('number'),
+
+		// semantic
+		#html
+			h2(@town,
+				id('bar') 
+				class('foo')
+				span(@country, class('zoo'))
+			)
+			div(@street, ', ', @number)
+			hr
+			p('...')
+	)
+```
+
+
+
+Liens avec ADN et génétic
+
+Babelute montre la complexité et la difficulté de la génétique.
+
+ADN = séquence atomes logiques (bases) = babelute qui sera interprété dans un context propre
+
+possible marqueur lexic #tata:  en scope
+
+Point de vue théorique : il existe autant de language intermédiaire qu'on veut entre deux états.
+
+# Implications
+
+Description Driven
+
+Agility
+	Start, Focus, Direction, Parallelism, Atomicity, Communication, Ultra Fast Iterations, 
+
+Design
+	Atomicity and Modularity
+
+	Atomicity and RISC/CISC
+
+	Reusability and Sharing
+
+	Testability
+
+	Perenity and Openness
+
+	Completness and non-ambiguity
+
+	Design Mind Direction
+
+	Un language est bcp plus stable qu'un API : DSL = choix juste des mots minimaux
+
+Search Engine, ontology and IA
+	AST powaaa
+	Noam Chomsky
+	Marvin Minsky and Frames
+	
+
+
+
+
+
+
+
+
+ *
+ * Formally, as any lexem could receive others babelutes as arguments, 
+ * we obtain an array of lexems that could hold (as arguments) others array of lexems and/or primitives values.
+ * Which could be seen as a forest of trees 
+ * where each node (aka lexem) could hold others forest of trees, 
+ * and where tree's leaf are primitives values (string, number, boolean, object, array, function).
+
+
+
+
+
+Leaky Abstractions Law (Joel Spolsky - http://www.joelonsoftware.com/Articles/LeakyAbstractions.html)
+
+The law of leaky abstractions means that whenever somebody comes up with a wizzy new code-generation tool that is supposed to make us all ever-so-efficient, you hear a lot of people saying "learn how to do it manually first, then use the wizzy tool to save time." Code generation tools which pretend to abstract out something, like all abstractions, leak, and the only way to deal with the leaks competently is to learn about how the abstractions work and what they are abstracting. So the abstractions save us time working, but they don't save us time learning.
+
+And all this means that paradoxically, even as we have higher and higher level programming tools with better and better abstractions, becoming a proficient programmer is getting harder and harder.
+
+
+
+
+
+
+OO at the right place
+
+https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4#.gmfsnqz7p
+
+smaller is better
+only when realy needed
+no interaction rule when inherit : no super call or (too much) dependencies between class tree APIs
+use functional programming to complete classes behaviour
+minimal inheritance depth (0 or 1. when 2 : twice check of no-interaction rule)
+only for low level
+not for exposition
+lower in tree : higher in completness 
+
+
+
+
+
+
+
+
+
+
+# Examples to refactor following changes
+
+
+## More straightforward : no use of engines
+
+babelute.toLexic('myApi', {
+	foo:function(arg){
+		return this._append('foo', [arg], function(opt, arg){
+			opt.target.myVar = opt.target.myVar || [];
+			opt.target.myVar.push(arg + ' foo');
+		});
+	},
+	bar:function(arg2){
+		return this._append('bar', [arg2], function(opt, arg2){
+			opt.target.myVar2 = arg2 / 2;
+		});
+	},
+	zoo:function(arg1, arg2){
+		return this.foo(arg1).bar(arg2);
+	}
+});
+
+var myApi = babelute.initializer('myApi');
+
+var output = myApi().foo('myArg').bar(123).zoo('ho', 456).output({} /* target */);
+// output.target, output.stabilised().then(...)
+
+
+## With one or multiple output engine
+
+Babelute.toLexic('myApi', {
+	foo:function(arg){
+		return this._append('foo', [arg]);
+	},
+	bar:function(arg2, arg3){
+		return this._append('bar', [arg2, arg3]);
+	}
+});
+
+// or when you don't need to work on arguments (as above) : aka Logical Atoms
+// babelute.toLexic('myApi', ['foo', 'bar']);
+
+Babelute.toActions('myEngine', {
+	myApi:{
+		foo:function(opt, arg){
+			// do something with arg and opt.target
+		},
+		bar:function(opt, arg2, arg3){
+			// do something with arg2, arg3 and opt.target
+		}
+	}
+})
+.toActions('mySecondEngine', {
+	myApi:{
+		foo:function(opt, arg){
+			// do something with arg and opt.target
+		},
+		bar:function(opt, arg2, arg3){
+			// do something with arg2, arg3 and opt.target
+		}
+	}
+});
+
+var myApi = babelute.initializer('myApi');
+
+var templ = myApi().foo('myArg').bar(124),
+	output1 = templ.output('myEngine', mySubject1),
+	output2 = templ.output('mySecondEngine', mySubject2);
+
+## With multiple API
+
+Babelute
+	.toLexic('myApi', ['foo', 'bar'])
+	.toLexic('myApi', { 
+		doo:function(myArg){
+			return this.foo(myArg).bar(true);
+		}
+	})
+	.toLexic('myOtherApi', ['zoo', 'goo']);
+
+var templ = b('myApi')
+.foo(...)
+.bar(...)
+.babelute('myOtherApi')
+.zoo('...')
+.goo(...);
+
+...
+
+## Document
+
+var myDoc = Babelute.doc(`
+	myApi:
+		foo(456)
+		bar('foo')
+		zoo(
+			'some', 
+			bar('bloup') 
+			myOtherApi:goo(789)
+			... 
+		)
+		...
+`);
+
+myDoc.set('zoo[0] .bar.0', 1234).find('...').wrap('...', ...);
+
+var output = myDoc.output({}, 'myEngine');
+
+
+
+
+
+As we talk about DSL, we talk about languages, and so we talk about how we understand things.
+
+
+# So.... Why writing things like that ? :)
+
+First take a look to elenpi, aright and yamvish.
+
+After that : let's reinvent the wheele
+
+Reflexion base :
+________________
+
+With classes  
+	When we look at a problem, we mistake expression for encoding and execution
+
+What to do ?
+	We MUST use and abuse of domain-language.
+	
+ex : 
+gateauChoco(
+	mix('pâte', beurre(250) farine(250) oeufBattu(3))
+	mix('coulis', menthe(3), framboises(200))
+	attendre('15min')
+	mix('gateau', prendre('pâte', 2/3), sucre(250))
+	attendre('5min')
+	empiler('gateau', napage('coulis'),  prendre('pâte', 1/3), napage(chocolat(100)))
+	cuire('gateau', '180C°', '25min')
+);
+
+Mise en avant du language métier :
+exemples : 
+
+		voiture
+			essieu, pneu, roue, moteur, volant, route
+
+		lego
+			type piece, couleur, empiler, ...
+
+		univers
+			super-amas
+			amas
+			galaxie
+			bras-de-galaxie
+			système
+			étoiles
+			planete
+			satelite
+			continent
+			ocean
+			mer
+			région
+
+
+		planche-à-voile
+
+
+		agrobio
+
+		artisanat
+
+		projet
+			iteration, target, measure, learn, version, abtest
+			
+		construction
+			vis, tourne-vis, marteau, clou, planche, poteau,	 
+
+		matière
+			bois, metal, plastique
+
+		texture
+			transparente, matte, bosselé, brossé, plaqué, 
+
+		assembler
+			visser, clouer, coller, souder, relier, connecter
+
+		menuiserie
+			poncer, raboter, ...
+
+		design-objet
+			texture
+			matière-organique
+			matière-synthetique
+			assembler
+			menuiserie
+			metalurgie
+			mobilier
+
+		meuble:table(
+			matiere('bois')
+			texture('foncé')
+			pieds(3, 
+				matiere('alluminium')
+				texture('brossé')
+				hauteur(70)
+			)
+			tirroire()
+			largeur(100)
+			longueur(200)
+		)
+		lit(
+			matiere('bois')
+			texture('clair')
+			tiroire()
+			largeur(160)
+			longueur(200)
+		)
+
+		tableNuit(
+			matiere('metal')
+		)
+
+		balade(
+			heureDepart(...)
+			heureFin(...)
+			chemin(
+				chemin:
+				depart('...')
+				etape('...')
+				etape('...')
+			)
+		)
+
+
+
+		soirée
+
+		lieu
+			position
+
+		événement
+			commence, fini, position, programme, 
+
+		menuiserie
+
+		maison
+			chambre, cuisine, salon, ...
+			mur, porte, fenetre, ...
+			tuyau,
+
+		construction-batiment
+
+		Exemple plus complet : 
+
+		projet(
+			team:members('marco','gilles','ploum')
+			place(position:pos(...))
+			product:product('lampe')
+			page:pages(
+				header(
+					h1('{{ title }}')
+					h2('....')
+					quote('....')
+				)
+				body(
+					img('...')
+					map('...')
+					contactForm()
+				),
+
+				layout('product')
+				route('product/s:id')
+				h1('....')
+				h2('....')
+				quote('....')
+				img('...')
+				product:product('{{ $route.param.id }}')
+			)
+	
+			page('product/s:id', 
+				content:
+					h1('....')
+					h2('....')
+					quote('....')
+					img('...')
+					product:product('{{ $route.param.id }}')
+			)
+		);
+
+		babelute:engine('web-output',
+			content:
+				page[content](
+					css:rule('.myclass', background(...) height(...))
+					yam:section(
+						cl('myclass	')
+						use(@content)
+					)
+				)
+				header[content](
+					css:rule('.myclass', background(...) height(...))
+					yam:header(
+						cl('myclass')
+						use(@content)
+					)
+				)
+				conctactForm[](
+					css:rule('.myclass2', 
+						background(...) 
+						height(...)
+					)
+					yam:div(
+						cl('myclass2')
+						form(...)
+					)
+				)
+		)
+
+
+		engine('dom',
+			yam:tag(function(name, ...content){
+				
+			})
+			cl(function(name, flag){
+
+			})
+			attr(function(name, flag){
+			
+			})
+		)
+
+		engine('twopass',
+			yam:tag(function(name, ...content){
+				
+			})
+			cl(function(name, flag){
+
+			})
+			attr(function(name, flag){
+			
+			})
+		)
+
+		babelute.doc(templ).find('page("contact")').output({}, 'web-output:dom')
+
+		engine('cssoutput', 
+			css:rule(function(name, ...content){
+				
+			})
+		)
+
+		y.output('cssoutput', babelute.doc(templ).find('page("*")'))
+
+		//______________________________________________________________________
+
+
+		recette:gateauChocolat(
+			mix('pâte', beurre(250), farine(250), oeufBattu(3))
+			mix('coulis', menthe(3), framboises(200))
+			attendre('15min')
+			mix('gateau', prendre('pâte', 2/3), sucre(250))
+			empiler('gateau', prendre('coulis'),  prendre('pâte', 1/3), napage(chocolat(100)))
+			cuire('gateau', '180C°', '25min')
+		);
+
+		engine('object', 
+			recette:
+				mix(function(name, ...content){
+					
+				})
+				empiler(function(name, ...content){
+					
+				})
+				attendre(function(duration){
+
+				})
+				cuire(function(name, temperature, duration){
+
+				})
+		)
+		
+		y.exec('object', recette, {})
+
+		//______________________________________________________________________
+
+
+		EDITABLE MODE
+		==> piste pour modification
+		=> peut pas etre binder ou patché classiquement (pas de path human-readable)
+
+		==> il faudrait pouvoir appliquer modif depuis document parsé lui même puisqu'il est maitre et qu'il peut avoir plusieurs représentations
+		==> c'est lui qui contient les données à modifier
+		=> penser WebComponent et shadowDom : 
+
+			==> alors remplacer les arguments primitifs par un call special
+				hello(arg1, arg2) ==> hello(c.arg(arg1), c.arg(arg2))
+
+				retourne un Argument {
+					callNode: refVersNodeContenantArg,
+					index:1,
+					update:function(value){
+						this.callNode.args[this.index] = value;
+					}
+				}
+
+
+Solution :
+
+Faire un document en tant que tel
+	un document n'est pas la meme chose qu'une chaine compilée mais il a la même forme
+	il contient juste  la premiere description (aucune execution ou interprétation)
+
+	ce document est modifiable avec son propre médiateur chainé à execution immédiate
+	(à la jquery)
+
+il contient en plus : 
+gateau.output('weboutput:string')
+.stabilised(function(s){
+	
+})
+
+gateau.subscribe(function(value, type, path, key){
+	
+})
+
+gateau.instance('weboutput:string', function(value){
+	
+})
+
+gateau.instance('object', function(value){
+	
+})
+
+De l'intérieur = Binding = un Observable est une solution simple
+	faudrait pouvoir le faire de l'intérieur aussi (type édition en place) => utiliser interpolable ou similaire (mediateur observable)
+	==> donc depuis une représentation vers master vers autres représentations
+	donc faudrait aussi pouvoir conserver un lien entre master et ses représentations au cas ou full-rerender
+
+	==> on doit produire Argument {
+		node: node,
+		path:'0.1.0',
+		subscribe:function(func){},
+		get:function(){
+			// return this.path
+		},
+		set:function(value){
+			// set this.path
+			// this.node.args[this.index] = value;
+		}
+	 }
+	 => le faire percoler et s'en servir pour avoir du bind
+
+
+De l'extérieur : 
+	mediateur/language de query sur une babelute
+	faire un jquery like pour babelute :
+
+	babelute.doc(string || compiled)
+	.find('//mix("gateau")[1]')
+	.each(function(content){
+		
+	})
+	.find('//attendre("15min")')
+	.set('[0]', '10min')
+	.replaceArgs(..., ..., ...)
+	.wrap('...', function(item){
+		return babelute('..').doc().foo(item);
+	})
+	.output('...', ...)
+
+	babelute('monLanguage')
+	.maMethode(...)
+	...
+	.babelute('monAutreLanguage')
+
+
+	// initialisateur à execution immediate
+	babelute('monLanguage', {
+		semantic:'dom' // on fixe le moteur d'interpretation
+	})
+	// => on wrap
+	monLanguage = function(targets){
+		return babelute('monLanguage', {
+			immediate:true,
+			semantic:'dom' // on fixe le moteur d'interpretation
+		});
+	}
+	// ou on utilise initializer
+	var m = babelute.initializer('monLanguage', opt);
+
+
+
+mababelute.doc('/mix(...)')
+
+
+Theorie 
+
+
+
+	Quelles sont les règles pour savoir que modéliser et comment ?
+
+	Y'en a-t-il ? réponse : bof... la seule universelle c'est l'itération : on tâtonne...
+
+	Où utiliser des classes, ou utiliser autre chose ?
+			Flou
+
+	Qu'avons nous d'autre que des classes : 
+
+			AOP ?
+
+			design patterns ?
+
+			ontologies ?
+			
+			et puis ?
+
+
+	Réponse :
+		Classes bon quand on connait execactement ce qu'il faut modéliser.
+		Adapté pour répondre à un probleme informatico-informatique
+	Mais
+		Ornytorinque ?
+	=> Classe : Horrible pour modéliser ce qui est flou, pas précis, très dynamique, à forme multiple, etc.
+	
+	Certitude : Classe = OO = ENCODER un modèle... 
+
+	Grosse différence entre modéliser et ENCODER...
+
+	Encodage d'un modèle est tjrs ad'hoc puisque difficile de ne pas perdre de l'info exprimée dans le modèle.
+	dés que traduction vers objets : c'est ad'hoc.
+	
+	Classe = tentative de traduction vers un language purement informatique (qui n'a plus rien à voir avec le probleme de départ)
+	
+	But de l'OOP :
+		Encapsulation
+		Factory
+		(Heritage) => pas une propriété primaire de l'OO : juste un moyen d'organiser le code : et ca ne devrait jamais etre autre chose
+	
+	Aujourd'hui : 
+		on traduit tout direct en language informatique = perversion de la compréhension
+
+	On oublie le principale : 
+		Notre probleme n'est pas informatique
+		Il correspond à un problème réel
+		Il n'est pas une collection de champs stockée quelquepart
+		
+		Il s'exprime avant tout en language métier. 
+
+		Avec des phrases.
+
+		Un langage métier = un language forgé par des experts avec le temps pour décrire un probleme particulier selon leur point de vue.
+
+		C'est ce qu'on a de mieux. et on aura jamais mieux.
+
+	Primitives logique d'un language métier : 
+		propre au language
+
+	Primitives logiques du code : 
+		bool, string, int object, array, functions
+
+	Classe = encoder = traduction en primitive de code
+	==> classe bon pour organiser le code : pas le modèle.
+
+	Pq? parce que encodage est rigide.
+	Et qu'on veut de la souplesse avant tout.
+
+	meme si API d'une classe peut être (et devrait être) de l'ordre du language métier :
+		l'api fait quoi ? il encode ou manipule l'encodage...
+
+	Solution : modéliser par en bas et par en haut... à base de languages métiers.
+
+	Un bon modèle est construit par en bas càd qu'il est défini précisément par ce qu'il contient et rien d'autre.
+	
+	au lieu de se demander : qu'est ce qu'un modele quelconque en terme objet ? c'est quoi ses propriétés ?
+	on se pose la question : comment j'en parle...
+
+
+	// suite dés que possible
+
+
+
+Au final = paradigme language métier supérieur au paradigme objet
+
+remarque : 
+
+ Un mediateur n'est jamais rien d'autre que ce qu'il fait :
+ il n'a aucune variable propre : Enveloppe floue, défini par ses fonctions 
+ exactement comme un bon model doit être : défini précisément de l'intérieur
+
+
+
+Liens avec DOM et (X)(HT)ML
+
+HTML = language de sérialisation de document textuel structuré 
+(Serialised Structured Textual Document : SSTD not HTML ;)
+
+ShadowDOM : document HTML simple (description structurelle logique) 
+			dirige une interprétation plus complexe
+
+
+
+
+
+
+_____________________________________________________
+
+
+Babelute fourni un meta-language = une syntaxe (une grammaire).
+
+(primitives js (number, bool, string), array, objet, function anonyme) + appel de fonction
+
+Chaque language peut etre défini et utilisé en pure js ou en version string allégé.
+
+Il y a une équivalence complète (bijection) entre les deux écritures.
+
+Avec lequel on défini une ensemble de langages, tous basé sur la syntaxe de Babelute. (pas de syntaxe spécifique par language)
+
+Exactement comme l'XML est un meta-language (ce n'est qu'une syntaxe) et que un language défini en xml sera un ensemble des tags (nom, attributs et comportement - ex : xhtml).
+
+
+
+
+
+
+
+Applications au niveau du code : 
+
+1) Modélisation objet par template objet :
+
+OCM + object
+role('admin', 
+	if(condition, templ, elseTempl)
+	each(array || query, templ)
+
+	first(query, templ)
+	find(query, templ)
+
+	up({ ... })
+	bottom({ ... })
+	
+	set(query || path, value)
+	push(query || path, value)
+	toggle(query || path)
+)
+...
+
+var object = objectTemplate.forge({}, ['admin', 'translator']);
+
+
+Template
+	initializer( ...Object )
+	if(condition, template)
+	use( template )
+
+	ocm:
+	ocm( ...roles | Object(roles), template )
+
+	// output
+	output(engine, ?input)
+	forge( role ):Object
+
+
+=> object :
+	owalk:
+	find( objectQuery,  template )
+	first( objectQuery,  template )
+
+	ubee:
+	up( ...aspects )
+	bottom( ...aspects )
+
+	aright:
+	string(name, template)
+	bool(...)
+	number()
+	format(...)
+	object()
+	isObject
+	is*...
+
+
+	
+
+
+Pilot : 
+
+app(['admin', 'translator']).service('campaign').post({ ... });
+app('user::userId').service('bloupi').put('...');
+app({
+	id:'...',
+	email:'...'
+});
+
+
+
+app('user::userId')
+service('...')
+delete('...')
+
+
+
+==>
+
+
+ObjectPilot
+	initializer( ...Object | ...c3poRefs )
+	init( opt )
+	done
+	then
+	catch
+	
+	restful:
+		get 
+		post
+		put 
+		delete 
+		options
+		head
+
+	
+	
+
+app()... ==> mean take current concurrent user => how to get it : glocal so beware of context chaining
+
+
+
+IDE Tools
+
+Babelute Syntax coloration
+Babelute-autocomplete
+Babelute-linter
+
++ Babelute TextExpander snippets
+
++ so much things
+
+
+//_____________________________________
+
+
+Les DSL ca sert a séparer le grain de l'ivraie.
+
+Cacher la technique le plus loin possible
+
+Babelute = garder chaque niveau clean et verbale le plus longtemps possible
+	technique tout en bas
+
+Dothat 
+	c3po + rql : cacher les détails des ressources
+
+	app-pilot : cacher details client/server
+
+
+
+
+	
