@@ -6,7 +6,7 @@
 		"source": "./test"
 	},
 	"coverage": true,
-	"styles": ["./doc-style.css"],
+	"styles": ["../babelute-doc-css/src/style.css"],
 	"includeSource": true,
 	"manual": {
 		"globalIndex": true,
