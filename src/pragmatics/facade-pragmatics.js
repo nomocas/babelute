@@ -1,3 +1,9 @@
+/**
+ * @author Gilles Coomans
+ * @licence MIT
+ * @copyright 2016-2017 Gilles Coomans
+ */
+
 import assert from 'assert'; // removed in production
 import {
 	Babelute
