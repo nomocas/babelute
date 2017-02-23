@@ -9,7 +9,6 @@
 [![licence](https://img.shields.io/npm/l/babelute.svg)]()
 [![dependecies](https://img.shields.io/david/nomocas/babelute.svg)]()
 [![dev-dependencies](https://img.shields.io/david/dev/nomocas/babelute.svg)]()
-[![npm-stats](https://nodei.co/npm/babelute.png?downloads=true)]()
 
 Really small, simple, incredibly powerful and super fast __Fact Based Internal DSLs__ tools.
 
