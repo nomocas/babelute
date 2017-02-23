@@ -34,6 +34,8 @@ Babelute.js core library (this lib) provides helpers to :
 
 ## Understanding by examples
 
+(work in progress)
+
 Low Level DSLs (Developement related domains) :
 - [babelute-aright](https://github.com/nomocas/babelute-aright) : Objects and types validation DSL (ultra-fast, ultra-modular)
 - [babelute-html](https://github.com/nomocas/babelute-html) : HTML5 DSL and its isomorphic render-engines. (modern, __world's fastest__, one-way-binding templating (React philosophy))
