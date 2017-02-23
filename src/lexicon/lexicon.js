@@ -413,10 +413,10 @@ function init(lexiconName, asFirstLevel) {
  * @throws {Error} If lexicon not found with lexem.lexicon
  * @throws {Error} If method not found in lexicon
  */
-function developOneLevel(lexem) {
+function developOneLevel(lexem, lexicon = null) {
 	assert(lexem && lexem.__babelutelexem__, 'lexicon.developOneLevel(...) need a lexem intance as first argument');
 
-	const lexicon = getLexicon(lexem.lexicon);
+	lexicon = lexicon || getLexicon(lexem.lexicon);
 
 	assert(lexicon.secondLevel[lexem.name], 'lexicon.developOneLevel(...) : lexem\'s name not found in its own referenced lexicon');
 
