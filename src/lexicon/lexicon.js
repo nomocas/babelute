@@ -92,18 +92,6 @@ class Lexicon {
 		this.SecondLevel = Babelute.extends(parent.SecondLevel || Babelute);
 
 		/**
-		 * the atomic initializer instance
-		 * @type {Initializer}
-		 */
-		this.initializer = this.Atomic.initializer;
-
-		/**
-		 * the first-level initializer instance
-		 * @type {Initializer}
-		 */
-		this.firstLevelInitializer = this.FirstLevel.initializer;
-
-		/**
 		 * the secondLevel instance
 		 * @type {Babelute}
 		 * @protected
@@ -201,6 +189,16 @@ class Lexicon {
 	 */
 	translateToFirstLevel(babelute, targets) {
 		return translate(babelute, this.FirstLevel, targets || this.targets);
+	}
+
+	/**
+	 * return lexicon's initializer instance. (atomic or firstlevel depending on argument)
+	 * @public
+	 * @param  {Boolean} firstLevel true if you want firstLevel initializer, false overwise.
+	 * @return {Initializer}           the needed initializer instance
+	 */
+	initializer(firstLevel){
+		return firstLevel ? this.FirstLevel.initializer : this.Atomic.initializer;
 	}
 }
 
