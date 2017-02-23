@@ -4,7 +4,14 @@
 
 ### Internal Domain Specific (Multi)Modeling js framework
 
-Really small, simple, incredibly powerful and super fast __Internal DSLs__ tools.
+[![npm](https://img.shields.io/npm/v/babelute.svg)]()
+[![npm-downloads](https://img.shields.io/npm/dm/babelute.svg)]()
+[![licence](https://img.shields.io/npm/l/babelute.svg)]()
+[![dependecies](https://img.shields.io/david/nomocas/babelute.svg)]()
+[![dev-dependencies](https://img.shields.io/david/dev/nomocas/babelute.svg)]()
+[![npm-stats](https://nodei.co/npm/babelute.png?downloads=true)]()
+
+Really small, simple, incredibly powerful and super fast __Fact Based Internal DSLs__ tools.
 
 
 > "_A Babelut(t)e is a sort of long toffee flavoured with honey or vergeoise (demerara sugar) from [...] Flanders, Belgium_".
@@ -21,14 +28,6 @@ Babelute.js core library (this lib) provides helpers to :
 	- to interpret sentences in many context with specific __fine grained dedicated semantics__ (called __pragmatics__)
 
 
-What is the final usage ?
-
-So at usage (when you use DSLs written with Babelute) : you talk a lot ("babbelen" in Flemish), by writting structured sentences, using different DSLs to __describe__ things accuratly and generally, at higher level possible... Then maybe you "still talking" by __translating__ your sentences to more specific DSL sentences...
-And then you stop talking ("babbel uit") and you simply __do concreetly__ what you've said in a particular context. (You interpret sentences through choosen __pragmatics.__)
-
- Describe generally, maybe translate specifically, then act concreetly as needed. That's the main idea...
-
-
 ## Core Libraries
 
 - babelute (this lib)
@@ -39,8 +38,7 @@ And then you stop talking ("babbel uit") and you simply __do concreetly__ what y
 Low Level DSLs (Developement related domains) :
 - [babelute-aright](https://github.com/nomocas/babelute-aright) : Objects and types validation DSL (ultra-fast, ultra-modular)
 - [babelute-html](https://github.com/nomocas/babelute-html) : HTML5 DSL and its isomorphic render-engines. (modern, __world's fastest__, one-way-binding templating (React philosophy))
-- [babelute-fs](https://github.com/nomocas/babelute-fs) : File System Description DSL and its runners.
-- [babelute-lexic-dl](https://github.com/nomocas/babelute-doc) : Babelute Lexic Definition DSL and its generators.
+- [babelute-lexicon-definition-language](https://github.com/nomocas/babelute-doc) : Babelute Lexic Definition DSL and its generators.
 
 High Level DSLs (Human related domains) :
 - [babelute-cooking](https://github.com/nomocas/babelute-cooking) : High Level Cooking DSL demo and its bunch of transformations and DSLs targets.
