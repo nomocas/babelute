@@ -153,6 +153,11 @@ class Lexicon {
 		return this;
 	}
 
+	addShortcut(name, method){
+		this.Atomic.prototype[name] = this.FirstLevel.prototype[name] = this.SecondLevel.prototype[name] = method;
+		return this;
+	}
+
 	/**
 	 * @protected
 	 */
