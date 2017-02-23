@@ -58,6 +58,8 @@ untitled.sublime-project
 dist
 .nyc_output
 doc
+yarn.lock
+
 
 
 
