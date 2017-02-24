@@ -4,6 +4,7 @@
 
 ### Internal Domain Specific (Multi)Modeling js framework
 
+[![Travis branch](https://img.shields.io/travis/nomocas/babelute/master.svg)]()
 [![npm](https://img.shields.io/npm/v/babelute.svg)]()
 [![npm-downloads](https://img.shields.io/npm/dm/babelute.svg)]()
 [![licence](https://img.shields.io/npm/l/babelute.svg)]()
