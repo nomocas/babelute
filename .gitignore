@@ -59,6 +59,7 @@ dist
 .nyc_output
 doc
 yarn.lock
+thinking
 
 
 
