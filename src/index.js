@@ -16,11 +16,12 @@ import {
 	getLexicon,
 	registerLexicon,
 	initializer,
-	developOneLevel
+	developOneLevel,
+	developToAtoms
 } from './lexicon/lexicon.js';
 import { Pragmatics, createPragmatics } from './pragmatics/pragmatics-core.js';
 import { FacadePragmatics, createFacadeInitializer, createFacadePragmatics } from './pragmatics/facade-pragmatics.js';
-import Scopes from './pragmatics/pragmatics-scopes.js';
+// import Scopes from './pragmatics/pragmatics-scopes.js';
 
 export default {
 	createLexicon,
@@ -32,11 +33,12 @@ export default {
 	getLexicon,
 	registerLexicon,
 	developOneLevel,
+	developToAtoms,
 	fromJSON,
 	Babelute,
 	Lexem,
 	Pragmatics,
-	FacadePragmatics,
-	Scopes
+	FacadePragmatics
+	// Scopes
 };
 
