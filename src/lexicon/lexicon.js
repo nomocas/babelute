@@ -6,13 +6,9 @@
  */
 
 import assert from 'assert'; // removed in production
-
-import {
-	Babelute,
-	Lexem
-} from '../babelute.js';
-
+import { Babelute, Lexem } from '../babelute.js';
 import FirstLevel from './first-level.js';
+import { addToInitializer, createInitializer } from './initializer.js';
 
 /**
  * Lexicons dico : where to store public lexicon
@@ -20,17 +16,6 @@ import FirstLevel from './first-level.js';
  * @private
  */
 const lexicons = {};
-
-/**
- * Way to create lexicon instances
- * @public
- * @param  {string} name   the name of the lexicon
- * @param  {Lexicon} parent a lexicon instance as parent for this one (optional)
- * @return {Lexicon}      a lexicon instance
- */
-function createLexicon(name, parent = null) {
-	return new Lexicon(name, parent);
-}
 
 /**
  * Lexicon class : helpers to store and manage DSL's API.
@@ -44,7 +29,7 @@ function createLexicon(name, parent = null) {
  *
  * You should never use frontaly the constructor (aka never use new Lexicon in  your app). Use createLexicon in place.
  * 
- * @protected
+ * @public
  */
 class Lexicon {
 
@@ -60,16 +45,16 @@ class Lexicon {
 		/**
 		 * the parent lexicon (if any)
 		 * @type {Lexicon}
-		 * @protected
+		 * @public
 		 */
 		this.parent = parent;
+		parent = parent || {};
 
 		/**
 		 * the lexicon's name
 		 * @type {String}
 		 */
 		this.name = name;
-		parent = parent || {};
 
 		// the three APIs :
 		/**
@@ -153,33 +138,33 @@ class Lexicon {
 		return this;
 	}
 
-	addShortcut(name, method){
-		this.Atomic.prototype[name] = this.FirstLevel.prototype[name] = this.SecondLevel.prototype[name] = method;
+	/**
+	 * add aliases lexems to lexicon (aliases are like shortcuts : they are added as this to Atomic, FirstLevel and SecondLevel API)
+	 * @param {Object} methods an object containing methods (lexems) to add to lexicon
+	 * @return {Lexicon} the lexicon itself
+	 */
+	addAliases(methods){
+		Object.keys(methods)
+			.forEach((key) => {
+				this.Atomic.prototype[key] = this.FirstLevel.prototype[key] = this.SecondLevel.prototype[key] = methods[key];
+				addToInitializer(this.Atomic.Initializer, key);
+				addToInitializer(this.FirstLevel.Initializer, key);
+			});
 		return this;
 	}
 
 	/**
 	 * @protected
 	 */
-	useAtomic(babelute, name, args) {
-		assert(babelute && babelute.__babelute__, 'lexicon.useAtomic(...) need a babelute intance as first argument');
-		assert(typeof name === 'string', 'lexicon.useAtomic(...) need a string (a method name) as second argument');
+	use(babelute, name, args, firstLevel) {
+		assert(babelute && babelute.__babelute__, 'lexicon.use(...) need a babelute intance as first argument');
+		assert(typeof name === 'string', 'lexicon.use(...) need a string (a method name) as second argument');
 
-		if (!this.Atomic.instance[name])
+		const instance = firstLevel ? this.FirstLevel.instance : this.Atomic.instance;
+
+		if (!instance[name])
 			throw new Error(`Babelute (${ this.name }) : method not found : ${ name }`);
-		this.Atomic.instance[name].apply(babelute, args);
-	}
-
-	/**
-	 * @protected
-	 */
-	useFirstLevel(babelute, name, args) {
-		assert(babelute && babelute.__babelute__, 'lexicon.useFirstLevel(...) need a babelute intance as first argument');
-		assert(typeof name === 'string', 'lexicon.useFirstLevel(...) need a string (a method name) as second argument');
-
-		if (!this.FirstLevel.instance[name])
-			throw new Error(`Babelute (${ this.name }) : method not found : ${ name }`);
-		this.FirstLevel.instance[name].apply(babelute, args);
+		instance[name].apply(babelute, args);
 	}
 
 	/**
@@ -232,57 +217,15 @@ function initClass(BaseClass) {
 }
 
 /**
- * Initializer Class
- * @private
+ * Way to create lexicon instances
+ * @public
+ * @param  {string} name   the name of the lexicon
+ * @param  {Lexicon} parent a lexicon instance as parent for this one (optional)
+ * @return {Lexicon}      a lexicon instance
  */
-class Initializer {
-	static extends(BaseInitializer) {
-
-		assert(BaseInitializer === Initializer || (BaseInitializer.prototype instanceof Initializer), 'Initializer.extends accepts only a Initializer Class (or subclass) as argument');
-
-		const Class = function() {};
-		Class.prototype = Object.create(BaseInitializer.prototype);
-		Class.prototype.constructor = Class;
-		return Class;
-	}
+function createLexicon(name, parent = null) {
+	return new Lexicon(name, parent);
 }
-
-/**
- * create a Initializer (based on a Babelute subclass) and instanciate it
- * @param  {Babelute} BabeluteClass   a Babelute subclass from where create initializer
- * @param  {?Initializer} BaseInitializer a parent initializer to be extended (optional)
- * @return {Initializer}               the Initializer instance
- */
-function createInitializer(BabeluteClass, BaseInitializer = null) {
-
-	assert(BabeluteClass === Babelute || (BabeluteClass.prototype instanceof Babelute), 'Lexicon createInitializer accepts only a Babelute Class (or subclass) as first argument');
-	assert(!BaseInitializer || BaseInitializer === Initializer || (BaseInitializer.prototype instanceof Initializer), 'Lexicon createInitializer accepts only a Initializer Class (or subclass) as second argument');
-
-	const Init = BabeluteClass.Initializer = BaseInitializer ? Initializer.extends(BaseInitializer) : Initializer;
-	BabeluteClass.initializer = new Init();
-	BabeluteClass.initializer._empty = function() {
-		return new BabeluteClass();
-	};
-	BabeluteClass.initializer.BabeluteClass = BabeluteClass;
-	Object.keys(BabeluteClass)
-		.forEach((i) => {
-			addToInitializer(Init, i);
-		});
-	return BabeluteClass.initializer;
-}
-
-/**
- * add method to initializer
- * @private
- * @param {Initializer} Initializer Initializer class where add methods in proto
- * @param {string} methodName  the name of method to add
- */
-function addToInitializer(Initializer, methodName) {
-	Initializer.prototype[methodName] = function() {
-		return this.BabeluteClass.prototype[methodName].apply(new this.BabeluteClass(), arguments);
-	};
-}
-
 
 /**
  * getLexicon registred lexicon by name
@@ -312,22 +255,6 @@ function registerLexicon(lexicon, name = null) {
 	lexicons[name || lexicon.name] = lexicon;
 }
 
-
-/**
- * Provide Babelute Subclass "initializer" object (the one with all the flattened shortcut api for starting sentences easily)
- * @param  {string} lexiconName The lexiconName where catch the Babelute Class from where getLexicon or create the initializer object.
- * @param  {boolean} asFirstLevel true if should return a first-level instance. false to return an atomic instance.
- * @return {Object}   An initializer object with shortcuted API from lexicon's Atomic prototype
- * @throws {Error} If lexicon not found with lexiconName
- */
-function initializer(lexiconName, asFirstLevel) {
-	assert(typeof lexiconName === 'string', 'Babelute.initializer(...) accept only a string (a Lexicon id) as argument');
-	if (!asFirstLevel)
-		return getLexicon(lexiconName).Atomic.initializer;
-	return getLexicon(lexiconName).FirstLevel.initializer;
-}
-
-
 /*
  * _lexicon handeling
  */
@@ -335,7 +262,6 @@ function initializer(lexiconName, asFirstLevel) {
 // implementation of already declared method in Babelute's proto
 Babelute.prototype._lexicon = function(lexiconName) {
 	assert(typeof lexiconName === 'string', '._lexicon(...) accept only a string (a Lexicon id) as argument');
-
 	return new(getLexicon(lexiconName).Atomic)(this._lexems);
 };
 
@@ -367,7 +293,7 @@ function use(self, babelute, args, firstLevel) {
 			lexiconName,
 			methodName
 		} = babelute.split(':');
-		getLexicon(lexiconName)[firstLevel ? 'useFirstLevel' : 'useAtomic'](self, methodName, args);
+		getLexicon(lexiconName).use(self, methodName, args, firstLevel);
 	} else if (babelute.__babelute__)
 		self._lexems = self._lexems.concat(babelute._lexems);
 	return self;
@@ -407,14 +333,16 @@ function init(lexiconName, asFirstLevel) {
 }
 
 /**
- * develop a FirstLevel babelute through SecondLevel API. It means that each lexem will be translate
+ * develop a FirstLevel compounds-words-lexem through SecondLevel API. It returns the FirstLevel sentence corresponding to lexem's semantic developement.
  * @param  {Lexem} lexem the lexem to develop
- * @return {[type]}       [description]
+ * @param {?Lexicon} lexicon the optional lexicon to use
+ * @return {FirstLevel} the developed sentence
  * @throws {Error} If lexicon not found with lexem.lexicon
  * @throws {Error} If method not found in lexicon
  */
 function developOneLevel(lexem, lexicon = null) {
 	assert(lexem && lexem.__babelutelexem__, 'lexicon.developOneLevel(...) need a lexem intance as first argument');
+	assert(lexicon === null || lexicon instanceof Lexicon, 'lexicon.developOneLevel(...) second argument should be null or an instance of Lexicon');
 
 	lexicon = lexicon || getLexicon(lexem.lexicon);
 
@@ -423,13 +351,47 @@ function developOneLevel(lexem, lexicon = null) {
 	return lexicon.secondLevel[lexem.name].apply(new lexicon.FirstLevel(), lexem.args);
 }
 
+/**
+ * develop a FirstLevel lexem through Atomic API. Return the atomic representation of the lexem (in its own language).
+ * @param  {Lexem} lexem the lexem to develop
+ * @param {?Lexicon} lexicon the optional lexicon to use
+ * @return {Babelute} the developed sentence
+ * @throws {Error} If lexicon not found with lexem.lexicon
+ * @throws {Error} If method not found in lexicon
+ */
+function developToAtoms(lexem, lexicon = null) {
+	assert(lexem && lexem.__babelutelexem__, 'lexicon.developToAtoms(...) need a lexem intance as first argument');
+	assert(lexicon === null || lexicon instanceof Lexicon, 'lexicon.developToAtoms(...) second argument should be null or an instance of Lexicon');
+
+	lexicon = lexicon || getLexicon(lexem.lexicon);
+
+	assert(lexicon.Atomic.instance[lexem.name], 'lexicon.developToAtoms(...) : lexem\'s name not found in its own referenced lexicon');
+
+	return lexicon.Atomic.prototype[lexem.name].apply(new lexicon.Atomic(), lexem.args);
+}
+
+/**
+ * Provide Babelute Subclass "initializer" object (the one with all the flattened shortcut api for starting sentences easily)
+ * @param  {string} lexiconName The lexiconName where catch the Babelute Class from where getLexicon or create the initializer object.
+ * @param  {boolean} asFirstLevel true if should return a first-level instance. false to return an atomic instance.
+ * @return {Object}   An initializer object with shortcuted API from lexicon's Atomic prototype
+ * @throws {Error} If lexicon not found with lexiconName
+ */
+function initializer(lexiconName, asFirstLevel) {
+	assert(typeof lexiconName === 'string', 'Babelute.initializer(...) accept only a string (a Lexicon id) as argument');
+	if (!asFirstLevel)
+		return getLexicon(lexiconName).Atomic.initializer;
+	return getLexicon(lexiconName).FirstLevel.initializer;
+}
+
 export {
 	Lexicon,
 	createLexicon,
-	init,
 	getLexicon,
 	registerLexicon,
+	init,
 	initializer,
-	developOneLevel
+	developOneLevel,
+	developToAtoms
 };
 
