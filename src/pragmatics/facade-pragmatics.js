@@ -8,14 +8,13 @@ import assert from 'assert'; // removed in production
 import {
 	Babelute
 } from '../babelute.js';
-import Scopes from './pragmatics-scopes';
 import { Pragmatics } from './pragmatics-core.js';
 
 /**
  * FacadePragmatics : a facade oriented Pragmatics subclass. You should never instanciate a FacadePragmatics directly with new. use {@link createFacadePragmatics}.
  * @example
  * // Remarque : any lexem's method will be of the following format : 
- * function(subject, args, ?scopes){
+ * function(subject, args, ?percolator){
  * 	// return nothing
  * }
  */
@@ -33,14 +32,15 @@ export class FacadePragmatics extends Pragmatics {
 	 * "each" facade implementation
 	 * @param  {Object} subject the handled subject
 	 * @param  {Array|arguments} args  the lexem's args : [ collection:Array, itemHandler:Function ]
-	 * @param  {Scopes} scopes  the sentence's scopes instance
+	 * @param  {?Object} percolator  the sentence's percolator instance
 	 * @return {void}         nothing
 	 */
-	each(subject, args /* collection, itemHandler */ , scopes) {
+	each(subject, args /* collection, itemHandler */ , percolator) {
 
 		assert(typeof subject === 'object', '.each facade pragma need an object as subject (first argument)');
 		assert(Array.isArray(args[0]) || args[0].length, '.each facade pragma need an array (or iterable with bracket access) as first args object (first argument passed to lexem)');
 		assert(typeof args[1] === 'function', '.each facade pragma need a function as second args object (second argument passed to lexem)');
+		
 		const collec = args[0],
 			itemHandler = args[1];
 
@@ -49,7 +49,7 @@ export class FacadePragmatics extends Pragmatics {
 				item = collec[i];
 				templ = itemHandler(item, i);
 				if (templ)
-					this.$output(subject, templ, scopes);
+					this.$output(subject, templ, percolator);
 			}
 	}
 
@@ -57,19 +57,19 @@ export class FacadePragmatics extends Pragmatics {
 	 * "if" facade implementation 
 	 * @param  {Object} subject the handled subject
 	 * @param  {Array|arguments} args  the lexem's args : [ conditionIsTrue:Babelute, conditionIsFalse:Babelute ]
-	 * @param  {Scopes} scopes  the sentence's scopes instance
+	 * @param  {?Object} percolator  the sentence's percolator instance
 	 * @return {void}         nothing
 	 */
-	if (subject, args /* trueBabelute, falseBabelute */ , scopes) {
+	if (subject, args /* trueBabelute, falseBabelute */ , percolator) {
 
 		assert(typeof subject === 'object', '.if facade pragma need an object as subject (first argument)');
 		assert(args[1] instanceof Babelute, '.if facade pragma need an babelute instance as second args object (second argument passed to lexem)');
 		assert(!args[2] || args[2] instanceof Babelute, '.if facade pragma third args object (third argument passed to lexem) (optional) should be a babelute instance');
 
 		if (args[0])
-			this.$output(subject, args[1], scopes);
+			this.$output(subject, args[1], percolator);
 		else if (args[2])
-			this.$output(subject, args[2], scopes);
+			this.$output(subject, args[2], percolator);
 	}
 
 	/**
@@ -77,19 +77,19 @@ export class FacadePragmatics extends Pragmatics {
 	 * @override
 	 * @param  {Object} subject  the subject handle through interpretation
 	 * @param  {Babelute} babelute the babelute "to interpret on" subject
-	 * @param  {Scope} scopes   the sentence scopes instance (optional)
+	 * @param  {Scope} percolator   the sentence percolator instance (optional)
 	 * @return {Object}        the subject
 	 */
-	$output(subject, babelute, scopes = null) {
+	$output(subject, babelute, percolator = null) {
 
 		assert(typeof subject === 'object', '.$output facade pragma need an object as subject (first argument)');
 		assert(babelute instanceof Babelute, '.$output facade pragma need an babelute instance as second argument');
-		assert(!scopes || typeof scopes === 'object', '.$output facade pragma need an (optional) scope instance as third argument');
+		assert(!percolator || typeof percolator === 'object', '.$output facade pragma need an (optional) scope instance as third argument');
 
 		for (let i = 0, lexem, len = babelute._lexems.length; i < len; ++i) {
 			lexem = babelute._lexems[i];
 			if (this._targets[lexem.lexicon] && this[lexem.name])
-				this[lexem.name](subject, lexem.args, scopes);
+				this[lexem.name](subject, lexem.args, percolator);
 		}
 		return subject;
 	}
@@ -109,10 +109,10 @@ export class FacadePragmatics extends Pragmatics {
  * const myPragmas = babelute.createFacadePragmatics({
  * 	'my-lexicon':true
  * }, {
- * 	foo(subject, args, scopes){
+ * 	foo(subject, args, percolator){
  * 		// do something
  * 	},
- * 	bar(subject, args, scopes){
+ * 	bar(subject, args, percolator){
  * 		// do something
  * 	}
  * });
@@ -123,10 +123,10 @@ export class FacadePragmatics extends Pragmatics {
  *
  */
 export function createFacadeInitializer(lexicon, pragmatics) {
-	const Facade = function(subject, scopes) {
+	const Facade = function(subject, percolator = null) {
 		lexicon.Atomic.call(this);
 		this._subject = subject;
-		this._scopes = scopes;
+		this._percolator = percolator;
 	};
 
 	Facade.prototype = Object.create(lexicon.Atomic.prototype);
@@ -134,11 +134,11 @@ export function createFacadeInitializer(lexicon, pragmatics) {
 	Facade.prototype._lexicon = null;
 	Facade.prototype._append = function(lexiconName, name, args) {
 		if ((!pragmatics._targets || pragmatics._targets[lexiconName]) && pragmatics[name])
-			pragmatics[name](this._subject, args, this._scopes);
+			pragmatics[name](this._subject, args, this._percolator);
 		return this;
 	};
-	return (subject, scopes = null) => {
-		return new Facade(subject, scopes || new Scopes());
+	return (subject, percolator = null) => {
+		return new Facade(subject, percolator);
 	};
 }
 
@@ -151,10 +151,10 @@ export function createFacadeInitializer(lexicon, pragmatics) {
  * const myPragmas = babelute.createFacadePragmatics({
  * 	'my-lexicon':true
  * }, {
- * 	foo(subject, args, scopes){
+ * 	foo(subject, args, percolator){
  * 		// do something
  * 	},
- * 	bar(subject, args, scopes){
+ * 	bar(subject, args, percolator){
  * 		// do something
  * 	}
  * });
