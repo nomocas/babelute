@@ -47,8 +47,6 @@ export class Lexem {
 }
 
 /**
- * Babelute subclass(es) : for holding DSL's API.
- * 
  * Babelute subclass(es) instances : for holding array of lexems (i.e. a sentence) written through the DSL's API.
  *
  * Will be the base class for all DSLs handlers.
