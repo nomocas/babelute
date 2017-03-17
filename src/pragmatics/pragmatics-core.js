@@ -57,7 +57,7 @@ export class Pragmatics {
 	 */
 	$output( /* ... */ ) {
 		// to be overridden
-		assert(false, 'pragmatics.$output should implemented in subclasses');
+		throw new Error('pragmatics.$output should be implemented in subclasses');
 	}
 }
 
