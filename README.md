@@ -7,17 +7,16 @@
 [![Travis branch](https://img.shields.io/travis/nomocas/babelute/master.svg)](https://travis-ci.org/nomocas/babelute)
 [![npm](https://img.shields.io/npm/v/babelute.svg)]()
 [![npm-downloads](https://img.shields.io/npm/dm/babelute.svg)]()
-[![licence](https://img.shields.io/npm/l/babelute.svg)]()
+[![licence](https://img.shields.io/npm/l/babelute.svg)](https://spdx.org/licenses/MIT)
 [![dependecies](https://img.shields.io/david/nomocas/babelute.svg)]()
 [![dev-dependencies](https://img.shields.io/david/dev/nomocas/babelute.svg)]()
 
-Really small, simple, incredibly powerful and super fast __Fact Based Internal DSLs__ tools.
+Really small, simple, incredibly powerful and super fast __Descriptive Internal DSLs__ tools.
 
 
 > "_A Babelut(t)e is a sort of long toffee flavoured with honey or vergeoise (demerara sugar) from [...] Flanders, Belgium_".
 
 > __Etymology__ : "_[A french word that] is likely to come from the Flemish "babbelen", speaking a lot, and "uit", finished because when you eat the toffee, you cannot speak anymore (either because you are enjoying it or because you cannot open the mouth).[...]_" - src : [wikipedia](https://en.wikipedia.org/wiki/Babelutte)
-
 
 Babelute.js core library (this lib) provides helpers to :
 - define and manage Internal DSLs for __modeling__ any kind of problems
@@ -39,7 +38,7 @@ Babelute.js core library (this lib) provides helpers to :
 
 Low Level DSLs (Developement related domains) :
 - [babelute-aright](https://github.com/nomocas/babelute-aright) : Objects and types validation DSL (ultra-fast, ultra-modular)
-- [babelute-html](https://github.com/nomocas/babelute-html) : HTML5 DSL and its isomorphic render-engines. (modern, __world's fastest__, one-way-binding templating (React philosophy))
+- [babelute-html](https://github.com/nomocas/babelute-html) : HTML5 DSL and its isomorphic render-engines. (modern, __one of the world's fastest__, one-way-binding templating (React philosophy))
 - [babelute-lexicon-definition-language](https://github.com/nomocas/babelute-doc) : Babelute Lexic Definition DSL and its generators.
 
 High Level DSLs (Human related domains) :
