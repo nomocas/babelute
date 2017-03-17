@@ -9,8 +9,11 @@
 	"styles": ["../babelute-doc-css/src/style.css"],
 	"includeSource": true,
 	"manual": {
+		"badge": true,
 		"globalIndex": true,
 		"index": "./README.md",
-		"overview": ["./manual/overview.md"]
+		"overview": ["./manual/overview.md"],
+		"design": ["./manual/theory.md"],
+		"usage": ["./manual/usage.md"]
 	}
 }

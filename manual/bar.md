@@ -1,4 +1,0 @@
-# Bloupi Joe
-
-wtf ?
-

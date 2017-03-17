@@ -1,5 +1,6 @@
 # Overview
 
+Babelute split developemet in two phases :
 
-Babelute libraries :
-- babelute
+1. catch pure descriptive information
+2. do something with it in many differents contexts
