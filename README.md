@@ -37,12 +37,12 @@ Babelute.js core library (this lib) provides helpers to :
 (work in progress)
 
 Low Level DSLs (Developement related domains) :
-- [babelute-aright](https://github.com/nomocas/babelute-aright) : Objects and types validation DSL (ultra-fast, ultra-modular)
+- babelute-aright : Objects and types validation DSL (ultra-fast, ultra-modular) (realease in april 2017)
 - [babelute-html](https://github.com/nomocas/babelute-html) : HTML5 DSL and its isomorphic render-engines. (modern, __one of the world's fastest__, one-way-binding templating (React philosophy))
-- [babelute-lexicon-definition-language](https://github.com/nomocas/babelute-doc) : Babelute Lexic Definition DSL and its generators.
+- babelute-lexicon-definition-language : Babelute Lexic Definition DSL and its generators. (realease in april 2017)
 
 High Level DSLs (Human related domains) :
-- [babelute-cooking](https://github.com/nomocas/babelute-cooking) : High Level Cooking DSL demo and its bunch of transformations and DSLs targets.
+- babelute-cooking : High Level Cooking DSL demo and its bunch of transformations and DSLs targets. (realease in april 2017)
 
 
 ## Licence
