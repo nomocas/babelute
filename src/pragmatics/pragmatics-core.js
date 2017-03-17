@@ -11,7 +11,7 @@
 import assert from 'assert'; // removed in production
 
 /**
- * Base class to provide homogeneous Pragmatics format. You should never instanciate a Pragmatics directly with new. use {@link createPragmatics}.
+ * Base class to provide homogeneous Pragmatics interface. You should never instanciate a Pragmatics directly with new. use {@link createPragmatics}.
  */
 export class Pragmatics {
 
