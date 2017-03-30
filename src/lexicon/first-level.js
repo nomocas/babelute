@@ -40,8 +40,8 @@ export default class FirstLevel extends Babelute {
 	static getFirstLevelMethod(lexiconName, lexemName) {
 		assert(typeof lexiconName === 'string', 'FirstLevel.getFirstLevelMethod(...) need a string (the lexicon name) as first argument');
 		assert(typeof lexemName === 'string', 'FirstLevel.getFirstLevelMethod(...) need a string (the lexem name) as second argument');
-		return function () {
-			this._lexems.push(new Lexem(lexiconName, lexemName, arguments));
+		return function (...args) {
+			this._lexems.push(new Lexem(lexiconName, lexemName, args));
 			return this;
 		};
 	}
