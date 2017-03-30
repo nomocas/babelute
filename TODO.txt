@@ -3,40 +3,16 @@ Todo :
 
 check if _each and _if could be shortcuted to .if and .each in FirstLevel
 
-facade initializer
-	var h = Babelute.facadeInitializer('html', 'html:dom')
-	h('#body').span('bloupi').div('floupi')
-
-
 still to finalise objects and array translations theory
-
-i18n : check different ways to achieve it (external dico or internal _translation)
-	 		
-do simple example with async manager in env
-
-translation/output table
-
-
-
-create PromiseFacadeActions class
-with Promised Facade output style engine
-.output(subject, env);
-+ .facadeInitializer()
-
-
-add web reference on assertion
-
 
 
 //_____________ after
 
 CLI : 
-	babelute -l myhtml.js #myhtml:myComponent('hello') -$ html:string > ./my-file.html
-	babelute  myapp.js
+	babelute  mysentence.bbl  -$ html:string > ./my-file.html
+	babelute  myapp.js -$ web-build
 
-	babelute 
-
-		==> open interactive nodejs with myapp loaded and Babelute on root
+	babelute  file.bbl -t myTranslationLexicon.bbl -$ mypragmas
 
 work on babelute doc pilot : external query DSL ? api ?
 		.0 = args[0]
