@@ -293,11 +293,8 @@ FirstLevel.prototype._use = function(babelute /* could be a string in "lexiconNa
 
 function use(self, babelute, args, firstLevel) {
 	if (typeof babelute === 'string') {
-		const {
-			lexiconName,
-			methodName
-		} = babelute.split(':');
-		getLexicon(lexiconName).use(self, methodName, args, firstLevel);
+		const splitted = babelute.split(':');
+		getLexicon(splitted[0]).use(self, splitted[1], args, firstLevel);
 	} else if (babelute.__babelute__)
 		self._lexems = self._lexems.concat(babelute._lexems);
 	return self;
