@@ -2,9 +2,9 @@
   "name": "babelute",
   "version": "0.4.2",
   "description": "Internal Domain Specific (Multi)Modeling javascript framework",
-  "main": "dist/es5/index.js",
-  "module": "src/index.js",
-  "jsnext:main": "src/index.js",
+  "main": "dist/bundles/index.js",
+  "module": "dist/bundles/index.mjs",
+  "jsnext:main": "dist/bundles/index.mjs",
   "scripts": {
     "prebuild": "eslint src test",
     "build": "npm run es5-build && npm run bundles-build && uglifyjs dist/bundles/index.js -m -o dist/bundles/index.min.js",
