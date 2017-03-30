@@ -342,7 +342,7 @@ function init(lexiconName, asFirstLevel) {
  * @throws {Error} If method not found in lexicon
  */
 function developOneLevel(lexem, lexicon = null) {
-	assert(lexem && lexem.__babelutelexem__, 'lexicon.developOneLevel(...) need a lexem intance as first argument');
+	assert(lexem && lexem instanceof Lexem, 'lexicon.developOneLevel(...) need a lexem intance as first argument');
 	assert(lexicon === null || lexicon instanceof Lexicon, 'lexicon.developOneLevel(...) second argument should be null or an instance of Lexicon');
 
 	lexicon = lexicon || getLexicon(lexem.lexicon);
@@ -361,7 +361,7 @@ function developOneLevel(lexem, lexicon = null) {
  * @throws {Error} If method not found in lexicon
  */
 function developToAtoms(lexem, lexicon = null) {
-	assert(lexem && lexem.__babelutelexem__, 'lexicon.developToAtoms(...) need a lexem intance as first argument');
+	assert(lexem && lexem instanceof Lexem, 'lexicon.developToAtoms(...) need a lexem intance as first argument');
 	assert(lexicon === null || lexicon instanceof Lexicon, 'lexicon.developToAtoms(...) second argument should be null or an instance of Lexicon');
 
 	lexicon = lexicon || getLexicon(lexem.lexicon);
