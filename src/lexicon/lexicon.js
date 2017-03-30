@@ -393,6 +393,7 @@ export {
 	init,
 	initializer,
 	developOneLevel,
-	developToAtoms
+	developToAtoms,
+	lexicons
 };
 
