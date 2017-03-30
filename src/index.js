@@ -4,24 +4,27 @@
  * @copyright 2016 Gilles Coomans
  */
 
-// core classes and functions
 import {
 	Babelute,
 	Lexem,
 	fromJSON
 } from './babelute.js';
+
 import {
+	Lexicon,
 	createLexicon,
 	init,
 	getLexicon,
 	registerLexicon,
 	initializer,
 	developOneLevel,
-	developToAtoms
+	developToAtoms,
+	lexicons
 } from './lexicon/lexicon.js';
+
+import FirstLevel from './lexicon/first-level.js';
 import { Pragmatics, createPragmatics } from './pragmatics/pragmatics-core.js';
 import { FacadePragmatics, createFacadeInitializer, createFacadePragmatics } from './pragmatics/facade-pragmatics.js';
-// import Scopes from './pragmatics/pragmatics-scopes.js';
 
 export default {
 	createLexicon,
@@ -37,8 +40,10 @@ export default {
 	fromJSON,
 	Babelute,
 	Lexem,
+	FirstLevel,
 	Pragmatics,
-	FacadePragmatics
-	// Scopes
+	FacadePragmatics,
+	Lexicon,
+	lexicons
 };
 
