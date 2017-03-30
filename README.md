@@ -5,6 +5,8 @@
 ### Internal Domain Specific (Multi)Modeling js framework
 
 [![Travis branch](https://img.shields.io/travis/nomocas/babelute/master.svg)](https://travis-ci.org/nomocas/babelute)
+[![bitHound Overall Score](https://www.bithound.io/github/nomocas/babelute/badges/score.svg)](https://www.bithound.io/github/nomocas/babelute)
+[![Coverage Status](https://coveralls.io/repos/github/nomocas/babelute/badge.svg?branch=master)](https://coveralls.io/github/nomocas/babelute?branch=master)
 [![npm](https://img.shields.io/npm/v/babelute.svg)]()
 [![npm-downloads](https://img.shields.io/npm/dm/babelute.svg)]()
 [![licence](https://img.shields.io/npm/l/babelute.svg)](https://spdx.org/licenses/MIT)
