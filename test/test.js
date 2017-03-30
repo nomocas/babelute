@@ -53,5 +53,149 @@ describe('Babelute base class and Lexem', () => {
 				.equals('[{"lexicon":"testlexicon","name":"mylexem","args":[true,false]},{"lexicon":"testlexicon","name":"mylexem2","args":[1,2]}]');
 		});
 	});
+
+	describe('Babelute.extends', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			}
+		});
+
+		const b = new MyBabelute().foo('bar');
+
+		it('should', () => {
+			expect(b._lexems)
+				.to.deep.equals([{ "lexicon": "test", "name": "foo", "args": ["bar"] }]);
+		});
+	});
+
+
+	describe('_use', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			}
+		});
+
+		const b = new MyBabelute().foo('bar').zoo(true);
+
+		const c = new MyBabelute()._use(b);
+
+		it('should', () => {
+			expect(c._lexems)
+				.to.deep.equals([{
+					lexicon: "test",
+					name: "foo",
+					args: ["bar"]
+				}, {
+					lexicon: "test",
+					name: "zoo",
+					args: [true]
+				}]);
+		});
+	});
+	describe('_if', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			}
+		});
+
+		const b = new MyBabelute()._if(true, new MyBabelute().foo('bar').zoo(true));
+
+		it('should', () => {
+			expect(b._lexems)
+				.to.deep.equals([{
+					lexicon: "test",
+					name: "foo",
+					args: ["bar"]
+				}, {
+					lexicon: "test",
+					name: "zoo",
+					args: [true]
+				}]);
+		});
+	});
+	describe('_if with else', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			}
+		});
+
+		const b = new MyBabelute()._if(false, new MyBabelute().foo('bar'), new MyBabelute().zoo(true));
+
+		it('should', () => {
+			expect(b._lexems)
+				.to.deep.equals([{
+					lexicon: "test",
+					name: "zoo",
+					args: [true]
+				}]);
+		});
+	});
+	describe('_each', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			}
+		});
+
+		const b = new MyBabelute()._each([1, 2, 3], (item) => new MyBabelute().foo(item));
+
+		it('should', () => {
+			expect(b._lexems)
+				.to.deep.equals([{
+					lexicon: "test",
+					name: "foo",
+					args: [1]
+				}, {
+					lexicon: "test",
+					name: "foo",
+					args: [2]
+				}, {
+					lexicon: "test",
+					name: "foo",
+					args: [3]
+				}]);
+		});
+	});
+
+	describe('fromJSON', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			}
+		});
+
+		const b = new MyBabelute().foo('ho').zoo(true),
+			c = babelute.fromJSON(JSON.stringify(b));
+
+		it('should', () => {
+			expect(c._lexems)
+				.to.deep.equals(b._lexems);
+		});
+	});
 });
 
