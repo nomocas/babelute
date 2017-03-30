@@ -190,6 +190,10 @@ class Lexicon {
 	initializer(firstLevel){
 		return firstLevel ? this.FirstLevel.initializer : this.Atomic.initializer;
 	}
+
+	createDialect(name){
+		return new Lexicon(name, this);
+	}
 }
 
 /**
