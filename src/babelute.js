@@ -169,7 +169,6 @@ export class Babelute {
 	 * @throws {Error} If lexicon not found with lexiconName
 	 */
 	_lexicon(lexiconName) { // eslint-disable-line no-unused-vars
-		assert(typeof lexiconName === 'string', '._lexicon need a string as first argument');
 		// will be implemented in lexicon
 	}
 
