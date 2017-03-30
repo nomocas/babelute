@@ -3,4 +3,6 @@ coverage
 node_modules
 doc
 untitled.sublime-project
+.coveralls.yml
+
 
