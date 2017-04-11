@@ -44,7 +44,7 @@ export class FacadePragmatics extends Pragmatics {
 		const collec = args[0],
 			itemHandler = args[1];
 
-		if (collec.length) // no supputation on collection kind : use "for"
+		if (collec && collec.length) // no supputation on collection kind : use "for"
 			for (let i = 0, len = collec.length, item, templ; i < len; ++i) {
 				item = collec[i];
 				templ = itemHandler(item, i);
