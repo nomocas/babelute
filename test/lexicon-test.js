@@ -285,6 +285,33 @@ describe('Babelute Lexicon tests', () => {
 				]);
 		});
 	});
+	describe('lexicon _use registred lexicon in FirstLevel and through compounds', () => {
+		const lexicon = babelute.createLexicon('test');
+
+		lexicon.addCompounds((h) => {
+			return {
+				foo(){
+					return h._use('test2:bar', 1);
+				}
+			};
+		});
+
+		const dialect = babelute.createLexicon('test2');
+		dialect.addAtoms(['bar']);
+
+		babelute.registerLexicon(dialect);
+
+		const b = lexicon.initializer(true).foo(1)
+		const c = babelute.developToAtoms(b._lexems[0], lexicon);
+
+		it('should insert lexem from another lexicon in current sentence', () => {
+			expect(c).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([
+					{ lexicon: 'test2', name: 'bar', args: [1] }
+				]);
+		});
+	});
 	describe('initializer._empty', () => {
 
 		const lexicon = babelute.createLexicon('test');
