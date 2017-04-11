@@ -108,6 +108,17 @@ For Coordination Problem : [Hessellund, Anders (2009). "Domain-Specific Multimod
 
 ### DSL Universality and Stability
 
+Domain Languages are forged though years of community's works and are the best thing we have to tackle Domain's problems and usages.
+
+It's their essence. 
+
+We'll never, never, have something better than avaiable DSLs (at any moment) for talking about Domain's problems. Maybe tomorrow we'll have better DSLs... Sure... Domains will evolve.
+But the best knowledge and concepts __useful__ for any domain at any moment are always encapsulated in and avaiable through DSLs.
+
+And as Technics evolves quickly and Domains evolves slowly... The more stable solutions that we could provide for any problem are based on related DSL(s) and not on technics.
+
+In other words, coding with DSL as First Class Citizen make code the more useful, reusable and stable than ever. And we'll never have better...
+
 ### DSLs are for everybody
 
 ### Internal vs External DSL
@@ -126,23 +137,23 @@ For Coordination Problem : [Hessellund, Anders (2009). "Domain-Specific Multimod
 
 > [Why Fact-Based Modeling?](http://dataconstellation.com/ActiveFacts/why.html)
 
-
 I recommend to (quick) read : https://fr.slideshare.net/marcoewobben/fact-oriented-modeling-in-10-steps
 
 
-As Babelute first aim is to catch pure information in DSL's sentences, without knowing all sort of things that will be applied/extracted from those sentences, Babelute is mainly suited to handle Descriptive DSL, and Fact Oriented DSL is a good ideal to have in mind when developing such languages.
+As Babelute first aim is to catch pure information in DSL's sentences, without knowing all sort of things that will be applied/extracted from those sentences, Babelute is mainly suited to handle Descriptive DSL, and Fact Oriented DSL is a good ideal to have in mind when developing such languages. Even if descriptive doesn't mean necessary Fact Based, is often a point of view :
 
 But there is other possible orientations : Behavioural or Structural.
 
 And Babelute is open... You could of course imagine plenty of DSL of any types - and even a mix of them in the same language.
 
-As long as your DSL(s) is(are) interpretable/translatable easily : you're free.
+As long as your DSL(s) is(are) interpretable/translatable easily (for us as for computers ;) : you're free.
 
 Whatever you do, keep in mind that pure behavioural DSL are often closy linked to technologies and so to the output's context.
 And so should be better used in pragmatics implementations, which means out of babelute's scope.
 
 
 If you need to implement pure Behavioural DSL, take a look to [DoThat](https://github.com/nomocas/dothat) - as example or for usage - wich is a Promise Based Facade DSL tool.
+
 
 
 
