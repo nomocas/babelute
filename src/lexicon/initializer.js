@@ -69,6 +69,11 @@ function addToInitializer(Initializer, methodName) {
 	};
 }
 
+// add base Babelute's api
+['_use', '_each', '_if', '_append', '_lexicon']
+.forEach((methodName) => {
+	addToInitializer(Initializer, methodName);
+});
 
 export {
 	Initializer,
