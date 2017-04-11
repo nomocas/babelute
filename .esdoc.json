@@ -13,7 +13,7 @@
 		"globalIndex": true,
 		"index": "./README.md",
 		"overview": ["./manual/overview.md"],
-		"design": ["./manual/theory.md"],
-		"usage": ["./manual/usage.md"]
+		"design": ["./manual/designing-dsl.md", "./manual/theory.md"],
+		"usage": []
 	}
 }
