@@ -18,7 +18,7 @@ describe('Babelute base class and Lexem', () => {
 	describe('simple lexem', () => {
 		const lexem = new Lexem('foo', 'bar', ['zoo']);
 
-		it('should', () => {
+		it('should be in object form', () => {
 			expect(JSON.stringify(lexem))
 				.equals('{"lexicon":"foo","name":"bar","args":["zoo"]}');
 		});
@@ -31,7 +31,7 @@ describe('Babelute base class and Lexem', () => {
 		b._append('testlexicon', 'mylexem', [true, false]);
 		const endLexem = JSON.stringify(b._lexems);
 
-		it('should', () => {
+		it('should append once', () => {
 			expect(startLexem)
 				.equals('[]');
 			expect(endLexem)
@@ -46,7 +46,7 @@ describe('Babelute base class and Lexem', () => {
 			._append('testlexicon', 'mylexem2', [1, 2]);
 		const endLexem = JSON.stringify(b._lexems);
 
-		it('should', () => {
+		it('should append twice', () => {
 			expect(startLexem)
 				.equals('[]');
 			expect(endLexem)
@@ -64,7 +64,7 @@ describe('Babelute base class and Lexem', () => {
 
 		const b = new MyBabelute().foo('bar');
 
-		it('should', () => {
+		it('should contains needed lexems', () => {
 			expect(b._lexems)
 				.to.deep.equals([{ "lexicon": "test", "name": "foo", "args": ["bar"] }]);
 		});
@@ -86,7 +86,36 @@ describe('Babelute base class and Lexem', () => {
 
 		const c = new MyBabelute()._use(b);
 
-		it('should', () => {
+		it('should insert needed lexems', () => {
+			expect(c._lexems)
+				.to.deep.equals([{
+					lexicon: "test",
+					name: "foo",
+					args: ["bar"]
+				}, {
+					lexicon: "test",
+					name: "zoo",
+					args: [true]
+				}]);
+		});
+	});
+
+	describe('_use on simple Babelute', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			}
+		});
+
+		const b = new MyBabelute().foo('bar').zoo(true);
+
+		const c = new babelute.Babelute()._use(b);
+
+		it('should prodive needed lexems', () => {
 			expect(c._lexems)
 				.to.deep.equals([{
 					lexicon: "test",
@@ -112,7 +141,7 @@ describe('Babelute base class and Lexem', () => {
 
 		const b = new MyBabelute()._if(true, new MyBabelute().foo('bar').zoo(true));
 
-		it('should', () => {
+		it('should insert sentence', () => {
 			expect(b._lexems)
 				.to.deep.equals([{
 					lexicon: "test",
@@ -138,7 +167,7 @@ describe('Babelute base class and Lexem', () => {
 
 		const b = new MyBabelute()._if(false, new MyBabelute().foo('bar'), new MyBabelute().zoo(true));
 
-		it('should', () => {
+		it('should insert "else" sentence', () => {
 			expect(b._lexems)
 				.to.deep.equals([{
 					lexicon: "test",
@@ -160,7 +189,7 @@ describe('Babelute base class and Lexem', () => {
 
 		const b = new MyBabelute()._each([1, 2, 3], (item) => new MyBabelute().foo(item));
 
-		it('should', () => {
+		it('should insert multiple sentence', () => {
 			expect(b._lexems)
 				.to.deep.equals([{
 					lexicon: "test",
@@ -192,7 +221,7 @@ describe('Babelute base class and Lexem', () => {
 		const b = new MyBabelute().foo('ho').zoo(true),
 			c = babelute.fromJSON(JSON.stringify(b));
 
-		it('should', () => {
+		it('should parse correctly', () => {
 			expect(c._lexems)
 				.to.deep.equals(b._lexems);
 		});
