@@ -242,7 +242,21 @@ describe('Babelute Lexicon tests', () => {
 				]);
 		});
 	});
+	describe('simple Babelute _use', () => {
+		const lexicon = babelute.createLexicon('test');
+		lexicon.addAtoms(['foo']);
+		babelute.registerLexicon(lexicon);
 
+		const b = new babelute.Babelute()._use('test:foo', 1);
+
+		it('should insert sub-sentence in current sentence', () => {
+			expect(b).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([
+					{ lexicon: 'test', name: 'foo', args: [1] },
+				]);
+		});
+	});
 	describe('lexicon _use registred lexicon', () => {
 		const lexicon = babelute.createLexicon('test');
 
