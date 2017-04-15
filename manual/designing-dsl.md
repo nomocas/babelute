@@ -20,6 +20,8 @@ Here we want to be able to write sentences that could describe any pieces of HTM
 
 A sentence is a chain of functions calls. Each sentence's word (called lexem) correspond to one of those calls. Call's arguments are the lexem's arguments.
 
+One sentence = List of calls.
+
 One Lexem = One call.
 
 ```javascript
@@ -858,7 +860,7 @@ Most of classical DOM-Diffing algorithm make assomption that structure could cha
 
 In our case, we could do something smarter... by simply adding two atoms (`.if(condition, babelute, elseBabelute)` and `.each(collection, (item) => doSomething(item))`) in htmlLexicon and by providing their implementations (also for DOM and HTMLString Engines).
 
-The idea is simple : if structure only change through those two words ('if' and 'each') : tags and other rendered stuffs will always be compared to "themselves" (constructed on previous render). __The sentences produced by render will always have same structure (aka same lexems), and only primitives arguments will change__.
+The idea is simple : if structure only change through those two words ('if' and 'each') : tags and other rendered stuffs will always be compared to "themselves" (constructed on previous render). __The sentences produced by render will always have same structure (aka same lexems), and only primitives values (aka arguments) will change__.
 
 
 So our diffing algorithm doesn't need to manage structure differences (in other place than .if and .each) and is the simplest form avaiable.
@@ -882,7 +884,7 @@ const myStructure = h.section(
 	.if(condition, h.footer(...))
 );
 ```
-==> myStructure will be the same (same lexems) whatever condition and collection are. Only primitives values will maybe change.
+==> myStructure will be the same (same lexems) whatever condition and collection are. Only primitives values (aka arguments) will maybe change.
 
 It makes diffing really simpler...
 
@@ -916,7 +918,7 @@ _Under construction_ ... ;)
  See [babelute-html-dom-diffing-pragmatics](https://github.com/nomocas/babelute-html-dom-diffing-pragmatics) for real world example...
 
 
-## 5.1 First Level Concept
+### 5.1 First Level Concept
 
 ### 5.2 Second Level Concept
 
