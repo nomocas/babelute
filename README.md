@@ -24,9 +24,9 @@ Babelute.js core library (this lib) provides helpers to :
 - define and manage Internal DSLs for __modeling__ any kind of problems
 - with a simple (meta)grammar - based on Method Chaining - for writing __structured unambiguous "sentences"__ (called __babelutes__)
 - and to provide ways :
-	- to manage __dictionaries of related lexems__ that form DSL semantic fields (called __lexicons__)
-	- to translate DSL sentences to other DSL sentences (through __dedicated bridge-DSLs__ with its/their own lexicon(s))
-	- to interpret sentences in many context with specific __fine grained dedicated semantics__ (called __pragmatics__)
+	- to manage __dictionaries of related lexems__ (called __lexicons__) that form DSL semantic fields and their __Internal Denotation__
+	- to translate DSL sentences to other DSL sentences (by example through __dedicated bridge-DSLs__ with their own lexicon(s))
+	- to interpret sentences in many context with specific __fine grained dedicated implementations__ (called __pragmatics__)
 
 
 ## Core Libraries
@@ -36,15 +36,25 @@ Babelute.js core library (this lib) provides helpers to :
 
 ## Understanding by examples
 
+First of all, please read [Designing a DSL](https://github.com/nomocas/babelute/blob/master/manual/designing-dsl.md).
+
+Then take a look to existing DSLs.
+
 (work in progress)
 
 Low Level DSLs (Developement related domains) :
 - babelute-aright : Objects and types validation DSL (ultra-fast, ultra-modular) (realease in april 2017)
-- [babelute-html](https://github.com/nomocas/babelute-html) : HTML5 DSL and its isomorphic render-engines. (modern, __one of the world's fastest__, one-way-binding templating (React philosophy))
 - babelute-lexicon-definition-language : Babelute Lexic Definition DSL and its generators. (realease in april 2017)
+- [babelute-html-lexicon](https://github.com/nomocas/babelute-html-lexicon) : HTML5 DSL and its render engines. (modern, __one of the world's fastest__, one-way-binding templating (React philosophy))
 
 High Level DSLs (Human related domains) :
 - babelute-cooking : High Level Cooking DSL demo and its bunch of transformations and DSLs targets. (realease in april 2017)
+
+## Theory background and development
+
+(work in progress)
+
+Theorical considerations are exposed [here](https://github.com/nomocas/babelute/blob/master/manual/theory.md).
 
 
 ## Licence

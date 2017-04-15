@@ -33,7 +33,7 @@ modeling languages that target a specific domain. It is the responsibility of
 domain experts to capture domain knowledge into a DSL. Application developers
 can then use the developed DSL to develop and configure the required system.
 
-> [Software Engineering Competence Center : MDD tuto :](http://www.secc.org.eg/RECOCAPE/Documents/SECC_Tutorials_MDD_Getting-started-with-MDD-and-DSM.pdf)
+> [Software Engineering Competence Center : MDD tuto](http://www.secc.org.eg/RECOCAPE/Documents/SECC_Tutorials_MDD_Getting-started-with-MDD-and-DSM.pdf)
 
 ### Domain-Specific Modeling
 
@@ -53,38 +53,36 @@ productivity, this means you effectively get five lines of code for the price of
 
 > [...]
 
-> Throughout the history of software development developers have always sought to improve
-productivity by improving abstraction, automation and visualization. Domain-Specific
-Modeling combines these methods and copies the fundamental idea that has made
-compilers so successful: When you generate code, the process has to be complete.
+> Currently, the Object Management Group (OMG) is intensively promoting its ModelDriven
+Architecture (MDA), a model-driven development method that comes down to
+transforming UML models on a higher level of abstraction into UML models on a lower
+level of abstraction.
 
-> [Domain Modeling is the Third Revolution](http://www.developerdotstar.com/mag/articles/PDF/DevDotStar_Kelly_DomainModeling.pdf)
+> Normally there are two levels, platform-independent models (PIMs) and platformspecific
+models (PSMs). These PIMs and PSMs are plain UML and thus offer no raise in
+abstraction. [...]
+
+> In MDA, at each stage you edit the models in more detail, reverse and round-trip
+engineer this and in the end you generate substantial code from the final model. The aim
+the OMG has with MDA is to achieve the ability to use the same PIM on different software
+platforms and to standardize all translations and model formats so that models become
+portable between tools from different vendors. Achieving this is very ambitious but also
+still many years away. This focus however clearly defines the difference between DSM and
+MDA, and answers the question of when each should be applied.
 
 
+> [Improving Developer Productivity
+With Domain-Specific Modeling Languages - Steven Kelly, PhD - 2005](http://www.developerdotstar.com/mag/articles/PDF/DevDotStar_Kelly_DomainModeling.pdf)
 
+More :
 
+> Domain-Specific Modeling raises the level of abstraction beyond programming by __specifying the solution directly using domain concepts__. The final products are generated from these high-level specifications. This automation is possible because both the language and generators need fit the requirements of only one company and domain. Your expert defines them, your developers use them.
 
-> Domain-Specific Modeling raises the level of abstraction beyond programming by specifying the solution directly using domain concepts. The final products are generated from these high-level specifications. This automation is possible because both the language and generators need fit the requirements of only one company and domain. Your expert defines them, your developers use them.
+> Industrial experiences of DSM __consistently show it to be 5-10 times faster than current practices, including current UML-based implementations of MDA__. As Booch et al. say* "the full value of MDA is only achieved when the modeling concepts map directly to domain concepts rather than computer technology concepts." For example, DSM for cell phone software would have concepts like "Soft key button", "SMS" and "Ring tone", and generators to create calls to corresponding code components. DSM fulfils the promise of model-driven development.
 
-> Industrial experiences of DSM consistently show it to be 5-10 times faster than current practices, including current UML-based implementations of MDA. As Booch et al. say* "the full value of MDA is only achieved when the modeling concepts map directly to domain concepts rather than computer technology concepts." For example, DSM for cell phone software would have concepts like "Soft key button", "SMS" and "Ring tone", and generators to create calls to corresponding code components. DSM fulfils the promise of model-driven development.
-
-> Since your expert specifies the code generators - for your domain and your components - the resulting code is better than most developers write by hand. No "one size fits all" generated code, no stubs, no "round trip" problems. Instead, full, top quality code. DSM does to code what compilers did to assembly language.
+> Since your expert specifies the code generators - for your domain and your components - the resulting code is better than most developers write by hand. No "one size fits all" generated code, no stubs, no "round trip" problems. Instead, full, top quality code. __DSM does to code what compilers did to assembly language__.
 
 > [Domain-Specific Modeling for Full Code Generation - Juha-Pekka Tolvanen - Fall 2005](http://www.methodsandtools.com/archive/archive.php?id=26)
-
-
-
-Binary Machine Code -> Assembler -> General Purpose Language -> DSLs
-
-General Purpose Languages are DSLs.
-
-Precisly, all GPL are Dialects of the DSL for handling variables and objects. Nothing more. As dialects, they all give a particular vision (and particular associated concepts) of the same problem : managing pure atomic Code related objects : string, number, bool, object, arrays, var, const, if, loops, ...
-
-No one, a part programmer, should take a look at it. That's pure esoteric experts driven language.
-
-
-
-
 
 
 Domain Specific Modeling further reading
@@ -104,11 +102,26 @@ Domain Specific Modeling further reading
 
 For Coordination Problem : [Hessellund, Anders (2009). "Domain-Specific Multimodeling". IT University of Copenhagen, Denmark. 2009.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.453.9934&rep=rep1&type=pdf)
 
+
+### Third Programming Revolution
+
+> Binary Machine Code __--(1)-->__  Assembler __--(2)-->__ General Purpose Languages (GPL) __--(3)-->__ DS(M)M
+
+Paradoxally, __General Purpose Languages are DSLs.__
+
+Precisely, all GPL are Dialects of the generic DSL for handling variables and objects. Nothing more. As dialects, they all give a particular vision (and particular associated concepts) of the same problem : managing pure atomic Code related objects : string, number, bool, object, arrays, var, const, if, loops, ...
+
+No one, a part programmer, should take a look at it. That's pure esoteric experts driven language.
+
+GPLs are called GPL because we pretend to be able to Model everything with those primitives. Not because they effectively and efficiently cover every Domains. And so to high level business related consideratins, we try to answer with low level code related stuffs.
+
+DSMM, by filling the gap between Fuzzy Imprecise Customer Thinking and Pure Technical Considerations, with __Multi-Level of abstractions__ that fits naturally Business Domains Languages inclusions and structurations - __because it mimics how we think__ - provides  simply the final form of programmation.
+
 ## DSLs
 
 ### DSL Universality and Stability
 
-Domain Languages are forged though years of community's works and are the best thing we have to tackle Domain's problems and usages.
+Domain Languages are forged though years of communities works and are the best thing we have to tackle any Domain's problems and usages.
 
 It's their essence. 
 
@@ -117,11 +130,22 @@ But the best knowledge and concepts __useful__ for any domain at any moment are 
 
 And as Technics evolves quickly and Domains evolves slowly... The more stable solutions that we could provide for any problem are based on related DSL(s) and not on technics.
 
-In other words, coding with DSL as First Class Citizen make code the more useful, reusable and stable than ever. And we'll never have better...
+In other words, coding with __DSL as First Class Citizen__ make code the more useful, reusable and stable than ever. And we'll never have better...
 
 ### DSLs are for everybody
 
+More, as we are all experts of our Domain, the majority of DSLs are not for/from developers. They belongs to Domains themselves. And are of course what we all use when we talking about our work/domains.
+
+And DSLs should only be defined by experts. So every domain experts should be able, in a close future, to define or use DSLs and to publish them to related communities. If we take a look on frameworks history, it's clear that it's exactly what we trying to do since the beginning : we try to isolate concepts and related words, and we propose them to our small community...
+
+One day, soon I hope, everybody should be able to do that.
+
+
 ### Internal vs External DSL
+
+External DSL are powerful ways of expressing precise things about a Domain. But they are closed on themselves. No general way of mixing them with ad-hoc code related considerations. Which is often useful (c.f. leaky abstraction problem : when it leak : we need to mix...)
+
+And so Internal DSLs are a better solution : We could always mix anything though Internal DSL precisely because they are Internal.
 
 - Internal DSL : soft, extendable, with open environment, readable but verbose (in regard to specific external DSL with short syntax)
 - External DSL : hard, poorly extendable, with closed environment and could be much less readable and not always shorter (e.g. RegExp vs HTML vs SQL) 
