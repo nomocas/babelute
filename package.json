@@ -1,13 +1,13 @@
 {
   "name": "babelute",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Internal Domain Specific (Multi)Modeling javascript framework",
   "main": "dist/bundles/index.js",
   "module": "dist/bundles/index.mjs",
   "jsnext:main": "dist/bundles/index.mjs",
   "scripts": {
     "prebuild": "eslint src test",
-    "build": "npm run es5-build && npm run bundles-build && uglifyjs dist/bundles/index.js -m -o dist/bundles/index.min.js",
+    "build": "NODE_ENV=production npm run es5-build && NODE_ENV=production npm run bundles-build && uglifyjs dist/bundles/index.js -m -o dist/bundles/index.min.js",
     "es5-build": "babel src -d dist/es5",
     "es5-watch": "babel src -d dist/es5 -w",
     "bundles-build": "rollup -c",
@@ -17,8 +17,8 @@
     "karma": "NODE_ENV=production karma start",
     "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha test/*.js",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | coveralls",
-    "prepublish": "NODE_ENV=production npm test",
-    "esdoc": "npm test && esdoc"
+    "prepublish": "npm test",
+    "release": "standard-version"
   },
   "nyc": {
     "require": [
@@ -72,11 +72,12 @@
     "karma-mocha": "^1.3.0",
     "karma-rollup-preprocessor": "^3.0.3",
     "karma-safari-launcher": "^1.0.0",
-    "mocha": "^3.0.2",
+    "mocha": "^3.2.0",
     "nyc": "^8.1.0",
     "rollup": "^0.41.4",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-watch": "^3.2.2",
+    "standard-version": "^4.0.0",
     "uglify-js": "^2.7.5"
   }
 }
