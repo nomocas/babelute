@@ -168,8 +168,33 @@ export class Babelute {
 	 * @return {Babelute}  a new Babelute from lexicon (i.e. with lexicon's API)
 	 * @throws {Error} If lexicon not found with lexiconName
 	 */
+	/* istanbul ignore next */
 	_lexicon(lexiconName) { // eslint-disable-line no-unused-vars
 		// will be implemented in lexicon
+	}
+
+	_translate(handler) {
+		return handler(this);
+	}
+
+	_translateLexems(handler) {
+		return this._translate((sentence) => {
+			const b = new Babelute();
+			sentence._lexems.forEach((lexem) => b._use(handler(lexem)));
+			return b;
+		});
+	}
+
+	/**
+	 * translate current sentence's lexems through a Lexicon or a map of Lexicon.
+	 * 
+	 * @param  {Lexicon|Object}  lexicon    the Lexicon (or a map of Lexicon) to get translation from
+	 * @param  {Boolean} firstLevel true if should produce FirstLevel translation (i.e. targetLexicon.FirstLevel). False otherwise.
+	 * @return {Babelute}             a new Babelute instance with translated lexems.
+	 */
+	/* istanbul ignore next */
+	_translateLexemsThrough(lexicon, firstLevel = false) { // eslint-disable-line no-unused-vars
+
 	}
 
 	/**
