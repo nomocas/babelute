@@ -157,6 +157,7 @@ export class Babelute {
 	 * @throws {Error} If lexicon not found (when first arg is string)
 	 * @throws {Error} If method not found in lexicon (when first arg is string)
 	 */
+	/* istanbul ignore next */
 	_use(babelute, ...args) { // eslint-disable-line no-unused-vars
 		// will be implemented in lexicon
 	}
