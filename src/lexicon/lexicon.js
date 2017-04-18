@@ -168,20 +168,6 @@ class Lexicon {
 	}
 
 	/**
-	 * @protected
-	 */
-	translateToAtomic(babelute, targets) {
-		return translate(babelute, this.Atomic, targets || this.targets);
-	}
-
-	/**
-	 * @protected
-	 */
-	translateToFirstLevel(babelute, targets) {
-		return translate(babelute, this.FirstLevel, targets || this.targets);
-	}
-
-	/**
 	 * return lexicon's initializer instance. (atomic or firstlevel depending on argument)
 	 * @public
 	 * @param  {Boolean} firstLevel true if you want firstLevel initializer, false overwise.
@@ -273,6 +259,24 @@ FirstLevel.prototype._lexicon = function(lexiconName) {
 	assert(typeof lexiconName === 'string', '._lexicon(...) accept only a string (a Lexicon id) as argument');
 	return new(getLexicon(lexiconName).FirstLevel)(this._lexems);
 };
+
+
+/*
+ * translation through lexicon (already delcared in Babelute proto)
+ */
+
+Babelute.prototype._translateLexemsThrough = function(lexicon, firstLevel = false) {
+	const map = (lexicon instanceof Lexicon) ? null : lexicon;
+	return this._translateLexems((lexem) => {
+		if (map)
+			lexicon = map[lexem.lexicon];
+		if (!lexicon)
+			return null;
+		const b = new (firstLevel ? lexicon.FirstLevel : lexicon.Atomic)();
+		return b[lexem.name] && b[lexem.name](...lexem.args);
+	});
+};
+
 
 
 /**
