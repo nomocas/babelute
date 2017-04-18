@@ -86,6 +86,8 @@ More :
 
 
 Domain Specific Modeling further reading
+- [Multi-lingual Programming](https://www.infoq.com/news/2007/08/multi-lingual-programming)
+- [DSL Interoperability](https://dzone.com/articles/dsl-interoperability-and)
 - [DSM : 76 cases of MDD That works](https://metacase.com/webinar/Domain_Specific_Modeling_76_cases_of_MDD_that_works_Nov2009.pdf)
 - [Domain specific modeling (Robert France, Bernhard Rumpe, 2005)](http://s3.amazonaws.com/academia.edu.documents/42473462/Domain_specific_modeling20160209-12929-16vmdfi.pdf?AWSAccessKeyId=AKIAJ56TQJRTWSMTNPEA&Expires=1481808605&Signature=33JXUlf1xs9BZBWjiDjGo3XTJ7I%3D&response-content-disposition=inline%3B%20filename%3DDomain_specific_modeling.pdf)
 - [DSM Forum](http://www.dsmforum.org/why.html)
@@ -93,6 +95,7 @@ Domain Specific Modeling further reading
 
 
 ### Domain Specific MultiModeling
+
 
 > Domain-specific multimodeling is a software development paradigm where each view is made explicit as a separate domain-specific language (DSL).
 
@@ -111,11 +114,13 @@ Paradoxally, __General Purpose Languages are DSLs.__
 
 Precisely, all GPL are Dialects of the generic DSL for handling variables and objects. Nothing more. As dialects, they all give a particular vision (and particular associated concepts) of the same problem : managing pure atomic Code related objects : string, number, bool, object, arrays, var, const, if, loops, ...
 
-No one, a part programmer, should take a look at it. That's pure esoteric experts driven language.
+No one, a part programmers, should take a look at it. That's pure esoteric experts driven language.
 
-GPLs are called GPL because we pretend to be able to Model everything with those primitives. Not because they effectively and efficiently cover every Domains. And so to high level business related consideratins, we try to answer with low level code related stuffs.
+GPLs are called GPL because we pretend to be able to Model everything with those primitives. Not because they effectively and efficiently cover every Domains. And so to high level business related consideratins, we try to answer with low level code related stuffs, or at best (in the sens of less purely technical) with UML.
 
-DSMM, by filling the gap between Fuzzy Imprecise Customer Thinking and Pure Technical Considerations, with __Multi-Level of abstractions__ that fits naturally Business Domains Languages inclusions and structurations - __because it mimics how we think__ - provides  simply the final form of programmation.
+DSMM, by filling the gap between fuzzy imprecise customer thinking and pure technical considerations, with __Multi-Level of abstractions__ that fits naturally Business Domains Languages inclusions and structurations - __because it mimics how we think__ - provides simply the final form of programmation.
+
+https://martinfowler.com/bliki/OneLanguage.html
 
 ## DSLs
 
@@ -132,23 +137,14 @@ And as Technics evolves quickly and Domains evolves slowly... The more stable so
 
 In other words, coding with __DSL as First Class Citizen__ make code the more useful, reusable and stable than ever. And we'll never have better...
 
-### DSLs are for everybody
-
-More, as we are all experts of our Domain, the majority of DSLs are not for/from developers. They belongs to Domains themselves. And are of course what we all use when we talking about our work/domains.
-
-And DSLs should only be defined by experts. So every domain experts should be able, in a close future, to define or use DSLs and to publish them to related communities. If we take a look on frameworks history, it's clear that it's exactly what we trying to do since the beginning : we try to isolate concepts and related words, and we propose them to our small community...
-
-One day, soon I hope, everybody should be able to do that.
-
-
 ### Internal vs External DSL
 
-External DSL are powerful ways of expressing precise things about a Domain. But they are closed on themselves. No general way of mixing them with ad-hoc code related considerations. Which is often useful (c.f. leaky abstraction problem : when it leak : we need to mix...)
+[Martin Fowler comparison](https://www.martinfowler.com/articles/languageWorkbench.html#tradeOffs)
 
-And so Internal DSLs are a better solution : We could always mix anything though Internal DSL precisely because they are Internal.
+Short version : 
+- __Internal DSL__ : soft, easily extendable, with open environment (host language itself), readable but could be verbose, restrict expressivity, and implies minimal host-language knowledge.
 
-- Internal DSL : soft, extendable, with open environment, readable but verbose (in regard to specific external DSL with short syntax)
-- External DSL : hard, poorly extendable, with closed environment and could be much less readable and not always shorter (e.g. RegExp vs HTML vs SQL) 
+- __External DSL__ : harder to define (need parser/compiler), with closed environment (symbolic barrier) and not always shorter (e.g. RegExp vs HTML vs SQL) but could be more expressive and better understoud by domains experts.
 
 
 ### DSL Orientations
@@ -177,8 +173,6 @@ And so should be better used in pragmatics implementations, which means out of b
 
 
 If you need to implement pure Behavioural DSL, take a look to [DoThat](https://github.com/nomocas/dothat) - as example or for usage - wich is a Promise Based Facade DSL tool.
-
-
 
 
 ### Fluent Interfaces as DSL
@@ -270,12 +264,10 @@ https://en.wikipedia.org/wiki/Lexicon
 
 > __A lexicon is the vocabulary of a person, language, or branch of knowledge (such as nautical or medical).__ In linguistics, a lexicon is a language's inventory of lexemes. The word "lexicon" derives from the Greek λεξικόν (lexicon), neuter of λεξικός (lexikos) meaning "of or for words".[1]
 
-Internal Semantic and Internal Grammar
-
+"Internal Semantic" and "Internal Grammar" are closely linked :
 - Top -> Bottom === Semantic
 - Bottom -> Up === Grammar
 
-==> They are closely linked.
 
 
 
@@ -428,6 +420,8 @@ Resilience by network. Natural Shock Absorbtion.
 
 
 ## Further Reading
+
+https://www.martinfowler.com/articles/languageWorkbench.html
 
 ### Semantic Information : Further studies
 
