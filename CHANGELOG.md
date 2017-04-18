@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/nomocas/babelute/compare/v0.4.4...v0.5.0) (2017-04-18)
+
+
+### Bug Fixes
+
+* **coverage:** add istanbul ignore next on empty signature ([e0453cb](https://github.com/nomocas/babelute/commit/e0453cb))
+* **lexicon:** clean ([ffd90eb](https://github.com/nomocas/babelute/commit/ffd90eb))
+* **meta-api:** finalise each for tests ([0ac924c](https://github.com/nomocas/babelute/commit/0ac924c))
+* **pragmatics core:** remove unneeded default arguments ([35de44d](https://github.com/nomocas/babelute/commit/35de44d))
+* **translation:** remove old implementation ([5811733](https://github.com/nomocas/babelute/commit/5811733))
+
+
+### Features
+
+* **translation:** babelute.js : add _translate and _translateLexems implementation and add _translateLexemsThrough signature ([57fc942](https://github.com/nomocas/babelute/commit/57fc942))
+
+
+
 <a name="0.4.4"></a>
 ## [0.4.4](https://github.com/nomocas/babelute/compare/v0.4.3...v0.4.4) (2017-04-15)
 
