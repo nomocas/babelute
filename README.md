@@ -7,11 +7,12 @@
 [![Travis branch](https://img.shields.io/travis/nomocas/babelute/master.svg)](https://travis-ci.org/nomocas/babelute)
 [![bitHound Overall Score](https://www.bithound.io/github/nomocas/babelute/badges/score.svg)](https://www.bithound.io/github/nomocas/babelute)
 [![Coverage Status](https://coveralls.io/repos/github/nomocas/babelute/badge.svg?branch=master)](https://coveralls.io/github/nomocas/babelute?branch=master)
-[![npm](https://img.shields.io/npm/v/babelute.svg)]()
-[![npm-downloads](https://img.shields.io/npm/dm/babelute.svg)]()
+[![npm](https://img.shields.io/npm/v/babelute.svg)](https://www.npmjs.com/package/babelute)
+[![npm-downloads](https://img.shields.io/npm/dm/babelute.svg)](https://npm-stat.com/charts.html?package=babelute)
 [![licence](https://img.shields.io/npm/l/babelute.svg)](https://spdx.org/licenses/MIT)
-[![dependecies](https://img.shields.io/david/nomocas/babelute.svg)]()
-[![dev-dependencies](https://img.shields.io/david/dev/nomocas/babelute.svg)]()
+[![dependecies](https://david-dm.org/nomocas/babelute.svg)](https://david-dm.org/)
+[![dev-dependencies](https://img.shields.io/david/dev/nomocas/babelute.svg)](https://david-dm.org/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 Really small, simple, incredibly powerful and super fast __Descriptive Internal DSLs__ tools.
 
