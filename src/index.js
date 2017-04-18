@@ -24,12 +24,11 @@ import {
 
 import FirstLevel from './lexicon/first-level.js';
 import { Pragmatics, createPragmatics } from './pragmatics/pragmatics-core.js';
-import { FacadePragmatics, createFacadeInitializer, createFacadePragmatics } from './pragmatics/facade-pragmatics.js';
+import { FacadePragmatics, createFacadePragmatics } from './pragmatics/facade-pragmatics.js';
 
 export default {
 	createLexicon,
 	createPragmatics,
-	createFacadeInitializer,
 	createFacadePragmatics,
 	init,
 	initializer,
