@@ -38,7 +38,7 @@ describe('Babelute Pragmatics core tests', () => {
 			expect(subject).to.deep.equal({ zoo: true });
 		});
 	});
-	describe('simple call', () => {
+	describe('simple facadePragmas call', () => {
 
 		const pragmas = babelute.createFacadePragmatics({
 			test: true
@@ -78,7 +78,7 @@ describe('Babelute Pragmatics core tests', () => {
 
 	describe('inner $output call', () => {
 		var Dsl = babelute.Babelute.extends(babelute.Babelute, {
-			zoo(arg){
+			zoo(arg) {
 				return this._append('test', 'zoo', [arg]);
 			}
 		});
@@ -96,7 +96,7 @@ describe('Babelute Pragmatics core tests', () => {
 		});
 
 		const subject = {};
-		pragmas.foo(subject, [ new Dsl().zoo('hop') ]);
+		pragmas.foo(subject, [new Dsl().zoo('hop')]);
 
 		it('should', () => {
 			expect(subject).to.deep.equal({ zoo: 'hop' });
@@ -105,10 +105,10 @@ describe('Babelute Pragmatics core tests', () => {
 	describe('facade if true', () => {
 
 		var Dsl = babelute.Babelute.extends(babelute.Babelute, {
-			zoo(arg){
+			zoo(arg) {
 				return this._append('test', 'zoo', [arg]);
 			},
-			if(condition, s, f){
+			if (condition, s, f) {
 				return this._append('test', 'if', [condition, s, f]);
 			}
 		});
@@ -132,10 +132,10 @@ describe('Babelute Pragmatics core tests', () => {
 	describe('facade if false with no fail handler', () => {
 
 		var Dsl = babelute.Babelute.extends(babelute.Babelute, {
-			zoo(arg){
+			zoo(arg) {
 				return this._append('test', 'zoo', [arg]);
 			},
-			if(condition, s, f){
+			if (condition, s, f) {
 				return this._append('test', 'if', [condition, s, f]);
 			}
 		});
@@ -153,16 +153,16 @@ describe('Babelute Pragmatics core tests', () => {
 		pragmas.$output(subject, new Dsl().if(false, new Dsl().zoo('hop')));
 
 		it('should', () => {
-			expect(subject).to.deep.equal({ });
+			expect(subject).to.deep.equal({});
 		});
 	});
 	describe('facade if false with fail handler', () => {
 
 		var Dsl = babelute.Babelute.extends(babelute.Babelute, {
-			zoo(arg){
+			zoo(arg) {
 				return this._append('test', 'zoo', [arg]);
 			},
-			if(condition, s, f){
+			if (condition, s, f) {
 				return this._append('test', 'if', [condition, s, f]);
 			}
 		});
@@ -186,10 +186,10 @@ describe('Babelute Pragmatics core tests', () => {
 	describe('facade each', () => {
 
 		var Dsl = babelute.Babelute.extends(babelute.Babelute, {
-			zoo(arg){
+			zoo(arg) {
 				return this._append('test', 'zoo', [arg]);
 			},
-			each(collec, handler){
+			each(collec, handler) {
 				return this._append('test', 'each', [collec, handler]);
 			}
 		});
@@ -204,11 +204,108 @@ describe('Babelute Pragmatics core tests', () => {
 		});
 
 		const subject = {};
-		pragmas.$output(subject, new Dsl().each(['a', 'b', 'c'], function(item){ return new Dsl().zoo(item); }));
+		pragmas.$output(subject, new Dsl().each(['a', 'b', 'c'], function(item) {
+			return new Dsl().zoo(item);
+		}));
 
 		it('should', () => {
 			expect(subject).to.deep.equal({ zoo: 'abc' });
 		});
 	});
+
+	describe('facade each throw if nothing is returned from handler', () => {
+		var Dsl = babelute.Babelute.extends(babelute.Babelute, {
+			each(collec, handler) {
+				return this._append('test', 'each', [collec, handler]);
+			}
+		});
+		const pragmas = babelute.createFacadePragmatics({
+			test: true
+		}, {
+			zoo(subject, args) {
+				subject.zoo = subject.zoo || '';
+				subject.zoo += args[0];
+			}
+		});
+
+		const willThrow = function() {
+			pragmas.$output({}, new Dsl().each(['a', 'b', 'c'], function() {}));
+		};
+
+		it('should', () => {
+			expect(willThrow).to.throw();
+		});
+	});
+
+	describe('facade each no collection', () => {
+
+		var Dsl = babelute.Babelute.extends(babelute.Babelute, {
+			zoo(arg) {
+				return this._append('test', 'zoo', [arg]);
+			},
+			each(collec, handler) {
+				return this._append('test', 'each', [collec, handler]);
+			}
+		});
+
+		const pragmas = babelute.createFacadePragmatics({
+			test: true
+		}, {
+			zoo(subject, args) {
+				subject.zoo = subject.zoo || '';
+				subject.zoo += args[0];
+			}
+		});
+
+		const subject = {};
+		pragmas.$output(subject, new Dsl().each(null, function(item) {
+			return new Dsl().zoo(item);
+		}));
+
+		it('should', () => {
+			expect(subject).to.deep.equal({});
+		});
+	});
+
+
+	describe('lexicon + pragmatics with percolator', () => {
+
+		const lexicon = babelute.createLexicon('test');
+		lexicon.addAtoms(['zoo']);
+
+		const pragmas = babelute.createFacadePragmatics({
+			test: true
+		}, {
+			zoo(subject, args) {
+				subject.zoo = args[0];
+			}
+		});
+
+		const b = lexicon.initializer().zoo(true),
+			percolator = {};
+		const result = pragmas.$output({}, b, percolator);
+
+		it('should', () => {
+			expect(result).to.deep.equal({ zoo: true });
+		});
+	});
+
+	describe('facade each throw if nothing is returned from handler', () => {
+		var Dsl = babelute.Babelute.extends(babelute.Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			}
+		});
+		const pragmas = babelute.createFacadePragmatics({
+			test: true
+		}, {});
+
+		var result = pragmas.$output({}, new Dsl().foo('bar'));
+
+		it('should', () => {
+			expect(result).to.deep.equals({});
+		});
+	});
+
 });
 

@@ -24,7 +24,7 @@ export class FacadePragmatics extends Pragmatics {
 	 * @param  {Object} targets initial targets object
 	 * @param  {?Object} pragmas pragmatics methods to add
 	 */
-	constructor(targets, pragmas = null) {
+	constructor(targets, pragmas) {
 		super(targets, pragmas);
 	}
 
@@ -38,7 +38,7 @@ export class FacadePragmatics extends Pragmatics {
 	each(subject, args /* collection, itemHandler */ , percolator) {
 
 		assert(typeof subject === 'object', '.each facade pragma need an object as subject (first argument)');
-		assert(Array.isArray(args[0]) || args[0].length, '.each facade pragma need an array (or iterable with bracket access) as first args object (first argument passed to lexem)');
+		assert(!args[0] || Array.isArray(args[0]), '.each facade pragma need an array (or iterable with bracket access) as first args object (first argument passed to lexem)');
 		assert(typeof args[1] === 'function', '.each facade pragma need a function as second args object (second argument passed to lexem)');
 		
 		const collec = args[0],
@@ -48,8 +48,9 @@ export class FacadePragmatics extends Pragmatics {
 			for (let i = 0, len = collec.length, item, templ; i < len; ++i) {
 				item = collec[i];
 				templ = itemHandler(item, i);
-				if (templ)
-					this.$output(subject, templ, percolator);
+				if (!templ)
+					throw new Error('.each function should return a sentence.');
+				this.$output(subject, templ, percolator);
 			}
 	}
 
@@ -93,53 +94,6 @@ export class FacadePragmatics extends Pragmatics {
 		}
 		return subject;
 	}
-}
-
-/**
- * create a facade-ready-to-run initializer function.
- * @param  {Lexicon} lexicon    the lexicon from where take the api
- * @param  {Object} pragmatics   the pragmatics object where to find interpretation method to fire immediatly
- * @return {Function}            the facade initializer function
- * @example
- *
- * import babelute from 'babelute';
- * const myLexicon = babelute.createLexicon('my-lexicon');
- * myLexicon.addAtoms(['foo', 'bar']);
- * 
- * const myPragmas = babelute.createFacadePragmatics({
- * 	'my-lexicon':true
- * }, {
- * 	foo(subject, args, percolator){
- * 		// do something
- * 	},
- * 	bar(subject, args, percolator){
- * 		// do something
- * 	}
- * });
- *
- * const mlp = babelute.createFacadeInitializer(myLexicon, myPragmas);
- *
- * mlp(mySubject).foo(...).bar(...); // apply pragmas immediatly on subject through lexicon api's
- *
- */
-export function createFacadeInitializer(lexicon, pragmatics) {
-	const Facade = function(subject, percolator = null) {
-		lexicon.Atomic.call(this);
-		this._subject = subject;
-		this._percolator = percolator;
-	};
-
-	Facade.prototype = Object.create(lexicon.Atomic.prototype);
-	Facade.prototype.constructor = Facade;
-	Facade.prototype._lexicon = null;
-	Facade.prototype._append = function(lexiconName, name, args) {
-		if ((!pragmatics._targets || pragmatics._targets[lexiconName]) && pragmatics[name])
-			pragmatics[name](this._subject, args, this._percolator);
-		return this;
-	};
-	return (subject, percolator = null) => {
-		return new Facade(subject, percolator);
-	};
 }
 
 /**
