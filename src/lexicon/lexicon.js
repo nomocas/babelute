@@ -37,7 +37,7 @@ class Lexicon {
 	 * @param  {string} name   the lexicon name
 	 * @param  {?Lexicon} parent an optional parent lexicon to be extended here
 	 */
-	constructor(name, parent = null) {
+	constructor(name, parent) {
 
 		assert(typeof name === 'string' && name.length, 'Lexicon constructor need a valid name as first argument'); // all assertions will be removed in production
 		assert(!parent || parent instanceof Lexicon, 'Lexicon constructor second (optional) argument should be another Lexicon that will be used as parent');
@@ -143,7 +143,7 @@ class Lexicon {
 	 * @param {Object} methods an object containing methods (lexems) to add to lexicon
 	 * @return {Lexicon} the lexicon itself
 	 */
-	addAliases(methods){
+	addAliases(methods) {
 		Object.keys(methods)
 			.forEach((key) => {
 				this.Atomic.prototype[key] = this.FirstLevel.prototype[key] = this.SecondLevel.prototype[key] = methods[key];
@@ -173,11 +173,11 @@ class Lexicon {
 	 * @param  {Boolean} firstLevel true if you want firstLevel initializer, false overwise.
 	 * @return {Initializer}           the needed initializer instance
 	 */
-	initializer(firstLevel){
+	initializer(firstLevel) {
 		return firstLevel ? this.FirstLevel.initializer : this.Atomic.initializer;
 	}
 
-	createDialect(name){
+	createDialect(name) {
 		return new Lexicon(name, this);
 	}
 }
@@ -260,7 +260,6 @@ FirstLevel.prototype._lexicon = function(lexiconName) {
 	return new(getLexicon(lexiconName).FirstLevel)(this._lexems);
 };
 
-
 /*
  * translation through lexicon (already delcared in Babelute proto)
  */
@@ -299,28 +298,11 @@ function use(self, babelute, args, firstLevel) {
 	if (typeof babelute === 'string') {
 		const splitted = babelute.split(':');
 		getLexicon(splitted[0]).use(self, splitted[1], args, firstLevel);
-	} else if (babelute.__babelute__)
+	} else
 		self._lexems = self._lexems.concat(babelute._lexems);
 	return self;
 }
 
-/**
- * Translation
- */
-function translate(babelute, BabeluteClass, targets) {
-	const b = new BabeluteClass();
-	babelute._lexems.forEach(function(lexem) {
-		if ((targets && !targets[lexem.lexicon]) || this[lexem.name]) // simply forwards lexem (copy) if not in targets
-			this._lexems.push(new Lexem(lexem.lexicon, lexem.name, lexem.args));
-		else
-			this[lexem.name].apply(this, lexem.args.map((value) => {
-				if (!value || !value.__babelute__)
-					return value;
-				return translate(value, BabeluteClass, targets);
-			}));
-	}, b);
-	return b;
-}
 
 /**
  * return a new babelute from needed lexicon
@@ -350,8 +332,7 @@ function developOneLevel(lexem, lexicon = null) {
 	assert(lexicon === null || lexicon instanceof Lexicon, 'lexicon.developOneLevel(...) second argument should be null or an instance of Lexicon');
 
 	lexicon = lexicon || getLexicon(lexem.lexicon);
-
-	assert(lexicon.secondLevel[lexem.name], 'lexicon.developOneLevel(...) : lexem\'s name not found in its own referenced lexicon');
+	assert(lexicon.secondLevel[lexem.name], `lexicon.developOneLevel(...) : lexem\'s name (${lexem.name}) not found in its own referenced lexicon (${ lexem.lexicon })`);
 
 	return lexicon.secondLevel[lexem.name].apply(new lexicon.FirstLevel(), lexem.args);
 }
@@ -370,9 +351,9 @@ function developToAtoms(lexem, lexicon = null) {
 
 	lexicon = lexicon || getLexicon(lexem.lexicon);
 
-	assert(lexicon.Atomic.instance[lexem.name], 'lexicon.developToAtoms(...) : lexem\'s name not found in its own referenced lexicon');
+	assert(lexicon.Atomic.instance[lexem.name], 'lexicon.developToAtoms(...) : lexem\'s name  (${lexem.name}) not found in its own referenced lexicon (${ lexem.lexicon })');
 
-	return lexicon.Atomic.prototype[lexem.name].apply(new lexicon.Atomic(), lexem.args);
+	return lexicon.Atomic.instance[lexem.name].apply(new lexicon.Atomic(), lexem.args);
 }
 
 /**
