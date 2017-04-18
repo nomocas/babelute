@@ -32,7 +32,7 @@ describe('Babelute Lexicon tests', () => {
 	});
 
 	describe('add simple atoms', () => {
-		const lexicon = babelute.createLexicon('test');
+		const lexicon = babelute.createLexicon('test1');
 
 		lexicon.addAtoms(['bloupi']);
 
@@ -46,21 +46,21 @@ describe('Babelute Lexicon tests', () => {
 
 			expect(b).to.be.instanceof(babelute.Babelute)
 				.that.have.property('_lexems')
-				.that.deep.equals([{ lexicon: 'test', name: 'bloupi', args: [1, true, 'hello'] }]);
+				.that.deep.equals([{ lexicon: 'test1', name: 'bloupi', args: [1, true, 'hello'] }]);
 		});
 		it('should produce a single atom with provided args in FirstLevel mode', () => {
 			const b = new lexicon.FirstLevel().bloupi(1, true, 'hello');
 
 			expect(b).to.be.instanceof(babelute.Babelute)
 				.that.have.property('_lexems')
-				.that.deep.equals([{ lexicon: 'test', name: 'bloupi', args: [1, true, 'hello'] }]);
+				.that.deep.equals([{ lexicon: 'test1', name: 'bloupi', args: [1, true, 'hello'] }]);
 		});
 		it('should produce a single atom with provided args in SecondLevel mode', () => {
 			const b = new lexicon.SecondLevel().bloupi(1, true, 'hello');
 
 			expect(b).to.be.instanceof(babelute.Babelute)
 				.that.have.property('_lexems')
-				.that.deep.equals([{ lexicon: 'test', name: 'bloupi', args: [1, true, 'hello'] }]);
+				.that.deep.equals([{ lexicon: 'test1', name: 'bloupi', args: [1, true, 'hello'] }]);
 		});
 	});
 
@@ -199,6 +199,65 @@ describe('Babelute Lexicon tests', () => {
 		});
 	});
 
+	describe('test auto catch of lexicon in developOneLexem', () => {
+		const lexicon = babelute.createLexicon('testz');
+		babelute.registerLexicon(lexicon);
+		lexicon.addAtoms(['zoo'])
+			.addCompounds(() => {
+				return {
+					foo(title) {
+						return this.zoo(title + '-123');
+					}
+				};
+			});
+
+
+		it('should produce a single atom with provided args in Atomic through developOneLevel', () => {
+			const b = new lexicon.Atomic().foo('hello');
+			const c = babelute.developOneLevel(b._lexems[0]);
+			expect(c).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([{ lexicon: 'testz', name: 'zoo', args: ['hello-123'] }]);
+		});
+
+		it('should produce a single atom with provided args in FirstLevel through developOneLevel', () => {
+			const b = new lexicon.FirstLevel().foo('hello');
+			const c = babelute.developOneLevel(b._lexems[0]);
+			expect(c).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([{ lexicon: 'testz', name: 'zoo', args: ['hello-123'] }]);
+		});
+	});
+
+	describe('test auto catch of lexicon in developToAtoms', () => {
+		const lexicon = babelute.createLexicon('testz1');
+		babelute.registerLexicon(lexicon);
+		lexicon.addAtoms(['zoo'])
+			.addCompounds(() => {
+				return {
+					foo(title) {
+						return this.zoo(title + '-123');
+					}
+				};
+			});
+
+
+		it('should produce a single atom with provided args in Atomic through developOneLevel', () => {
+			const b = new lexicon.Atomic().foo('hello');
+			const c = babelute.developToAtoms(b._lexems[0]);
+			expect(c).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([{ lexicon: 'testz1', name: 'zoo', args: ['hello-123'] }]);
+		});
+
+		it('should produce a single atom with provided args in FirstLevel through developOneLevel', () => {
+			const b = new lexicon.FirstLevel().foo('hello');
+			const c = babelute.developToAtoms(b._lexems[0]);
+			expect(c).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([{ lexicon: 'testz1', name: 'zoo', args: ['hello-123'] }]);
+		});
+	});
 	describe('create dialect', () => {
 		const lexicon = babelute.createLexicon('test');
 
@@ -206,7 +265,6 @@ describe('Babelute Lexicon tests', () => {
 
 		const dialect = lexicon.createDialect('test2');
 		dialect.addAtoms(['bar']);
-
 
 		it('should provide a lexicon\'s instance', () => {
 			expect(dialect).to.be.instanceof(babelute.Lexicon);
@@ -221,6 +279,31 @@ describe('Babelute Lexicon tests', () => {
 			expect(dialect.SecondLevel.prototype).to.be.instanceof(lexicon.SecondLevel);
 		});
 	});
+
+	describe('create dialect of dialect', () => {
+		const lexicon = babelute.createLexicon('test');
+		lexicon.addAtoms(['foo']);
+
+		const dialect = lexicon.createDialect('test2');
+		dialect.addAtoms(['bar']);
+
+		const dialect2 = dialect.createDialect('test45');
+		dialect2.addAtoms(['zoo']);
+
+		it('should provide a lexicon\'s instance', () => {
+			expect(dialect2).to.be.instanceof(babelute.Lexicon);
+		});
+		it('should hold an Atomic function which is a Babelute Subclass', () => {
+			expect(dialect2.Atomic.prototype).to.be.instanceof(lexicon.Atomic);
+		});
+		it('should hold an FirstLevel function which is a Babelute Subclass', () => {
+			expect(dialect2.FirstLevel.prototype).to.be.instanceof(lexicon.FirstLevel);
+		});
+		it('should hold an SecondLevel function which is a Babelute Subclass', () => {
+			expect(dialect2.SecondLevel.prototype).to.be.instanceof(lexicon.SecondLevel);
+		});
+	});
+
 
 	describe('lexicon _use', () => {
 		const lexicon = babelute.createLexicon('test');
@@ -243,11 +326,36 @@ describe('Babelute Lexicon tests', () => {
 		});
 	});
 	describe('simple Babelute _use', () => {
-		const lexicon = babelute.createLexicon('test');
+		const lexicon = babelute.createLexicon('test2');
 		lexicon.addAtoms(['foo']);
 		babelute.registerLexicon(lexicon);
 
-		const b = new babelute.Babelute()._use('test:foo', 1);
+		const b = new babelute.Babelute()._use('test2:foo', 1);
+
+		it('should insert sub-sentence in current sentence', () => {
+			expect(b).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([
+					{ lexicon: 'test2', name: 'foo', args: [1] },
+				]);
+		});
+	});
+	describe('simple Babelute _use throw when not found', () => {
+		const lexicon = babelute.createLexicon('test3');
+		lexicon.addAtoms(['foo']);
+		babelute.registerLexicon(lexicon);
+
+		const throwIt = function() {
+			new babelute.Babelute()._use('test3:fool', 1);
+		}
+		it('should throw', () => {
+			expect(throwIt).to.throw();
+		});
+	});
+	describe('simple Babelute _use with another babelute', () => {
+		const lexicon = babelute.createLexicon('test');
+		lexicon.addAtoms(['foo']);
+		const b = new babelute.Babelute()._use(lexicon.initializer().foo(1));
 
 		it('should insert sub-sentence in current sentence', () => {
 			expect(b).to.be.instanceof(babelute.Babelute)
@@ -257,24 +365,48 @@ describe('Babelute Lexicon tests', () => {
 				]);
 		});
 	});
+	describe('simple Babelute _use with another babelute (firstLevel)', () => {
+		const lexicon = babelute.createLexicon('test');
+		lexicon.addAtoms(['foo']);
+		const b = new babelute.FirstLevel()._use(lexicon.initializer(true).foo(1));
+
+		it('should insert sub-sentence in current sentence', () => {
+			expect(b).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([
+					{ lexicon: 'test', name: 'foo', args: [1] },
+				]);
+		});
+	});
+	describe('simple Babelute _use with null (firstLevel)', () => {
+		const lexicon = babelute.createLexicon('test');
+		lexicon.addAtoms(['foo']);
+		const b = new babelute.FirstLevel()._use(null);
+
+		it('should insert sub-sentence in current sentence', () => {
+			expect(b).to.be.instanceof(babelute.Babelute)
+				.that.have.property('_lexems')
+				.that.deep.equals([]);
+		});
+	});
 	describe('lexicon _use registred lexicon', () => {
 		const lexicon = babelute.createLexicon('test');
 
 		lexicon.addAtoms(['foo']);
 
-		const dialect = babelute.createLexicon('test2');
+		const dialect = babelute.createLexicon('test4');
 		dialect.addAtoms(['bar']);
 
 		babelute.registerLexicon(dialect);
 
-		const b = lexicon.initializer().foo(1)._use('test2:bar', 2);
+		const b = lexicon.initializer().foo(1)._use('test4:bar', 2);
 
 		it('should insert lexem from another lexicon in current sentence', () => {
 			expect(b).to.be.instanceof(babelute.Babelute)
 				.that.have.property('_lexems')
 				.that.deep.equals([
 					{ lexicon: 'test', name: 'foo', args: [1] },
-					{ lexicon: 'test2', name: 'bar', args: [2] }
+					{ lexicon: 'test4', name: 'bar', args: [2] }
 				]);
 		});
 	});
@@ -283,19 +415,19 @@ describe('Babelute Lexicon tests', () => {
 
 		lexicon.addAtoms(['foo']);
 
-		const dialect = babelute.createLexicon('test2');
+		const dialect = babelute.createLexicon('test5');
 		dialect.addAtoms(['bar']);
 
 		babelute.registerLexicon(dialect);
 
-		const b = lexicon.initializer(true).foo(1)._use('test2:bar', 2);
+		const b = lexicon.initializer(true).foo(1)._use('test5:bar', 2);
 
 		it('should insert lexem from another lexicon in current sentence', () => {
 			expect(b).to.be.instanceof(babelute.Babelute)
 				.that.have.property('_lexems')
 				.that.deep.equals([
 					{ lexicon: 'test', name: 'foo', args: [1] },
-					{ lexicon: 'test2', name: 'bar', args: [2] }
+					{ lexicon: 'test5', name: 'bar', args: [2] }
 				]);
 		});
 	});
@@ -304,13 +436,13 @@ describe('Babelute Lexicon tests', () => {
 
 		lexicon.addCompounds((h) => {
 			return {
-				foo(){
-					return h._use('test2:bar', 1);
+				foo() {
+					return h._use('test6:bar', 1);
 				}
 			};
 		});
 
-		const dialect = babelute.createLexicon('test2');
+		const dialect = babelute.createLexicon('test6');
 		dialect.addAtoms(['bar']);
 
 		babelute.registerLexicon(dialect);
@@ -322,7 +454,7 @@ describe('Babelute Lexicon tests', () => {
 			expect(c).to.be.instanceof(babelute.Babelute)
 				.that.have.property('_lexems')
 				.that.deep.equals([
-					{ lexicon: 'test2', name: 'bar', args: [1] }
+					{ lexicon: 'test6', name: 'bar', args: [1] }
 				]);
 		});
 	});
@@ -342,17 +474,17 @@ describe('Babelute Lexicon tests', () => {
 
 	describe('babelute.initializer', () => {
 
-		const lexicon = babelute.createLexicon('test');
+		const lexicon = babelute.createLexicon('test7');
 
 		lexicon.addAtoms(['foo']);
 
 		babelute.registerLexicon(lexicon);
 
-		const b = babelute.initializer('test').foo('bouh');
+		const b = babelute.initializer('test7').foo('bouh');
 
 		it('should provide the needed lexicon initializer', () => {
 			expect(b._lexems)
-				.to.deep.equals([{ "lexicon": "test", "name": "foo", "args": ["bouh"] }]);
+				.to.deep.equals([{ "lexicon": "test7", "name": "foo", "args": ["bouh"] }]);
 		});
 	});
 
@@ -484,6 +616,140 @@ describe('Babelute Lexicon tests', () => {
 					{ lexicon: 'test', name: 'foo', args: [1] },
 					{ lexicon: 'test2', name: 'bar', args: [2] }
 				]);
+		});
+	});
+	describe('_translateLexemsThrough lexicon', () => {
+
+		const target = babelute.createLexicon('target-test');
+
+		target.addAtoms(['bloupi', 'zoo'])
+			.addCompounds(() => {
+				return {
+					bar(goo) {
+						return this.zoo(goo);
+					},
+					foo(title) {
+						return this.bloupi(title);
+					}
+				};
+			});
+		const src = babelute.createLexicon('src-test');
+
+		src.addAtoms(['bar', 'foo']);
+
+		const b = src.initializer().foo('hello').bar('bye')._translateLexemsThrough(target);
+
+		it('should insert needed lexems', () => {
+			expect(b._lexems)
+				.to.deep.equals([
+					{ lexicon: 'target-test', name: 'bloupi', args: ['hello'] },
+					{ lexicon: 'target-test', name: 'zoo', args: ['bye'] }
+				]);
+		});
+	});
+
+	describe('_translateLexemsThrough lexicon and FirstLevel', () => {
+
+		const target = babelute.createLexicon('target-test');
+
+		target.addAtoms(['bloupi', 'zoo'])
+			.addCompounds(() => {
+				return {
+					bar(goo) {
+						return this.zoo(goo);
+					},
+					foo(title) {
+						return this.bloupi(title);
+					}
+				};
+			});
+		const src = babelute.createLexicon('src-test');
+
+		src.addAtoms(['bar', 'foo']);
+
+		const b = src.initializer().foo('hello').bar('bye')._translateLexemsThrough(target, true);
+
+		it('should insert needed lexems', () => {
+			expect(b._lexems)
+				.to.deep.equals([
+					{ lexicon: 'target-test', name: 'foo', args: ['hello'] },
+					{ lexicon: 'target-test', name: 'bar', args: ['bye'] }
+				]);
+		});
+	});
+
+	describe('_translateLexemsThrough lexicons map', () => {
+
+		const target = babelute.createLexicon('target-test');
+
+		target.addAtoms(['bloupi', 'zoo'])
+			.addCompounds(() => {
+				return {
+					bar(goo) {
+						return this.zoo(goo);
+					},
+					foo(title) {
+						return this.bloupi(title);
+					}
+				};
+			});
+		const src = babelute.createLexicon('src-test');
+
+		src.addAtoms(['bar', 'foo']);
+
+		const b = src.initializer().foo('hello').bar('bye')._translateLexemsThrough({ 'src-test': target });
+
+		it('should insert needed lexems', () => {
+			expect(b._lexems)
+				.to.deep.equals([
+					{ lexicon: 'target-test', name: 'bloupi', args: ['hello'] },
+					{ lexicon: 'target-test', name: 'zoo', args: ['bye'] }
+				]);
+		});
+	});
+
+	describe('_translateLexemsThrough lexicons map with no associate lexicon', () => {
+
+		const target = babelute.createLexicon('target-test');
+
+		target.addAtoms(['bloupi', 'zoo'])
+			.addCompounds(() => {
+				return {
+					bar(goo) {
+						return this.zoo(goo);
+					},
+					foo(title) {
+						return this.bloupi(title);
+					}
+				};
+			});
+		const src = babelute.createLexicon('src-test');
+
+		src.addAtoms(['bar', 'foo']);
+
+		const b = src.initializer().foo('hello').bar('bye')._translateLexemsThrough({ 'src-test1': target });
+
+		it('should insert needed lexems', () => {
+			expect(b._lexems)
+				.to.deep.equals([]);
+		});
+	});
+	describe('getLexicon throw error if no lexicon found', () => {
+		const throwIt = function() {
+			return babelute.getLexicon('foo');
+		};
+
+		it('should throw error', () => {
+			expect(throwIt).to.throw('lexicon not found : foo');
+		});
+	});
+	describe('register lexicon with name', () => {
+		const target = babelute.createLexicon('test');
+		babelute.registerLexicon(target, 'test2');
+
+
+		it('should throw error', () => {
+			expect(babelute.lexicons.test2).to.equal(target);
 		});
 	});
 });

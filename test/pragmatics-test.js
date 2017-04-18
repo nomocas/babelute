@@ -6,6 +6,38 @@ import babelute from '../src/index';
 const expect = chai.expect;
 
 describe('Babelute Pragmatics core tests', () => {
+	describe('simple pragmatics', () => {
+
+		const pragmas = babelute.createPragmatics({
+			test: true
+		}, {
+			zoo(subject, args) {
+				subject.zoo = args[0];
+			}
+		});
+
+		const subject = {};
+		pragmas.zoo(subject, [true]);
+
+		it('should', () => {
+			expect(subject).to.deep.equal({ zoo: true });
+		});
+	});
+	describe('simple pragmatics', () => {
+
+		const pragmas = babelute.createPragmatics();
+		pragmas.addPragmas({
+			zoo(subject, args) {
+				subject.zoo = args[0];
+			}
+		});
+		const subject = {};
+		pragmas.zoo(subject, [true]);
+
+		it('should', () => {
+			expect(subject).to.deep.equal({ zoo: true });
+		});
+	});
 	describe('simple call', () => {
 
 		const pragmas = babelute.createFacadePragmatics({

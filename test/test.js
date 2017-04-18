@@ -176,6 +176,26 @@ describe('Babelute base class and Lexem', () => {
 				}]);
 		});
 	});
+
+	describe('_if with condition false and no else babelute', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			}
+		});
+
+		const b = new MyBabelute()._if(false, new MyBabelute().foo('bar'));
+
+		it('should insert "else" sentence', () => {
+			expect(b._lexems)
+				.to.deep.equals([]);
+		});
+	});
+
 	describe('_each', () => {
 
 		const MyBabelute = Babelute.extends(Babelute, {
@@ -207,6 +227,24 @@ describe('Babelute base class and Lexem', () => {
 		});
 	});
 
+	describe('_each with null array', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			}
+		});
+
+		const b = new MyBabelute()._each(null, (item) => new MyBabelute().foo(item));
+
+		it('should insert multiple sentence', () => {
+			expect(b._lexems)
+				.to.deep.equals([]);
+		});
+	});
 	describe('fromJSON', () => {
 
 		const MyBabelute = Babelute.extends(Babelute, {
@@ -224,6 +262,82 @@ describe('Babelute base class and Lexem', () => {
 		it('should parse correctly', () => {
 			expect(c._lexems)
 				.to.deep.equals(b._lexems);
+		});
+	});
+
+
+	describe('_translate', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			},
+			wrap(sentence) {
+				return this._append('test2', 'wrap', [sentence]);
+			}
+		});
+
+
+		const b = new MyBabelute().foo('bar').zoo(true)._translate((sentence) => new MyBabelute().wrap(sentence));
+
+		it('should insert needed lexems', () => {
+			expect(b._lexems.length).equal(1);
+			expect(b._lexems[0].lexicon).equal('test2');
+			expect(b._lexems[0].name).equal('wrap');
+			expect(b._lexems[0].args[0]._lexems)
+				.to.deep.equals([{
+					lexicon: 'test',
+					name: 'foo',
+					args: ['bar']
+				}, {
+					lexicon: "test",
+					name: "zoo",
+					args: [true]
+				}]);
+		});
+	});
+	describe('_translateLexems', () => {
+
+		const MyBabelute = Babelute.extends(Babelute, {
+			foo(title) {
+				return this._append('test', 'foo', [title]);
+			},
+			zoo(goo) {
+				return this._append('test', 'zoo', [goo]);
+			},
+			bar(name, args) {
+				return this._append('test', 'bar', [name].concat(args));
+			}
+		});
+
+		const b = new MyBabelute().foo('bloup').zoo(true)._translateLexems((lexem) => new MyBabelute().bar(lexem.name, lexem.args));
+
+		it('should insert needed lexems', () => {
+			expect(b._lexems)
+				.to.deep.equals([{
+					lexicon: "test",
+					name: "bar",
+					args: ["foo", "bloup"]
+				}, {
+					lexicon: "test",
+					name: "bar",
+					args: ["zoo", true]
+				}]);
+		});
+	});
+
+	describe('lexem with arguments args', () => {
+
+
+		const args = arguments;
+		const b = new Babelute()._append('test', 'foo', args);
+
+		it('should insert multiple sentence', () => {
+			expect(b._lexems)
+				.to.deep.equals([{ lexicon:'test', name:'foo', args:args }]);
 		});
 	});
 });
