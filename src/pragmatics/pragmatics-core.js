@@ -19,7 +19,7 @@ export class Pragmatics {
 	 * @param  {Object} targets initial targets object
 	 * @param  {Object} pragmas pragmatics methods to add
 	 */
-	constructor(targets = {}, pragmas = {}) {
+	constructor(targets, pragmas) {
 
 		assert(typeof targets === 'object', 'Pragmatics constructor need an object (the lexicons targets) as first argument');
 		assert(typeof pragmas === 'object', 'Pragmatics constructor need an object (the pragma\'s base methods) as second argument');
