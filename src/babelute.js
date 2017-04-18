@@ -134,16 +134,17 @@ export class Babelute {
 	 */
 	_each(array, func) {
 
-		assert(Array.isArray(array) || array.length, '._each meta-api need an array (or iterable with bracket access) as first argument');
+		assert(!array || Array.isArray(array), '._each meta-api need an array (or iterable with bracket access) as first argument');
 		assert(typeof func === 'function', '._each meta-api need a function as second argument');
 
-		array.forEach((item, index) => {
-			const b = func(item, index);
+		if (array)
+			array.forEach((item, index) => {
+				const b = func(item, index);
 
-			assert(b instanceof Babelute, '._each need a function that return a babelute');
+				assert(b instanceof Babelute, '._each need a function that return a babelute');
 
-			this._lexems.push.apply(this._lexems, b._lexems);
-		});
+				this._lexems.push.apply(this._lexems, b._lexems);
+			});
 		return this;
 	}
 
