@@ -34,6 +34,7 @@ Babelute.js core library (this lib) provides helpers to :
 
 - babelute (this lib)
 - [babelute-uus](https://github.com/nomocas/babelute-uus) : Universal Unambiguous Sentences proposal : Welcome in Sharing Era.
+- babelute-lexicon-definition-language : Babelute Lexic Definition DSL and its generators. (realease in april 2017)
 
 ## Understanding by examples
 
@@ -44,8 +45,7 @@ Then take a look to existing DSLs.
 (work in progress)
 
 Low Level DSLs (Developement related domains) :
-- babelute-aright : Objects and types validation DSL (ultra-fast, ultra-modular) (realease in april 2017)
-- babelute-lexicon-definition-language : Babelute Lexic Definition DSL and its generators. (realease in april 2017)
+- [aright-*](https://github.com/nomocas/aright-lexicon) : Objects and types validation DSL (ultra-fast, ultra-modular)
 - [babelute-html-lexicon](https://github.com/nomocas/babelute-html-lexicon) : HTML5 DSL and its render engines. (modern, __one of the world's fastest__, one-way-binding templating (React philosophy))
 
 High Level DSLs (Human related domains) :
