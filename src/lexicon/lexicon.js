@@ -262,6 +262,16 @@ FirstLevel.prototype._lexicon = function(lexiconName) {
 
 /*
  * translation through lexicon (already delcared in Babelute proto)
+ * @TODO: translation and each and if
+ * each :
+ * 	.each(collec, handler)
+ * 	translated to 
+ * 	.each(collec, wrap(handler, translationInfos))
+ * 	
+ * 	==> should translate automatically output from handler
+ * if ==> same things : wrap handlers
+ * ==> while translating : when lexem.name === "each" (or "if") (should always be present in target lexicon)
+ * 	==> apply wrapping
  */
 
 Babelute.prototype._translateLexemsThrough = function(lexicon, firstLevel = false) {
