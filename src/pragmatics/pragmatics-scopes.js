@@ -11,7 +11,7 @@
 import assert from 'assert'; // removed in production
 
 /**
- * Inner-sentence-scopes manager : hold array as stacks for inner-scopes of sentences (if needed). It's only avaiable in pragmatics, while traversing, and is dependent of what pragmatics do. See babelute-html-view as an example of usage.
+ * Inner-sentence-scopes manager : hold array as stacks for inner-scopes of sentences (if needed). It's only avaiable in pragmatics, while traversing, and is dependent of what pragmatics do. See htsl-view as an example of usage.
  *
  * So its a simple helper aimed to (while interpreting sentences) :
  * - give a space where store/access needed variables.
@@ -19,18 +19,18 @@ import assert from 'assert'; // removed in production
  *
  * It has to be used carefully after reading this :
  *
- * For certain output types (as in Babelute-html diffing) it has to be "pure".
+ * For certain output types (as in htsl diffing) it has to be "pure".
  * (in a functional way of thinking).
  * It means that it should contains nothing else 
  * than "local" variables produced and managed while interpreting sentences.
  * No outside-sentence variables should be needed to perform the output.
  * And so, two output from the same sentence should be the same.
  *
- * So by example, Babelute-html-view use it to keep track (for managing view's life cycle) 
+ * So by example, htsl-view use it to keep track (for managing view's life cycle) 
  * of views tree while rendering (with the scope facility prodived here).
  * 
  * Views are inner-sentences objects, and so as needed, 
- * two render on same babelute-html sentence will provide same output.
+ * two render on same htsl sentence will provide same output.
  *
  * For other DSL and outputs types, it depends what you want and implement, but be sure of what your doing 
  * before introducing outside variables dependencies in sentences interpretations.
