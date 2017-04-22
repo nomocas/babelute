@@ -32,9 +32,9 @@ Babelute.js core library (this lib) provides helpers to :
 
 ## Core Libraries
 
-- babelute (this lib)
+- [babelute](https://github.com/nomocas/babelute) (this lib)
 - [babelute-uus](https://github.com/nomocas/babelute-uus) : Universal Unambiguous Sentences proposal : Welcome in Sharing Era.
-- babelute-lexicon-definition-language : Babelute Lexic Definition DSL and its generators. (realease in april 2017)
+- [babelute-ldl](https://github.com/nomocas/babelute-ldl) : Babelute Lexicon Definition DSL and its generators.
 
 ## Understanding by examples
 
