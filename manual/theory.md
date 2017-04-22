@@ -112,13 +112,13 @@ For Coordination Problem : [Hessellund, Anders (2009). "Domain-Specific Multimod
 
 Paradoxally, __General Purpose Languages are DSLs.__
 
-Precisely, all GPL are Dialects of the generic DSL for handling variables and objects. Nothing more. As dialects, they all give a particular vision (and particular associated concepts) of the same problem : managing pure atomic Code related objects : string, number, bool, object, arrays, var, const, if, loops, ...
+Precisely, all GPL are Dialects of the generic DSL for handling variables and objects. Nothing more. As dialects, they all give a particular vision (and particular associated concepts) of the same problem : managing pure atomic Code related objects : string, number, bool, object, arrays, var, const, functions, if, loops, ...
 
-No one, a part programmers, should take a look at it. That's pure esoteric experts driven language.
+No one, a part programmers, should take a look at it. That's pure esoteric expert driven language.
 
-GPLs are called GPL because we pretend to be able to Model everything with those primitives. Not because they effectively and efficiently cover every Domains. And so to high level business related consideratins, we try to answer with low level code related stuffs, or at best (in the sens of less purely technical) with UML.
+GPLs are called GPL because we pretend to be able to Model everything with those primitives. Not because they effectively and efficiently cover every Domains (without further abstractions). And so to high level business related considerations, we try to answer with low level code related stuffs, or at best (in the sens of less purely technical) with UML, which is by essence to generic, exactly as GPL are.
 
-DSMM, by filling the gap between fuzzy imprecise customer thinking and pure technical considerations, with __Multi-Level of abstractions__ that fits naturally Business Domains Languages inclusions and structurations - __because it mimics how we think__ - provides simply the final form of programmation.
+DSMM, by filling the gap between fuzzy imprecise customer thinking and pure technical considerations, with __Multi-Level of abstractions__ that fits naturally Business Domains Languages inclusions and structurations - __because it mimics how we think and by extension how the world is structured__ - provides simply one of the "final" form of programmation.
 
 https://martinfowler.com/bliki/OneLanguage.html
 
@@ -277,17 +277,6 @@ https://en.wikipedia.org/wiki/Lexicon
 
 Atoms are the Abstract concept in OO. Atoms need implementation (i.e. interpretation in a particular context).
 
-### Sentences as Optimal Structure Catcher
-
-Babelute's sentences could be seen (structurally) as a super set of XML with better expressivity, which is so much more readable and so much less verbose.
-
-
-
-### Pragmatics 
-
-
-#### Facade Patterns
-
 
 ## Disambiguation
 
@@ -295,13 +284,20 @@ https://en.wikipedia.org/wiki/Word-sense_disambiguation
 
 > In computational linguistics, word-sense disambiguation (WSD) is __an open problem__ of natural language processing and ontology. WSD is identifying which sense of a word (i.e. meaning) is used in a sentence, when the word has multiple meanings. The solution to this problem impacts other computer-related writing, such as discourse, improving relevance of search engines, anaphora resolution, coherence, inference et cetera.
 
-Babelute allows a big step toward WSD's resolution. For two reasons :
+Babelute allows a big step toward WSD's resolution. For 3 reasons :
 
-- Lexicon Second Dimension
+- Lexicon Second Dimension : 
+   - aka the fact that word's lexicon reference is always stored in any lexem. 
+   - So sentences that need to be recognized contain directly the missing information (i.e. how it could be understand, word by word). 
 - Dry & Context Free Grammar
+   - babelute sentences syntax focus on structuration (through parenthesis) in place of linearisation as in Human related languages (where lexem are placed side by side in sentence, with few punctuation). It make sentences Unambiguous in their structure.
+- 4 Dimensions full disambiguation : lexicon, word, arguments, pragmas
+   - In fact, to get __FULL__ meaning of a concept, we need to know its effects in the real world (which is the fondamentals of Pragmatics Philosophy from Charles Sanders Pierce). So to get the precise meaning of something we need to get 4 variables :
+      - the word used (the model name)
+      - its arguments (the instance parameters)
+      - the lexicon (the word(s) abstract semantic (the models))
+      - the pragmatics (the word(s) concreet implementations)
 
-
-=> 3 dimensions disambiguation : lexicon, word, pragmas
 
 
 ## Sentence's Forms
@@ -321,31 +317,49 @@ Highly Analysable Tree
 Javascript community has, more than any other, raised (Host Language) AST to almost first class citizen. It's heavily used by so much tools now (Linter, True Script, Coffee Script, Babel and plugins, Webpack Loaders, rollup, ...) that any Junior Dev learn quickly what is it (even if he do not play directly with it).
 
 
-
 "Internal AST" should be seen as an AST lite that focus on the important part of your program.
 
 Host Language AST : provide you ALL the nodes of your program, which is complex and blurred by many second importance pieces of code
 
 
-### Semantic Network
 
-- https://en.wikipedia.org/wiki/Lexical_semantics#Semantic_networks
+### Pragmatics 
 
-Babelute does not provide any Semantic Network parser out-of-the-box.
+Pragmatics are implementation of lexems. "Implement" means here to provide __particular behaviour for specific context__.
 
-Semantic Network are produced from collections of sentences and are closely linked to DSLs themselves.
+Babelute sentences hold only information, that need interpretation before to become useful.
+
+
+#### Facade Patterns (Introducing Side Effects)
+
+One common way to implement pragmatics is to use the ["Facade" Design Pattern](https://en.wikipedia.org/wiki/Facade_pattern).
+It means here that sentences __will be apply on an object__ (it will modify its state), one lexem after the other, and so sentence itself could be seen as a Facade.
+
+By example, with babelute-html-lexicon, we could use sentences to set state of DOM elements by applying directly dom-implementation-of-lexems to it.
+The htsl sentence is just a simple way of setting properties and children of DOM Elements (which could look like jquery).
 
 
 ## Translation
 
+Translation (or transformation) are the fundamental concept behind everything. No translation === no meaning nor actions.
 
 ## Serialization
 
+See [babelute-uus](https://github.com/nomocas/babelute-uus) for more infos.
 
 
-## World Consequences
 
-### Optimal Information Model
+
+## Denotation, Extansion, Connotation, Intention
+
+What about the four aspects of Comprehension from Logic Science ?
+
+- __Denotation__ : provided by internal grammar/semantic, and translations
+- __Connotation__ : provided by other lexicons where word(s) exist(s) and links between them
+- __Extansion__ : Similarities notion, provided by pattern matching between DSLs (Internal Denotations and/or Data Population (set of sentences), or by transitivity)
+- __Intention__ : the only aspect that is not stored in the model. There is no easy way to deduce the exact intention behind a simple sentence or even behind a full text (bunch of sentences). Only an explicit text that focus on real (conscious) intention of the data provider could help. And even then, as meaning depending on receiver, there is no way to be sure that we have grab the exact intention.
+
+## Optimal Information Model
 
 
 https://en.wikipedia.org/wiki/Information_model
@@ -363,16 +377,10 @@ Nothing could be removed or we loose informations.
 
 To gain the Maximal Global Information, we need to add the "Meta Semantic Network", which is deduced from connections between languages (lexicons) - pragmas, translations, transitivity, ...
 
-#### Denotation, Extansion, Connotation, Intention
-
-What about the four aspects of Comprehension from Logic Science ?
-
-- __Denotation__ : provided by internal grammar/semantic, and translations
-- __Connotation__ : provided by other lexicons where word(s) exist(s) and links between them
-- __Extansion__ : Similarities notion, provided by pattern matching between DSLs (Internal Denotations and/or Data Population (set of sentences), or by transitivity)
-- __Intention__ : the only aspect that is not stored in the model. There is no easy way to deduce the exact intention behind a simple sentence or even behind a full text (bunch of sentences). Only an explicit text that focus on real (conscious) intention of the data provider could help. And even then, as meaning depending on receiver, there is no way to be sure that we have grab the exact intention.
 
 
+
+## World Consequences
 
 ### Maximal Shareability
 
