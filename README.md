@@ -46,7 +46,7 @@ Then take a look to existing DSLs.
 
 Low Level DSLs (Developement related domains) :
 - [aright-*](https://github.com/nomocas/aright-lexicon) : Objects and types validation DSL (ultra-fast, ultra-modular)
-- [babelute-html-lexicon](https://github.com/nomocas/babelute-html-lexicon) : HTML5 DSL and its render engines. (modern, __one of the world's fastest__, one-way-binding templating (React philosophy))
+- [htsl-*](https://github.com/nomocas/htsl-lexicon) : HTML5 DSL and its render engines. (modern, __one of the world's fastest__, one-way-binding templating (React philosophy))
 
 High Level DSLs (Human related domains) :
 - babelute-cooking : High Level Cooking DSL demo and its bunch of transformations and DSLs targets. (realease in april 2017)

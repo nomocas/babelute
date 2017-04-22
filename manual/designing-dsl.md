@@ -888,7 +888,7 @@ const myStructure = h.section(
 
 It makes diffing really simpler...
 
-(see babelute-html-* for workable examples and current implementations of .if and .each)
+(see htsl-* for workable examples and current implementations of .if and .each)
 
 
 
@@ -915,7 +915,7 @@ __Internal Program__ : The main internal program structure without worrying abou
 _Under construction_ ... ;)
 
 
- See [babelute-html-dom-diffing-pragmatics](https://github.com/nomocas/babelute-html-dom-diffing-pragmatics) for real world example...
+ See [htsl-dom-diffing-pragmatics](https://github.com/nomocas/htsl-dom-diffing-pragmatics) for real world example...
 
 
 ### 5.1 First Level Concept

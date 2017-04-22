@@ -335,7 +335,7 @@ Babelute sentences hold only information, that need interpretation before to bec
 One common way to implement pragmatics is to use the ["Facade" Design Pattern](https://en.wikipedia.org/wiki/Facade_pattern).
 It means here that sentences __will be apply on an object__ (it will modify its state), one lexem after the other, and so sentence itself could be seen as a Facade.
 
-By example, with babelute-html-lexicon, we could use sentences to set state of DOM elements by applying directly dom-implementation-of-lexems to it.
+By example, with htsl-lexicon, we could use sentences to set state of DOM elements by applying directly dom-implementation-of-lexems to it.
 The htsl sentence is just a simple way of setting properties and children of DOM Elements (which could look like jquery).
 
 
