@@ -281,10 +281,21 @@ Babelute.prototype._translateLexemsThrough = function(lexicon, firstLevel = fals
 			lexicon = map[lexem.lexicon];
 		if (!lexicon)
 			return null;
+		const args = translateArgs(lexem.args, lexicon, firstLevel);
 		const b = new (firstLevel ? lexicon.FirstLevel : lexicon.Atomic)();
-		return b[lexem.name] && b[lexem.name](...lexem.args);
+		return b[lexem.name] && b[lexem.name](...args);
 	});
 };
+
+function translateArgs(args, lexicon, firstLevel){
+	const result = [];
+	for(let i = 0, len = args.length; i < len; ++i)
+		if(args[i] && args[i].__babelute__)
+			result.push(args[i]._translateLexemsThrough(lexicon, firstLevel));
+		else
+			result.push(args[i]);
+	return result;
+}
 
 
 
