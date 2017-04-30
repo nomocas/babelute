@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/nomocas/babelute/compare/v0.5.0...v0.5.1) (2017-04-30)
+
+
+### Bug Fixes
+
+* **build:** update dev dependencies ([8963497](https://github.com/nomocas/babelute/commit/8963497))
+* **facade-pragmas:** remove facade initializer and finalise and clean with more test ([b563383](https://github.com/nomocas/babelute/commit/b563383))
+* **index:** remove createFacadeInitializer from index.js ([21aa722](https://github.com/nomocas/babelute/commit/21aa722))
+* **package:** update last dev dependencies ([fadce95](https://github.com/nomocas/babelute/commit/fadce95))
+* **translation:** add args translation ([c132c16](https://github.com/nomocas/babelute/commit/c132c16))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/nomocas/babelute/compare/v0.4.4...v0.5.0) (2017-04-18)
 
