@@ -36,27 +36,81 @@ Babelute.js core library (this lib) provides helpers to :
 - [babelute-uus](https://github.com/nomocas/babelute-uus) : Universal Unambiguous Sentences proposal : Welcome in Sharing Era.
 - [babelute-ldl](https://github.com/nomocas/babelute-ldl) : Babelute Lexicon Definition DSL and its generators.
 
-## Understanding by examples
-
-First of all, please read [Designing a DSL](https://github.com/nomocas/babelute/blob/master/manual/designing-dsl.md).
-
-Then take a look to existing DSLs.
-
-(work in progress)
+## Understanding by real examples
 
 Low Level DSLs (Developement related domains) :
 - [aright-*](https://github.com/nomocas/aright-lexicon) : Objects and types validation DSL (ultra-fast, ultra-modular)
 - [htsl-*](https://github.com/nomocas/htsl-lexicon) : HTML5 DSL and its render engines. (modern, __one of the world's fastest__, one-way-binding templating (React philosophy))
 
 High Level DSLs (Human related domains) :
-- babelute-cooking : High Level Cooking DSL demo and its bunch of transformations and DSLs targets. (realease in april 2017)
+- babelute-cooking : High Level Cooking DSL demo and its bunch of transformations and DSLs targets. (realease in summer 2017)
+
+Please read [Designing a DSL](https://github.com/nomocas/babelute/blob/master/manual/designing-dsl.md) for more infos.
 
 ## Theory background and development
 
-(work in progress)
+Theorical considerations are exposed [here](https://github.com/nomocas/babelute/blob/master/manual/theory.md) (work in progress).
 
-Theorical considerations are exposed [here](https://github.com/nomocas/babelute/blob/master/manual/theory.md).
+## Usage
 
+```
+npm i babelute --save
+```
+
+The aim is to define __Descriptive Internal DSLs__ :
+
+- Descriptive : Write what you want and not how to achieve it
+- Internal : made and handleable with pure host-language objects and syntax (v.s. an External DSL that has it's own particular syntax)
+- DSL : a bunch of related words (and so concepts) from a particular domain
+
+By defining __Words as Functions__ that receive arguments :
+
+```javascript
+.aWords(arg1, arg2, ...)
+```
+
+And to write __structured sentences__ with them through __Method Chaining__ :
+
+```javascript
+h.this().is().a(h.sentence(true)) // this is an example : there is no such DSL... ;)
+```
+
+How to get that :
+```javascript
+import babelute from 'babelute';
+
+/* A lexicon is where to store your words */
+const lexicon = babelute.createLexicon('my-dsl');
+
+/* Atoms are words (of your DSL) that are not expressed with other words from the same lexicon */
+lexicon.addAtoms(['foo', 'bar', 'zoo', 'doo']);
+
+/* Compounds words are words (of your DSL) that are expressed with other words from the same lexicon */
+lexicon.addCompounds((h) => {
+	// h is the lexicon's initializer (see below)
+	return {
+		goo(arg1, arg2) {
+			// this is called the "Internal Denotation" of the compound lexem (here 'goo')
+			return this.foo(arg1).bar(arg2);
+		},
+		boo(...some){
+			return this.zoo(h.doo(some).zoo('lollipop'));
+		}
+	};
+});
+
+...
+
+/* initializer are just a helper to start sentence with your lexicon */
+const h = lexicon.initializer();
+
+/* then write sentences with your DSL to describe what you want */
+const mySentence = h.goo('hello', 'world').boo(['one', 'two', 'three']);
+```
+
+__Remarque__ : for the moment : you have just __described things__ (so you've stored information and knowledge in sentences) and you haven't define yet any mean to interpret them and to make them useful. We'll see that later.
+
+Please read [Designing a DSL](https://github.com/nomocas/babelute/blob/master/manual/designing-dsl.md) for more infos.
 
 ## Licence
 

@@ -13,6 +13,8 @@ As Babelute is primarily aimed to handle Descriptive/Declarative DSLs, HTML lang
 - FirstLevel Form and one-level-developement are smart and elegant way to obtain one of the fastest DOM Diffing engine avaiable.
 - it will be a natural translation target for many other DSL that needs html representation.
 
+Of course, you could find final sources and related libraries at [htsl-lexicon](https://github.com/nomocas/htsl-lexicon).
+
 ## 1. Write needed sentences
 
 As the idea of babelute, is first to encapsulate Information in sentences, lets try to write __what we want__ before all.
