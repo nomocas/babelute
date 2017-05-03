@@ -734,6 +734,41 @@ describe('Babelute Lexicon tests', () => {
 				.to.deep.equals([]);
 		});
 	});
+
+
+
+	describe('_translateLexemsThrough arguments translation', () => {
+
+		const target = babelute.createLexicon('target-test');
+
+		target.addAtoms(['bloupi', 'zoo'])
+			.addCompounds(() => {
+				return {
+					bar(goo) {
+						return this.zoo(goo);
+					},
+					foo(title) {
+						return this.bloupi(title);
+					}
+				};
+			});
+		const src = babelute.createLexicon('src-test');
+
+		src.addAtoms(['bar', 'foo']);
+
+		const h = src.initializer(),
+			b = h.foo(h.bar('bye'))._translateLexemsThrough(target);
+
+		it('should insert needed lexems', () => {
+			expect(b._lexems[0].args[0]._lexems)
+				.to.deep.equals([
+					{ lexicon: 'target-test', name: 'zoo', args: ['bye'] }
+				]);
+		});
+	});
+
+
+
 	describe('getLexicon throw error if no lexicon found', () => {
 		const throwIt = function() {
 			return babelute.getLexicon('foo');
