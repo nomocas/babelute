@@ -108,7 +108,7 @@ const h = lexicon.initializer();
 const mySentence = h.goo('hello', 'world').boo(['one', 'two', 'three']);
 ```
 
-__Remarque__ : for the moment : you have just __described things__ (so you've stored information and knowledge in sentences) and you haven't define yet any mean to interpret them and to make them useful. We'll see that later.
+__Remarque__ : in this example, we have just __described things__ (so we've stored information and knowledge in sentences) and we haven't define yet any mean to interpret them and to make them useful. We'll see that later.
 
 Please read [Designing a DSL](https://github.com/nomocas/babelute/blob/master/manual/designing-dsl.md) for more infos.
 
