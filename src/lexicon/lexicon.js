@@ -116,7 +116,7 @@ class Lexicon {
 		assert(typeof producer === 'function', 'lexicon.addCompounds(...) need a function (that return an object containing dsl methods) as first argument');
 
 		// Atomic API is produced with Atomic initializer
-		const atomicMethods = producer(this.Atomic.initializer);
+		const atomicMethods = producer(this.Atomic.initializer, false);
 
 		assert(atomicMethods && typeof atomicMethods === 'object', 'lexicon.addCompounds(function(){...}) need a function that return an object containing dsl methods to add');
 
@@ -126,7 +126,7 @@ class Lexicon {
 		// SecondLevel API is simply produced with the related FirstLevel initializer. 
 		// (so same producer method, same api, but different handler for inner composition)
 		// is the only thing to do to gain capability to handle full AST. (see docs)
-		const secondLevelCompounds = producer(this.FirstLevel.initializer);
+		const secondLevelCompounds = producer(this.FirstLevel.initializer, true);
 		for (let j in secondLevelCompounds)
 			this.SecondLevel.prototype[j] = secondLevelCompounds[j];
 
