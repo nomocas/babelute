@@ -6,9 +6,10 @@
  */
 
 import assert from 'assert'; // removed in production
-import { Babelute, Lexem } from '../babelute.js';
-import FirstLevel from './first-level.js';
-import { addToInitializer, createInitializer } from './initializer.js';
+import Lexem from '../lexem';
+import Babelute from '../babelute';
+import FirstLevel from './first-level';
+import { addToInitializer, createInitializer } from './initializer';
 
 /**
  * Lexicons dico : where to store public lexicon

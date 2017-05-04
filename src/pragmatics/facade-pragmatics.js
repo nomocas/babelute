@@ -5,9 +5,7 @@
  */
 
 import assert from 'assert'; // removed in production
-import {
-	Babelute
-} from '../babelute.js';
+import Babelute from '../babelute';
 import { Pragmatics } from './pragmatics-core.js';
 
 /**

@@ -7,45 +7,7 @@
  */
 
 import assert from 'assert'; // removed in production
-
-/**
- * Lexem class : a lexem is just an object containing 3 properties { lexicon:String, name:String, args:Arguments|Array }
- * You should never construct them directly (but if you do babelute's plugins). And it should never be extended.
- * @protected
- */
-export class Lexem {
-
-	/**
-	 * construct a new lexem instance
-	 * @param  {String} lexicon the lexicon's name of the lexem
-	 * @param  {String} name    the lexem's name
-	 * @param  {Array|arguments} args  the lexem's arguments (an array or the "callee arguments" object) 
-	 */
-	constructor(lexicon, name, args) {
-		assert(typeof lexicon === 'string' && lexicon.length, 'Lexicon\'s name should be a valid string');
-		assert(typeof name === 'string' && lexicon.length, 'Lexem\'s name should be a valid string');
-		assert(Array.isArray(args) || typeof args.length !== 'undefined', 'Lexem\'s args should be an array (or iterable with bracket access)');
-
-		/**
-		 * the lexicon name from where the lexem comes
-		 * @type {String}
-		 */
-		this.lexicon = lexicon;
-
-		/**
-		 * the lexem's name
-		 * @type {String}
-		 */
-		this.name = name;
-
-		/**
-		 * The lexem's arguments array (or arguments object)
-		 * @type {Array|arguments}
-		 */
-		this.args = args;
-	}
-}
-
+import Lexem from './lexem';
 /**
  * Babelute subclass(es) instances : for holding array of lexems (i.e. a sentence) written through the DSL's API.
  *
@@ -60,7 +22,7 @@ export class Lexem {
  * 		
  * @public
  */
-export class Babelute {
+export default class Babelute {
 
 	/**
 	 * construct a babelute instance
@@ -218,23 +180,5 @@ export class Babelute {
 			B.prototype[i] = api[i];
 		return B;
 	}
-}
-
-
-/**
- * deserialize json to babelute
- * @param  {String} json the json string
- * @return {Babelute}      the deserialized babelute
- * @throws {Error} If json is badly formated
- */
-export function fromJSON(json) {
-	assert(typeof json === 'string', 'babelute.fromJSON need a string as first argument');
-	return JSON.parse(json, (k, v) => {
-		if (v && v.__babelute__)
-			return new Babelute(v._lexems.map((lexem) => {
-				return new Lexem(lexem.lexicon, lexem.name, lexem.args);
-			}));
-		return v;
-	});
 }
 

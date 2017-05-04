@@ -4,11 +4,9 @@
  * @copyright 2016 Gilles Coomans
  */
 
-import {
-	Babelute,
-	Lexem,
-	fromJSON
-} from './babelute.js';
+import Lexem from './lexem';
+import Babelute from './babelute';
+import fromJSON from './from-json';
 
 import {
 	Lexicon,
@@ -20,11 +18,11 @@ import {
 	developOneLevel,
 	developToAtoms,
 	lexicons
-} from './lexicon/lexicon.js';
+} from './lexicon/lexicon';
 
-import FirstLevel from './lexicon/first-level.js';
-import { Pragmatics, createPragmatics } from './pragmatics/pragmatics-core.js';
-import { FacadePragmatics, createFacadePragmatics } from './pragmatics/facade-pragmatics.js';
+import FirstLevel from './lexicon/first-level';
+import { Pragmatics, createPragmatics } from './pragmatics/pragmatics-core';
+import { FacadePragmatics, createFacadePragmatics } from './pragmatics/facade-pragmatics';
 
 export default {
 	createLexicon,

@@ -5,10 +5,8 @@
  */
 
 import assert from 'assert'; // removed in production
-import {
-	Babelute,
-	Lexem
-} from '../babelute.js';
+import Lexem from '../lexem';
+import Babelute from '../babelute';
 
 /**
  * A FirstLevel is a Babelute that has exactly same api than its corresponding Babelute (from a DSL) but where every compounds methods has been replaced by its "atomic" equivalent.
