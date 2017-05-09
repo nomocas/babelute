@@ -1,12 +1,12 @@
-# Theory part
+# Theorical part
 
-As you've seen in previous articles, Babelute is highly practical and quite simple to use. And at usage, almost everything is self-explanatory...
+As you've seen in previous articles ([Designing DSL]()), Babelute is highly practical and quite simple to use. And at usage, almost everything is self-explanatory...
 
-Most of the people will use already defined lexicons, write sentences with them, play with associated Pragmatics, translate sentences with third party bridge lexicon(s), serialize sentences and store them somewhere...
+Most of the people will use already defined lexicons, write sentences with them, play with associated Pragmatics, maybe define Dialects, translate sentences with third party bridge lexicon(s), serialize sentences and store them somewhere...
 
 All this doesn't require to dive deeply in theoretical considerations.
 
-So if you're here, normally it's because you want to develop fine grained DSLs or simply you want to know what's behind.
+So if you're here, normally it's because you want to develop fine grained DSLs or simply you want to know what's behind and what's after.
 
 Little reminder :
 
@@ -110,13 +110,15 @@ For Coordination Problem : [Hessellund, Anders (2009). "Domain-Specific Multimod
 
 > Binary Machine Code __--(1)-->__  Assembler __--(2)-->__ General Purpose Languages (GPL) __--(3)-->__ DS(M)M
 
-Paradoxally, __General Purpose Languages are DSLs.__
+Each step equals a big boost in productivity.
 
-Precisely, all GPL are Dialects of the generic DSL for handling variables and objects. Nothing more. As dialects, they all give a particular vision (and particular associated concepts) of the same problem : managing pure atomic Code related objects : string, number, bool, object, arrays, var, const, functions, if, loops, ...
+Paradoxally, __General Purpose Languages are DSLs.__ And Assembler is also a DSL (the one for managing registers, memory adresses, atomic ops, etc...).
+
+Precisely, all GPLs are Dialects of the generic DSL for handling variables and objects. Nothing more. As dialects, they all give a particular vision (and particular associated concepts) of the same problem : managing pure atomic Code related objects : string, number, bool, object, arrays, var, const, functions, if, loops, ...
 
 No one, a part programmers, should take a look at it. That's pure esoteric expert driven language.
 
-GPLs are called GPL because we pretend to be able to Model everything with those primitives. Not because they effectively and efficiently cover every Domains (without further abstractions). And so to high level business related considerations, we try to answer with low level code related stuffs, or at best (in the sens of less purely technical) with UML, which is by essence to generic, exactly as GPL are.
+GPLs are called GPL because we pretend to be able to _model_ everything with those primitives. Not because they effectively and efficiently cover every Domains without further abstractions. And so to high level business related considerations, we try to answer with low level code related stuffs, or at best (in the sens of less purely technical) with UML, which is by essence generic, exactly as GPLs are.
 
 DSMM, by filling the gap between fuzzy imprecise customer thinking and pure technical considerations, with __Multi-Level of abstractions__ that fits naturally Business Domains Languages inclusions and structurations - __because it mimics how we think and by extension how the world is structured__ - provides simply one of the "final" form of programmation.
 
@@ -133,9 +135,9 @@ It's their essence.
 We'll never, never, have something better than avaiable DSLs (at any moment) for talking about Domain's problems. Maybe tomorrow we'll have better DSLs... Sure... Domains will evolve.
 But the best knowledge and concepts __useful__ for any domain at any moment are always encapsulated in and avaiable through DSLs.
 
-And as Technics evolves quickly and Domains evolves slowly... The more stable solutions that we could provide for any problem are based on related DSL(s) and not on technics.
+And as Technics evolves quickly and Domains evolves slowly... The more stable solutions we could provide for any problem are based on related DSL(s) and not on technics.
 
-In other words, coding with __DSL as First Class Citizen__ make code the more useful, reusable and stable than ever. And we'll never have better...
+In other words, modeling problems with __DSLs as First Class Citizen__ make code more useful, reusable and stable than ever.
 
 ### Internal vs External DSL
 
@@ -145,6 +147,12 @@ Short version :
 - __Internal DSL__ : soft, easily extendable, with open environment (host language itself), readable but could be verbose, restrict expressivity, and implies minimal host-language knowledge.
 
 - __External DSL__ : harder to define (need parser/compiler), with closed environment (symbolic barrier) and not always shorter (e.g. RegExp vs HTML vs SQL) but could be more expressive and better understoud by domains experts.
+
+Babelute focus on Internal DSL main benefits which are the openness of the environement and the easyness of extension. 
+
+By allowing mix of host-language code and objects __and__ Internal DSL sentences, it simply marry genericity and specificity, and so allow to gain, through the same paradigm (the one of the host language), a good balance between expressivity and softness.
+
+For the easyness of extension take a look at [Dialecting]() below.
 
 
 ### DSL Orientations
@@ -160,7 +168,7 @@ Short version :
 I recommend to (quick) read : https://fr.slideshare.net/marcoewobben/fact-oriented-modeling-in-10-steps
 
 
-As Babelute first aim is to catch pure information in DSL's sentences, without knowing all sort of things that will be applied/extracted from those sentences, Babelute is mainly suited to handle Descriptive DSL, and Fact Oriented DSL is a good ideal to have in mind when developing such languages. Even if descriptive doesn't mean necessary Fact Based, is often a point of view :
+As Babelute first aim is to catch pure information in DSL's sentences, without knowing all sort of things that will be applied/extracted from those sentences, Babelute is mainly suited to handle Descriptive DSL. And Fact Oriented DSL is a good ideal to have in mind when developing such languages. Of course descriptive doesn't mean necessary Fact Based and there is other way to describe things.
 
 But there is other possible orientations : Behavioural or Structural.
 
@@ -169,11 +177,9 @@ And Babelute is open... You could of course imagine plenty of DSL of any types -
 As long as your DSL(s) is(are) interpretable/translatable easily (for us as for computers ;) : you're free.
 
 Whatever you do, keep in mind that pure behavioural DSL are often closy linked to technologies and so to the output's context.
-And so should be better used in pragmatics implementations, which means out of babelute's scope.
-
+And so should be better used in pragmatics implementations, which means out of babelute's primary scope.
 
 If you need to implement pure Behavioural DSL, take a look to [DoThat](https://github.com/nomocas/dothat) - as example or for usage - wich is a Promise Based Facade DSL tool.
-
 
 ### Fluent Interfaces as DSL
 
@@ -216,6 +222,8 @@ rtf().section(
 ).out( out );
 ```
 
+Or even take a look to [elenpi](https://github.com/nomocas/elenpi) which probide a small expressive internal DSL for LL(1) parser generator.
+
 Further reading :
 - http://leecampbell.blogspot.be/2008/11/method-chaining-to-create-your-dsl.html
 - https://sanaulla.info/2013/05/30/creating-internal-dsls-in-java-java-8-adopting-martin-fowlers-approach
@@ -223,8 +231,40 @@ Further reading :
 
 ### DSL Dialects
 
-Dialects are one corner stone of Semantic structure.
+Dialects are the corner stone of Semantic structure and the key to takle complexity.
 
+Wathever OO language you use, OOP (including Aspect Oriented Programmation) focus on behaviour. And inheritance (or class mixins) talk about methods (override, overload, super, ...). And so OO focus on how __encapsulate and structure behaviours__. Classes mostly talk about Implementation related things.
+
+__Real__ behaviours (in all their details) are always closely linked to technologies, languages and particular temporary needs (needs that will change quickly).
+And this is one reason of OO difficulties to takle most of our problems. They are condamned to play at behaviour level. Level which is itself condamned to evolve quickly and to respond to plenty of really different use cases in the same time. And trying to encapsulate a complex coherent behaviour (a class is __a bunch__ of functions that play together on same state) that will work in any cases (by extension), or that will follow easily any change, is obviously hard.
+
+Functional Programming show us another way : what if we use smaller bricks, by splitting every behaviour to its atomic pure functions, and to __compose__ complex behaviour by piping (left or right) those atomic bricks together on demand ? When changes in needs happend, we could easily re-compose things because it's made of __atomic independant pieces__. It's much more soft, and will obviously fit much wider needs.
+And we also gain big boost in Testability and Debugability.
+
+Whatever approach we take (OOP, AOP, FP, ...), what is sure is that any _implementations_ (the active part of programs) will always be based on behavioural objects (functions, classes, ...).
+
+Descriptive DSLs talk about Information, the state(s) of things - i.e. what things _are_ - and not how to process precisely things. We only want to encapsulate what we want and/or what we know. 
+
+The big point here is that Information Models, most of the time hidden in Code, are much more stable and transversal than what we __actualy__ need to do with them at a particular moment. 
+
+Think about any DB : what's important is the information encapsulated in it and not how it's really stored on the disk nor how we actually structure it... Is that a NoSQL Document or a plain old bunch of SQL tables ? Who cares apart developpers ? Certainly not the final user that only needs information. Information that should only reflect pure business related concepts. Concepts that will evolves only when the business itself will evolves. But even 10 years after, stored Information could be useful and reprocessed to obtain something else.
+
+Dialecting could be seen as an equivalent to Class Inheritance (and is implemented as this in Babelute's Lexicon). A dialect "inherit" from another language and complete it, or change specific meanings, by providing specific words. 
+
+But composing Information through dialecting is __much more easy__ than composing Behaviours through inheritance. Because Dialecting consist essentialy to __define Compounds Words__ which are themselves made (composed) __from other words from the same Lexicon__. And a Lexicon is primarily made of Atomic Concepts.
+Finally, we always produces a list of _atoms_. 
+
+It's much more as composing a painting, by putting freely pieces together, exactly as FP does, than extending complex objects that execute precisely something. 
+
+So we finally have the liberty and softness of FP, ready for any adaptation, to handle Information - that will be the more stable and useful things through years.
+
+Software Adequation
+
+One other great benefits from DSM and Dialecting, is that DSL resolve problems horizontaly. It means that when we develop a DSL for a particular Domain, we should resolve things for a much wider audience (or application) than just __our particular business__. 
+
+If you provide to a customer, from any food industry (lets say that he produces Pies), a General Cooking Receipts DSL and its bunch of transformations, you allow him to produce/handle __any__ receipts __simply by Dialecting__. And so tomorrow, whatever food industry evolutions are, this customer __could adapt everything easily__ for making Pizza or Beers, by just changing or producing Dialects.
+
+So we could say that DSL resolve horizontally things, which is obviously more "adequate".
 
 
 ## Semantics and Interpretations
@@ -242,7 +282,7 @@ https://en.wikipedia.org/wiki/Pragmatics
 > Pragmatics is a subfield of linguistics and semiotics that studies the ways in which __context contributes to meaning__.
 
 We could say that Pragmatics are links between Ideas and real World.
-Here it will be seen as "__finalising Meaning__ through Concreet Actions".
+Here it will be seen as "__finalising Meaning__ through Concreet Actions". It simply means that we'll provide particular implementation for our atomic concepts. (see below)
 
 
 
@@ -264,8 +304,8 @@ https://en.wikipedia.org/wiki/Lexicon
 
 > __A lexicon is the vocabulary of a person, language, or branch of knowledge (such as nautical or medical).__ In linguistics, a lexicon is a language's inventory of lexemes. The word "lexicon" derives from the Greek λεξικόν (lexicon), neuter of λεξικός (lexikos) meaning "of or for words".[1]
 
-"Internal Semantic" and "Internal Grammar" are closely linked :
-- Top -> Bottom === Semantic
+"Internal Denotation" and "Internal Grammar" are closely linked :
+- Top -> Bottom === Denotation
 - Bottom -> Up === Grammar
 
 
@@ -275,30 +315,9 @@ https://en.wikipedia.org/wiki/Lexicon
 
 > [Def](http://www.glottopedia.org/index.php/Syntactic_atom) : Syntactic atom is a term introduced in Di Sciullo & Williams (1987) to refer to the property of words that they are the indivisible building blocks of syntax. Words are atomic with respect to syntax, since syntactic rules or principles cannot make reference to their parts (see lexical integrity).
 
-Atoms are the Abstract concept in OO. Atoms need implementation (i.e. interpretation in a particular context).
+Syntactic Atoms, or here we should maybe call them Semantic Atoms, are _the minimal set of concepts useful in a Domain that is not expressed themselves with concepts of that Domain_.
 
-
-## Disambiguation
-
-https://en.wikipedia.org/wiki/Word-sense_disambiguation
-
-> In computational linguistics, word-sense disambiguation (WSD) is __an open problem__ of natural language processing and ontology. WSD is identifying which sense of a word (i.e. meaning) is used in a sentence, when the word has multiple meanings. The solution to this problem impacts other computer-related writing, such as discourse, improving relevance of search engines, anaphora resolution, coherence, inference et cetera.
-
-Babelute allows a big step toward WSD's resolution. For 3 reasons :
-
-- Lexicon Second Dimension : 
-   - aka the fact that word's lexicon reference is always stored in any lexem. 
-   - So sentences that need to be recognized contain directly the missing information (i.e. how it could be understand, word by word). 
-- Dry & Context Free Grammar
-   - babelute sentences syntax focus on structuration (through parenthesis) in place of linearisation as in Human related languages (where lexem are placed side by side in sentence, with few punctuation). It make sentences Unambiguous in their structure.
-- 4 Dimensions full disambiguation : lexicon, word, arguments, pragmas
-   - In fact, to get __FULL__ meaning of a concept, we need to know its effects in the real world (which is the fondamentals of Pragmatics Philosophy from Charles Sanders Pierce). So to get the precise meaning of something we need to get 4 variables :
-      - the word used (the model name)
-      - its arguments (the instance parameters)
-      - the lexicon (the word(s) abstract semantic (the models))
-      - the pragmatics (the word(s) concreet implementations)
-
-
+Atoms are the Abstract concept in OO. Atoms need implementation (i.e. interpretation in a particular context). So they are the "gate" through which we'll provide Real World Semantic
 
 ## Sentence's Forms
 
@@ -348,6 +367,28 @@ Translation (or transformation) are the fundamental concept behind everything. N
 See [babelute-uus](https://github.com/nomocas/babelute-uus) for more infos.
 
 
+## Disambiguation
+
+https://en.wikipedia.org/wiki/Word-sense_disambiguation
+
+> In computational linguistics, word-sense disambiguation (WSD) is __an open problem__ of natural language processing and ontology. WSD is identifying which sense of a word (i.e. meaning) is used in a sentence, when the word has multiple meanings. The solution to this problem impacts other computer-related writing, such as discourse, improving relevance of search engines, anaphora resolution, coherence, inference et cetera.
+
+Babelute allows a big step toward WSD's resolution. For 3 reasons :
+
+- Lexicon Second Dimension : 
+   - aka the fact that related lexicon reference is always stored in any lexem. 
+   - So sentences that need to be recognized contains directly the missing information (i.e. how it could be "understand", literally, word by word). 
+- Dry & Context Free Grammar
+   - babelute sentences syntax focus on structuration (through parenthesis) in place of linearisation as in Human related languages (where lexem are placed side by side in sentence, with few punctuation). It make sentences Unambiguous in their structure.
+- 4 Dimensions full disambiguation : lexicon, word, arguments, pragmas
+   - In fact, to get __FULL__ meaning of a concept, we need to know its effects in the real world (which is the fondamentals of Pragmatics Philosophy from Charles Sanders Pierce). So to get the precise meaning of something we need to get 4 variables :
+      - the word used (the model name)
+      - its arguments (the instance parameters)
+      - the lexicon (the words semantics (their internal denotation and relations - aka the models))
+      - the pragmatics (the word(s) concreet effects)
+
+
+And if we add the lexicon's dialects (aka the extensions or the relations between closely linked lexicons) and the translations between DSLs (aka the relations between loosly linked Domains) : we gain a full Semantic Information Model that drasticaly boost our ability to understand things through automats. 
 
 
 ## Denotation, Extansion, Connotation, Intention
@@ -398,17 +439,17 @@ One day, soon I hope, we will have DSLs for each know domain
 
 ### Full Real Reusability
 
-- no coupling
-- best naming
+- minimal coupling == binary coupling
+- best naming : only natural business related naming.
 - best expressivity
 - real modularity
-- non obstrusive
+- non obstrusive : no input or output general constraints
 
 
 ### DSMM Robustness and Agility
 
 - translation lexicons couple just two lexicons together and are the softest way of coupling.
-- real parallele programming
+- real parallele programming : teams could work on DSLs totally independently.
 - real implications and collaboration of experts at domain's border
 
 Agile has never been so straight forward
