@@ -18,26 +18,40 @@
     "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha test/*.js",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | coveralls",
     "prepublish": "npm test",
-    "release": "standard-version",
-    "commit": "commit-wizard"
+    "release": "standard-version"
   },
-  "config": {
-    "pre-git": {
-      "enabled": true,
-      "allow-untracked-files": true,
-      "msg-pattern": "^(US|EN)\\d+ - .+",
-      "commit-msg": "simple",
-      "pre-commit": [
-        "eslint src test"
-      ],
-      "post-commit": "git status",
-      "pre-push": [
-        "npm test"
-      ],
-      "post-checkout": "yarn",
-      "post-merge": "yarn"
+  "commitMsg": {
+    "invalidCharsInSubject": false,
+    "types": {
+      "allowedTypes": "^(feat|fix|docs|style|refactor|build|perf|test|chore)(\\([^)]+\\))?: ",
+      "required": true
+    },
+    "strictTypes": {
+      "invalidTypes": "(^[^: ]+: )"
+    },
+    "capitalized": {
+      "capital": false
+    },
+    "subjectPreferredMaxLineLength": false,
+    "subjectMaxLineLength": {
+      "length": 100
+    },
+    "bodyMaxLineLength": {
+      "length": 100
+    },
+    "references": {
+      "github": {
+        "user": "nomocas",
+        "repo": "babelute"
+      }
     }
   },
+  "pre-commit": [
+    "prebuild"
+  ],
+  "pre-push": [
+    "test"
+  ],
   "nyc": {
     "require": [
       "babel-register"
@@ -79,6 +93,7 @@
     "babel-register": "^6.14.0",
     "babelrc-rollup": "^3.0.0",
     "chai": "^3.5.0",
+    "commit-msg": "^0.2.2",
     "coveralls": "^2.12.0",
     "cross-env": "^4.0.0",
     "eslint": "^3.15.0",
@@ -92,7 +107,8 @@
     "karma-safari-launcher": "^1.0.0",
     "mocha": "^3.2.0",
     "nyc": "^10.2.0",
-    "pre-git": "^3.14.0",
+    "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-watch": "^3.2.2",
