@@ -1,6 +1,6 @@
 # Theorical part
 
-As you've seen in previous articles ([Designing DSL]()), Babelute is highly practical and quite simple to use. And at usage, almost everything is self-explanatory...
+As you've seen in previous articles ([Designing DSL](./designing-dsl.md)), Babelute is highly practical and quite simple to use. And at usage, almost everything is self-explanatory...
 
 Most of the people will use already defined lexicons, write sentences with them, play with associated Pragmatics, maybe define Dialects, translate sentences with third party bridge lexicon(s), serialize sentences and store them somewhere...
 
@@ -258,15 +258,6 @@ It's much more as composing a painting, by putting freely pieces together, exact
 
 So we finally have the liberty and softness of FP, ready for any adaptation, to handle Information - that will be the more stable and useful things through years.
 
-Software Adequation
-
-One other great benefits from DSM and Dialecting, is that DSL resolve problems horizontaly. It means that when we develop a DSL for a particular Domain, we should resolve things for a much wider audience (or application) than just __our particular business__. 
-
-If you provide to a customer, from any food industry (lets say that he produces Pies), a General Cooking Receipts DSL and its bunch of transformations, you allow him to produce/handle __any__ receipts __simply by Dialecting__. And so tomorrow, whatever food industry evolutions are, this customer __could adapt everything easily__ for making Pizza or Beers, by just changing or producing Dialects.
-
-So we could say that DSL resolve horizontally things, which is obviously more "adequate".
-
-
 ## Semantics and Interpretations
 
 
@@ -444,6 +435,14 @@ One day, soon I hope, we will have DSLs for each know domain
 - best expressivity
 - real modularity
 - non obstrusive : no input or output general constraints
+
+### Software Adequation
+
+One other great benefits from DSM and Dialecting, is that DSL resolve problems horizontaly. It means that when we develop a DSL for a particular Domain, we should resolve things for a much wider audience (or application) than just __our particular business__. 
+
+If you provide to a customer, from any food industry (lets say that he produces Pies), a General Cooking Receipts DSL and its bunch of transformations, you allow him to produce/handle __any__ receipts __simply by Dialecting__. And so tomorrow, whatever food industry evolutions are, this customer __could adapt everything easily__ for making Pizza or Beers, by just changing or producing Dialects.
+
+So we could say that DSL resolve horizontally things, which is obviously more "adequate".
 
 
 ### DSMM Robustness and Agility
