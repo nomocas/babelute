@@ -46,7 +46,7 @@
       }
     }
   },
-  "pre-commit": [
+  "precommit": [
     "prebuild"
   ],
   "pre-push": [
@@ -107,8 +107,8 @@
     "karma-safari-launcher": "^1.0.0",
     "mocha": "^3.2.0",
     "nyc": "^10.2.0",
-    "pre-commit": "^1.2.2",
     "pre-push": "^0.1.1",
+    "precommit": "^1.2.2",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-watch": "^3.2.2",
@@ -116,4 +116,3 @@
     "uglify-js": "^2.7.5"
   }
 }
-
