@@ -18,7 +18,25 @@
     "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha test/*.js",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | coveralls",
     "prepublish": "npm test",
-    "release": "standard-version"
+    "release": "standard-version",
+    "commit": "commit-wizard"
+  },
+  "config": {
+    "pre-git": {
+      "enabled": true,
+      "allow-untracked-files": true,
+      "msg-pattern": "^(US|EN)\\d+ - .+",
+      "commit-msg": "simple",
+      "pre-commit": [
+        "eslint src test"
+      ],
+      "post-commit": "git status",
+      "pre-push": [
+        "npm test"
+      ],
+      "post-checkout": "yarn",
+      "post-merge": "yarn"
+    }
   },
   "nyc": {
     "require": [
@@ -74,6 +92,7 @@
     "karma-safari-launcher": "^1.0.0",
     "mocha": "^3.2.0",
     "nyc": "^10.2.0",
+    "pre-git": "^3.14.0",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-watch": "^3.2.2",
@@ -81,3 +100,4 @@
     "uglify-js": "^2.7.5"
   }
 }
+
