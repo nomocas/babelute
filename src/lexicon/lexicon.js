@@ -193,6 +193,9 @@ class Lexicon {
 	 * @return {Lexicon}      the new Lexicon that inherit from this one
 	 */
 	createDialect(name) {
+
+		assert(typeof name === 'string', 'lexicon.createDialect(...) need a string (the new lexicon name) as first argument');
+		
 		return new Lexicon(name, this);
 	}
 }
