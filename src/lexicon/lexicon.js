@@ -12,7 +12,7 @@ import FirstLevel from './first-level';
 import { addToInitializer, createInitializer } from './initializer';
 
 /**
- * Lexicons dico : where to store public lexicon
+ * Lexicons dico : where to store public (registered) lexicon
  * @type {Object}
  * @private
  */
@@ -21,14 +21,14 @@ const lexicons = {};
 /**
  * Lexicon class : helpers to store and manage DSL's API.
  * 
- * A __Lexicon__ is just an object aimed to handle, store and construct easily a DSL (its lexic - i.e. the bunch of words that compose it)
+ * A __Lexicon__ is just an object aimed to handle, store and construct easily a DSL (its lexicon - i.e. the bunch of words that compose it)
  * and its related Atomic/FirstLevel/SecondLevel Babelute subclasses, and their initializers.
  *
  * One DSL = One lexicon.
  *
  * A lexicon could extend another lexicon to manage dialects.
  *
- * You should never use frontaly the constructor (aka never use new Lexicon in  your app). Use createLexicon in place.
+ * You should never use frontaly the constructor (aka never use new Lexicon in  your app). Use createLexicon or createDialect in place.
  * 
  * @public
  */
@@ -59,7 +59,7 @@ class Lexicon {
 
 		// the three APIs :
 		/**
-		 * interpretable sentences API (finally always made from syntactical atoms (aka last level))
+		 * interpretable sentences API (finally always made from syntactic/semantic atoms (aka last level))
 		 * @type {Babelute}
 		 * @protected
 		 */
@@ -178,6 +178,11 @@ class Lexicon {
 		return firstLevel ? this.FirstLevel.initializer : this.Atomic.initializer;
 	}
 
+	/**
+	 * Create a dialect from this lexicon. a dialect is also a Lexicon.
+	 * @param  {String} name the new lexicon name
+	 * @return {Lexicon}      the new Lexicon that inherit from this one
+	 */
 	createDialect(name) {
 		return new Lexicon(name, this);
 	}
