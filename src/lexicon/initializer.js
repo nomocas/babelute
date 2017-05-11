@@ -39,11 +39,8 @@ function createInitializer(BabeluteClass, BaseInitializer = null) {
 	BabeluteClass.initializer._empty = function() {
 		return new BabeluteClass();
 	};
-	BabeluteClass.initializer.BabeluteClass = BabeluteClass;
-	Object.keys(BabeluteClass)
-		.forEach((i) => {
-			addToInitializer(Init, i);
-		});
+	BabeluteClass.initializer.Class = BabeluteClass;
+	Object.keys(BabeluteClass).forEach((i) => addToInitializer(Init, i));
 	return BabeluteClass.initializer;
 }
 
@@ -55,7 +52,7 @@ function createInitializer(BabeluteClass, BaseInitializer = null) {
  */
 function addToInitializer(Initializer, methodName) {
 	Initializer.prototype[methodName] = function() {
-		return this.BabeluteClass.prototype[methodName].apply(new this.BabeluteClass(), arguments);
+		return new this.Class()[methodName](...arguments);
 	};
 }
 
