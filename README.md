@@ -29,12 +29,14 @@ Babelute.js core library (this lib) provides helpers to :
 	- to translate DSL sentences to other DSL sentences (by example through __dedicated bridge-DSLs__ with their own lexicon(s))
 	- to interpret sentences in many context with specific __fine grained dedicated implementations__ (called __pragmatics__)
 
+The idea is __really simple__ : lets __write structured sentence with some DSL to encapsulate information__ (aka modeling). Then use different "interpretation" engines to __do something with this information__ (aka implementations).
+
 
 ## Core Libraries
 
-- [babelute](https://github.com/nomocas/babelute) (this lib)
-- [babelute-uus](https://github.com/nomocas/babelute-uus) : Universal Unambiguous Sentences proposal : Welcome in Sharing Era.
-- [babelute-ldl](https://github.com/nomocas/babelute-ldl) : Babelute Lexicon Definition DSL and its generators.
+- [babelute](https://github.com/nomocas/babelute) (this lib) : provides Lexicon and Pragmatics base for writting DSLs.
+- [babelute-uus](https://github.com/nomocas/babelute-uus) : Universal Unambiguous Sentences proposal : Welcome in Sharing Era. For storing and sharing sentences.
+- [babelute-ldl](https://github.com/nomocas/babelute-ldl) : Babelute Lexicon Definition DSL (Sentences Schema) and its generators.
 
 ## Understanding by real examples
 
@@ -77,13 +79,26 @@ h.this().is().a(h.sentence(true)) // this is an example : there is no such DSL..
 
 How to get that :
 ```javascript
+// my-dsl-lexicon.js
 import babelute from 'babelute';
 
 /* A lexicon is where to store your words */
 const lexicon = babelute.createLexicon('my-dsl');
 
-/* Atoms are words (of your DSL) that are not expressed with other words from the same lexicon */
-lexicon.addAtoms(['foo', 'bar', 'zoo', 'doo']);
+/* 
+Atoms are words (of your DSL) that are not expressed with other words from the same lexicon (aka Domain).
+In other words, they are words that should be expressed precisely 
+with some other domains concepts for particular contexts.
+In other words, they need translation or implementation that are outside the scope of the current Domain.
+(see designing-a-dsl in babelute's doc for more infos)
+*/
+lexicon.addAtoms([
+	'foo', // .foo(...args)
+	'bar', // .bar(...args)
+	'zoo', // .zoo(...args)
+	'doo'  // .doo(...args)
+]);
+// don't worry, there is strict formal ways of defining allowed atoms arguments
 
 /* Compounds words are words (of your DSL) that are expressed with other words from the same lexicon */
 lexicon.addCompounds((h) => {
@@ -94,21 +109,134 @@ lexicon.addCompounds((h) => {
 			return this.foo(arg1).bar(arg2);
 		},
 		boo(...some){
-			return this.zoo(h.doo(some).zoo('lollipop'));
+			return this.zoo(h.doo(some).foo('lollipop'));
 		}
 	};
 });
 
-...
-
+export default lexicon;
+```
+```javascript
+import lexicon from 'my-dsl-lexicon';
 /* initializer are just a helper to start sentence with your lexicon */
 const h = lexicon.initializer();
 
 /* then write sentences with your DSL to describe what you want */
-const mySentence = h.goo('hello', 'world').boo(['one', 'two', 'three']);
+const mySentence = h.goo('hello', 'world').boo('one', 'two', 'three').foo(true);
 ```
 
-__Remarque__ : in this example, we have just __described things__ (so we've stored information and knowledge in sentences) and we haven't define yet any mean to interpret them and to make them useful. We'll see that later.
+Compounds words (here `goo` and `boo`) are made of __atoms__ (or of other compounds words that are themselves made of atoms by recursivity), and so __sentences below are exactly equivalent__ (they hold the same lexems list and structure):
+```javascript
+const mySentence = h.goo('hello', 'world').boo('one', 'two', 'three').foo(true);
+// is deeply equal to
+const mySentence2 = 
+	h.foo('hello')
+	.bar('world')
+	.zoo(
+		h.doo(['one', 'two', 'three'])
+		.foo('lollipop')
+	)
+	.foo(true);
+```
+
+So sentences are finally __always composed of atoms__ (those words that need implementation - see below).
+
+Of course, you are totally free to create any Internal DSL you want. Apart they should be "Description Oriented" (it is babelute's purpose), you could imagine whatever you want... Remember just that the aim is to define descriptive DSL to catch informations.
+
+So, until here, we have just __described things__ (so we've stored information and knowledge in sentences - ok, imagine that we have ;) and we haven't define yet any mean to interpret them and to make them useful.
+
+So we need to define an "interpretation" engine which is called here a __pragmatics__ engine.
+
+The cool fact is that, basically, as __sentences are always made of atoms__, we just need to provides implementation for our __atoms__, whatever the number of compounds words we have.
+
+Let's define a simple engine that use sentences made with `my-dsl` to decorate an object (called `subject` below) : 
+```javascript
+// my-dsl-to-object-pragmatics.js
+const myPragmas = {
+	foo(subject, args /* foo's args received in sentence */){
+		// do something on subject with args
+		// ...
+	},
+	bar(subject, args /* bar's args received in sentence */){
+		// do something on subject with args
+		// ...
+	},
+	zoo(subject, args /* zoo's args received in sentence */){
+		subject.zoo = {};
+		if(args[0].__babelute__)
+			this.$output(args[0], subject.zoo);
+		else
+			...
+	},
+	doo(subject, args /* doo's args received in sentence */){
+		// do something on subject with args
+		// ...
+	},
+
+	// by convention, the method's name used for interpretation start with a '$' 
+	$output(babelute, subject = {}){
+		babelute._lexems.forEach((lexem) => 
+			lexem.lexicon === 'my-dsl' 
+			&& this[lexem.name]
+			&& this[lexem.name](subject, lexem.args) 
+			// simple mapping between lexem's name and own methods
+		);
+		return subject;
+	}
+};
+
+export default myPragmas;
+```
+
+```javascript
+import lexicon from 'my-dsl-lexicon';
+import myDSLToObject from 'my-dsl-to-object-pragmatics';
+
+const h = lexicon.initializer(), 
+	subject = {},
+	sentence = h.goo('hello', 'world').boo(['one', 'two', 'three']);
+
+myDSLToObject.$output(sentence, subject);
+```
+
+Straight forward...
+
+Again, of course you are totally free to interpret sentences exactly as you want. There is no constraints. And you could imagine many differents output kind and usage (from simple Facade for manipulating objects states, to full Code Generation Tools). Imagination is the limit.
+
+
+Finally, lets define a dialect of `my-dsl` :
+
+```javascript
+// my-dsl-dialect-lexicon.js
+import myDSLLexicon from 'my-dsl-lexicon';
+
+const myDialectLexicon = myDSLLexicon.createDialect('my-dsl-dialect');
+
+myDialectLexicon.addCompounds((h) => ({
+	myNewWord(...){
+		return this.foo('...').goo(...);
+	},
+	myOtherNewWord(...){
+		return this.boo('...').bar(...).doo();
+	},
+	...
+}));
+
+export default myDialectLexicon;
+```
+```javascript
+import lexicon from 'my-dsl-dialect-lexicon';
+const h = lexicon.initializer();
+const mySentence = h.myOtherNewWord('hello', 'world')...;
+
+...
+
+// of course always usable with pragmatics that work with my-dsl
+
+import myDSLToObject from 'my-dsl-to-object-pragmatics';
+
+const decoratedObject = myDSLToObject.$output(mySentence);
+```
 
 Please read [Designing a DSL](https://github.com/nomocas/babelute/blob/master/manual/designing-dsl.md) for more infos.
 
