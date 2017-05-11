@@ -138,12 +138,22 @@ export default class Babelute {
 		// will be implemented in lexicon
 	}
 
-	_translate(handler) {
+	/**
+	 * transform a sentence through a function. This function must return a new sentence.
+	 * @param  {Function} handler a function that receive the current sentence as argument and that return a new sentence.
+	 * @return {Babelute}        the new sentence
+	 */
+	_transform(handler) {
 		return handler(this);
 	}
 
+	/**
+	 * translate each lexems
+	 * @param  {[type]} handler [description]
+	 * @return {[type]}         [description]
+	 */
 	_translateLexems(handler) {
-		return this._translate((sentence) => {
+		return this._transform((sentence) => {
 			const b = new Babelute();
 			sentence._lexems.forEach((lexem) => b._use(handler(lexem)));
 			return b;
@@ -159,7 +169,7 @@ export default class Babelute {
 	 */
 	/* istanbul ignore next */
 	_translateLexemsThrough(lexicon, firstLevel = false) { // eslint-disable-line no-unused-vars
-
+		// will be implemented in Lexicon
 	}
 
 

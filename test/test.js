@@ -266,7 +266,7 @@ describe('Babelute base class and Lexem', () => {
 	});
 
 
-	describe('_translate', () => {
+	describe('_transform', () => {
 
 		const MyBabelute = Babelute.extends(Babelute, {
 			foo(title) {
@@ -281,7 +281,7 @@ describe('Babelute base class and Lexem', () => {
 		});
 
 
-		const b = new MyBabelute().foo('bar').zoo(true)._translate((sentence) => new MyBabelute().wrap(sentence));
+		const b = new MyBabelute().foo('bar').zoo(true)._transform((sentence) => new MyBabelute().wrap(sentence));
 
 		it('should insert needed lexems', () => {
 			expect(b._lexems.length).equal(1);
