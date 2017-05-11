@@ -144,7 +144,16 @@ class Lexicon {
 	 * @param {Object} methods an object containing methods (lexems) to add to lexicon
 	 * @return {Lexicon} the lexicon itself
 	 */
-	addAliases(methods) {
+	addAliases(producer) {
+		
+		const producerType = typeof producer;
+
+		assert(producerType === 'function' || producerType === 'object', 'lexicon.addAliases(...) need a function (that return an object containing aliases methods) as first argument');
+		
+		const methods = producerType === 'function' ? producer() : producer;
+
+		assert(methods && typeof methods === 'object', 'lexicon.addAliases(function(){...}) need a function that return an object containing aliases methods to add');
+		
 		Object.keys(methods)
 			.forEach((key) => {
 				this.Atomic.prototype[key] = this.FirstLevel.prototype[key] = this.SecondLevel.prototype[key] = methods[key];
