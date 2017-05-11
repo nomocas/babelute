@@ -143,7 +143,7 @@ So sentences are finally __always composed of atoms__ (those words that need imp
 
 Of course, you are totally free to create any Internal DSL you want. Apart they should be "Description Oriented" (it is babelute's purpose), you could imagine whatever you want... Remember just that the aim is to define descriptive DSL to catch informations.
 
-So, until here, we have just __described things__ (so we've stored information and knowledge in sentences - ok, imagine that we have ;) and we haven't define yet any mean to interpret them and to make them useful.
+So, until here, we have just __described things__ (so we've stored information and knowledge in sentences - ok, imagine that we have ;) and we haven't defined yet any mean to interpret them and to make them useful.
 
 So we need to define an "interpretation" engine which is called here a __pragmatics__ engine.
 
