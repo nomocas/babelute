@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/nomocas/babelute/compare/v0.5.1...v0.6.0) (2017-05-11)
+
+
+### Bug Fixes
+
+* **dialect:** add missing assertion in createDialect ([1635163](https://github.com/nomocas/babelute/commit/1635163))
+* **scopes:** extract unneeded scopes management ([a114f03](https://github.com/nomocas/babelute/commit/a114f03))
+* **structure:** extract Lexem and fromJSON to own files ([deb59d9](https://github.com/nomocas/babelute/commit/deb59d9))
+
+
+### Features
+
+* **compounds:** add isFirstLevel flag to compounds producer ([bb9e062](https://github.com/nomocas/babelute/commit/bb9e062))
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/nomocas/babelute/compare/v0.5.0...v0.5.1) (2017-04-30)
 
