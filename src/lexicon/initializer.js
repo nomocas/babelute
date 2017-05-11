@@ -1,34 +1,26 @@
 /*
-* @Author: Gilles Coomans
-* @Date:   2017-03-10 13:25:25
-* @Last Modified by:   Gilles Coomans
-* @Last Modified time: 2017-05-04 01:11:06
-*/
+ * @Author: Gilles Coomans
+ * @Date:   2017-03-10 13:25:25
+ * @Last Modified by:   Gilles Coomans
+ * @Last Modified time: 2017-05-10 11:03:28
+ */
 
 import assert from 'assert'; // removed in production
-
 import Babelute from '../babelute';
+import extend from '../utils/extends';
 
 /**
  * Initializer Class
  * @protected
  */
-class Initializer {
-	/**
-	 * extends Initializer
-	 * @param  {[type]} BaseInitializer [description]
-	 * @return {[type]}                 [description]
-	 */
-	static extends(BaseInitializer) {
+class Initializer {}
 
-		assert(BaseInitializer === Initializer || (BaseInitializer.prototype instanceof Initializer), 'Initializer.extends accepts only a Initializer Class (or subclass) as argument');
-
-		const Class = function() {};
-		Class.prototype = Object.create(BaseInitializer.prototype);
-		Class.prototype.constructor = Class;
-		return Class;
-	}
-}
+/**
+ * extends Initializer
+ * @param  {Class} BaseInitializer the Initializer to extends
+ * @return {Class}                 the extended Initalizer class
+ */
+Initializer.extends = extend;
 
 /**
  * create a Initializer (based on a Babelute subclass) and instanciate it

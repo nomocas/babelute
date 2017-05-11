@@ -8,6 +8,7 @@
 
 import assert from 'assert'; // removed in production
 import Lexem from './lexem';
+import extend from './utils/extends';
 /**
  * Babelute subclass(es) instances : for holding array of lexems (i.e. a sentence) written through the DSL's API.
  *
@@ -161,24 +162,32 @@ export default class Babelute {
 
 	}
 
-	/**
-	 * Create Babelute subclass
-	 * @param  {Babelute} BaseClass the class to be extended
-	 * @param  {?Object} api an object containing methods to add to prototype
-	 * @return {Babelute}   The subclass
-	 * @throws {AssertionError} (only in dev mode) If BaseClass is not a Babelute Subclass (or Babelute)
-	 */
-	static extends(BaseClass, api = null) {
-		assert(BaseClass === Babelute || (BaseClass.prototype instanceof Babelute), 'Babelute.extends accepts only a Babelute Class (or subclass) as first argument');
-		assert(!api || typeof api === 'object', 'Babelute.extends need a (optional) valid object containing methods as second argument');
-		const B = function(lexems) {
-			BaseClass.call(this, lexems);
-		};
-		B.prototype = Object.create(BaseClass.prototype);
-		B.prototype.constructor = B;
-		for (var i in api) // Object.assign seems to bug when used on prototype (not investigate enough : so use plain old for-in syntax)
-			B.prototype[i] = api[i];
-		return B;
-	}
+
+	// static extends(BaseClass, ...apis) {
+	// 	assert(BaseClass === Babelute || (BaseClass.prototype instanceof Babelute), 'Babelute.extends accepts only a Babelute Class (or subclass) as first argument');
+	// 	const B = function(...args) {
+	// 		BaseClass.apply(this, args);
+	// 	};
+	// 	B.prototype = Object.create(BaseClass.prototype);
+	// 	B.prototype.constructor = B;
+
+	// 	apis.forEach((api) => {
+	// 		for (var i in api) B.prototype[i] = api[i];
+	// 	});
+
+	// 	// Object.assign seems to bug when used on prototype (not investigate enough : so use plain old for-in syntax)
+	// 	// investigation gives : babel make prototype not enumerable
+
+	// 	return B;
+	// }
 }
+
+/**
+ * Create Babelute subclass
+ * @param  {Babelute} BaseClass the class to be extended
+ * @param  {?Object} api an object containing methods to add to prototype
+ * @return {Babelute}   The subclass
+ * @throws {AssertionError} (only in dev mode) If BaseClass is not a Babelute Subclass (or Babelute)
+ */
+Babelute.extends = extend;
 
