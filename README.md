@@ -12,7 +12,7 @@
 [![npm-downloads](https://img.shields.io/npm/dm/babelute.svg)](https://npm-stat.com/charts.html?package=babelute)
 [![npm](https://img.shields.io/npm/v/babelute.svg)](https://www.npmjs.com/package/babelute)
 [![licence](https://img.shields.io/npm/l/babelute.svg)](https://spdx.org/licenses/MIT)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
 
 Really small, simple, incredibly powerful and super fast __Descriptive Internal DSLs__ tools.
 
@@ -30,7 +30,6 @@ Babelute.js core library (this lib) provides helpers to :
 	- to interpret sentences in many context with specific __fine grained dedicated implementations__ (called __pragmatics__)
 
 The idea is __really simple__ : lets __write structured sentence with some DSL to encapsulate information__ (aka modeling). Then use different "interpretation" engines to __do something with this information__ (aka implementations).
-
 
 ## Core Libraries
 
