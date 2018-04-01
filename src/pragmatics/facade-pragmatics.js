@@ -12,7 +12,7 @@ import { Pragmatics } from './pragmatics-core.js';
  * FacadePragmatics : a facade oriented Pragmatics subclass. You should never instanciate a FacadePragmatics directly with new. use {@link createFacadePragmatics}.
  * @example
  * // Remarque : any lexem's method will be of the following format : 
- * function(subject, args, ?percolator){
+ * function(subject, args, percolator = null){
  * 	// return nothing
  * }
  */
@@ -33,7 +33,7 @@ export class FacadePragmatics extends Pragmatics {
 	 * @param  {?Object} percolator  the sentence's percolator instance
 	 * @return {void}         nothing
 	 */
-	each(subject, args /* collection, itemHandler */ , percolator) {
+	each(subject, args, percolator = null) {
 
 		assert(typeof subject === 'object', '.each facade pragma need an object as subject (first argument)');
 		assert(!args[0] || Array.isArray(args[0]), '.each facade pragma need an array (or iterable with bracket access) as first args object (first argument passed to lexem)');
@@ -59,11 +59,11 @@ export class FacadePragmatics extends Pragmatics {
 	 * @param  {?Object} percolator  the sentence's percolator instance
 	 * @return {void}         nothing
 	 */
-	if (subject, args /* trueBabelute, falseBabelute */ , percolator) {
+	if (subject, args, percolator = null) {
 
 		assert(typeof subject === 'object', '.if facade pragma need an object as subject (first argument)');
-		assert(args[1] instanceof Babelute, '.if facade pragma need an babelute instance as second args object (second argument passed to lexem)');
-		assert(!args[2] || args[2] instanceof Babelute, '.if facade pragma third args object (third argument passed to lexem) (optional) should be a babelute instance');
+		assert(typeof args[1] === 'function' || args[1] instanceof Babelute, '.if facade pragma need an babelute instance or a function as second args object (second argument passed to lexem)');
+		assert(!args[2] || typeof args[2] === 'function' ||  args[2] instanceof Babelute, '.if facade pragma third args object (third argument passed to lexem) (optional) should be a babelute instance or a function');
 
 		if (args[0])
 			this.$output(subject, args[1], percolator);
@@ -84,6 +84,8 @@ export class FacadePragmatics extends Pragmatics {
 		assert(typeof subject === 'object', '.$output facade pragma need an object as subject (first argument)');
 		assert(babelute instanceof Babelute, '.$output facade pragma need an babelute instance as second argument');
 		assert(!percolator || typeof percolator === 'object', '.$output facade pragma need an (optional) scope instance as third argument');
+
+		// babelute._lexems.forEach(lexem => this._targets[lexem.lexicon] && this[lexem.name] && this[lexem.name](subject, lexem.args, percolator));
 
 		for (let i = 0, lexem, len = babelute._lexems.length; i < len; ++i) {
 			lexem = babelute._lexems[i];
