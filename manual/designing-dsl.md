@@ -13,7 +13,7 @@ As Babelute is primarily aimed to handle Descriptive/Declarative DSLs, HTML lang
 - FirstLevel Form and one-level-developement are smart and elegant way to obtain one of the fastest DOM Diffing engine avaiable.
 - it will be a natural translation target for many other DSL that needs html representation.
 
-Of course, you could find final sources and related libraries at [htsl-lexicon](https://github.com/nomocas/htsl-lexicon).
+Of course, you could find final sources and related libraries at [htsl-lexicon](https://github.com/nomocas/htsl-lexicon) (which is much more complete than this article).
 
 ## 1. Write needed sentences
 
@@ -284,7 +284,7 @@ Of course it could be shortened by :
 htmlLexicon.addCompounds(() => {
 	const methods = {};
 	['div', 'span', 'section', 'p', 'footer', 'h1', 'h2', ...]
-	.forEach((tagName) => methods[tagName] = function(...children){
+	.forEach(tagName => methods[tagName] = function(...children){
 		return this.tag(tagName, children);
 	});
 	return methods;
@@ -296,7 +296,7 @@ We could also add common events name based on `.on(eventName:String, callback:Fu
 htmlLexicon.addCompounds(() => {
 	const methods = {};
 	['click', 'focus', 'blur', 'touch', ...]
-	.forEach((eventName) => methods[eventName] = function(callback){
+	.forEach(eventName => methods[eventName] = function(callback){
 		return this.on(eventName, callback);
 	});
 	return methods;
@@ -319,7 +319,7 @@ const mySentence = h.div('foo');
 
 Or an event : 
 ```javascript
-const mySentence = h.click(function(e){ ... });
+const mySentence = h.click(e => ...);
 ```
 
 ```javascript
@@ -398,7 +398,7 @@ const mySentence = h.section(
 	h.class('my-class')
 	.h1('hello world')
 	.div(h.id('my-id'), 'lorem ipsum...')
-	.button('fire !', h.click((e) => console.log('bouh', e)))
+	.button('fire !', h.click(e => console.log('bouh', e)))
 );
 ```
 
@@ -418,7 +418,7 @@ A __Dialect__ is simply an extension (OO meaning) of a base lexicon, and so it's
 ```javascript
 const myHTMLDialect = htmlLexicon.createDialect('my-dialect'); // extending htmlLexicon
 
-myHTMLDialect.addCompounds((h) => {
+myHTMLDialect.addCompounds(h => {
 	return {
 		myGreatComponent(title, content, clickHandler) {
 			return this.section(
@@ -448,7 +448,7 @@ const mySentence = h.mySuperComponent({
 	content:'lorem ipsum', 
 	footerText:'bla bla'
 }, {
-	clickHandler:(e) => console.log('bouh', e)
+	clickHandler: e => console.log('bouh', e)
 });
 ```
 
@@ -511,7 +511,7 @@ const domEngine = {
 	on($tag, args /* eventName, callback */ ) {
 		$tag.addEventListener(args[0], args[1]);
 	},
-	toDOM($tag, babelute) {
+	toDOM(babelute, $tag) {
 		babelute._lexems.forEach((lexem) => lexem.lexicon === 'html' && this[lexem.name]($tag, lexem.args));
 		return $tag;
 	}
@@ -529,7 +529,7 @@ const mySentence = h.section(
 );
 
 const $myTag = document.getElementById('my-tag');
-domEngine.toDOM($myTag, mySentence);
+domEngine.toDOM(mySentence, $myTag);
 ```
 
 For convenience we could do :
@@ -539,7 +539,7 @@ For convenience we could do :
 htmlLexicon.addAliases({
 	// convention : when adding output related method in lexicon, add a '$' in front of its name
 	$toDOM(domElement) { 
-		return domEngine.toDOM(domElement, this);
+		return domEngine.toDOM(this, domElement);
 	}
 });
 
@@ -609,7 +609,7 @@ const stringEngine = {
 
 		children.forEach((child) => {
 			if (child && child.__babelute__)
-				this.toHTMLString(tag, child);
+				this.toHTMLString(child, tag);
 			else if (typeof child === 'string')
 				tag.children += htmlSpecialChars.encode(child);
 			else
@@ -642,9 +642,12 @@ const stringEngine = {
 	id(tag, args /* value */ ) {
 		tag.attributes = ' id="' + args[0] + '"' + tag.attributes;
 	},
-	toHTMLString(tag, babelute) {
-		tag = tag || new TagDescriptor();
-		babelute._lexems.forEach((lexem) => lexem.lexicon === 'html' && this[lexem.name](tag, lexem.args));
+	toHTMLString(babelute, tag = new TagDescriptor()) {
+		babelute._lexems.forEach(lexem => 
+			lexem.lexicon === 'html' 
+			&& this[lexem.name]
+			&& this[lexem.name](tag, lexem.args)
+		);
 		return tag.children;
 	}
 };
@@ -662,16 +665,13 @@ const mySentence = h.section(
 	h.class('my-class')
 	.h1('hello world')
 	.div(h.id('my-id'), 'lorem ipsum...')
-	.button('fire !', h.click((e) => console.log('bouh', e)))
+	.button('fire !', h.click(e => console.log('bouh', e)))
 );
 
-const htmlString = stringEngine.toHTMLString(null, mySentence);
+const htmlString = stringEngine.toHTMLString(mySentence);
 ```
 
 Great ! Now we're able to output same sentences to DOM or to HTML String.
-
-
-
 
 
 ### 4.3 Dif Engine
@@ -682,262 +682,4 @@ In fact it's really simple : we just need 3 dedicated engine : Render, Dif, Remo
 
 And as an engine is just a bunch of functions (the Atoms implementations) stored in a simple object, it should be easy now.
 
-#### 4.3.1 Classical DOM-Diffing
-
-We'll do it roughly and you should be able to complete it.
-
-Lets start with renderEngine, which is really close to domEngine.
-In fact it does exactly the same thing. We just need to keep track of rendered tags, and we'll do it by storing them in their associated lexem. So we need to pass lexem to engine's methods, in place of lexem arguments.
-
-The engine below does not manage structure differences (when tag's types change or when adding/removing tags between diffing).
-For this we'll develop small lexems that will make the structure stable, and will boost re-rendering.
- 
-```javascript
-const renderEngine = {
-	tag($parent, lexem /* tagName, children */) {
-		const tag = document.createElement(lexem.args[0]),
-			children = lexem.args[1];
-
-		$parent.appendChild(tag);
-		lexem.tag = tag;
-
-		let count = 0;
-		children.forEach((child) => {
-			if (child && child.__babelute__) // all sentences hold a "__babelute__" bool equal to true
-				this.render(tag, child);
-			else{ // any other value (string, bool, number, null, ...)
-				children[count] = document.createTextNode(child); // we keep track of produced node
-				tag.appendChild(children[count]); // auto escaped when added to dom.
-			}
-			count++;
-		});
-	},
-	class($tag, lexem /* className */) {
-		$tag.classList.add(lexem.args[0]);
-	},
-	style($tag, lexem /* name, value  */ ) {
-		$tag.style[lexem.args[0]] = lexem.args[1];
-	},
-	attr($tag, lexem /* name, value */ ) {
-		$tag.setAttribute(lexem.args[0], lexem.args[1]);
-	},
-
-	...
-	
-	render(tag, babelute){
-		babelute._lexems.forEach((lexem) => lexem.lexicon === 'html' && this[lexem.name](tag, lexem));
-		return babelute;
-	}
-};
-```
- 
-```javascript
-const difEngine = {
-	tag($parent, lexem, oldLexem) {
-		// let assume that tag's type won't change (see after)
-		const children = lexem.args[1], 
-			oldChildren = oldLexem.args[1],
-			tag = lexem.tag = oldLexem.tag;
-
-		let count = 0;
-		children.forEach((child) => {
-			const oldChild = oldChildren[count];
-			if (child && child.__babelute__) // all sentences hold a "__babelute__" bool equal to true
-				this.dif(tag, child, oldChild);
-			else if(child !== oldChild.nodeValue) { // any other value (string, bool, number, null, ...)
-				children[count] = oldChild; // keep track of textnode
-				oldChild.nodeValue = child; // auto escaped when added to dom.
-			}
-			count++;
-		});
-	},
-	class($tag, lexem /* className */) {
-		if(lexem.args[0] !== oldLexem.args[0]){
-			$tag.classList.remove(oldLexem.args[0]);
-			$tag.classList.add(lexem.args[0]);
-		}
-	},
-	style($tag, lexem /* name, value  */ ) {
-		if(lexem.args[0] !== oldLexem.args[0]){ // name has change
-			delete $tag.style[oldLexem.args[0]];
-			$tag.style[lexem.args[0]] = lexem.args[1];
-		}
-		else if(lexem.args[1] !== oldLexem.args[1]) // value has change
-			$tag.style[lexem.args[0]] = lexem.args[1];
-	},
-	attr($tag, lexem /* name, value */ ) {
-		if(lexem.args[0] !== oldLexem.args[0]){ // name has change
-			$tag.removeAttribute[oldLexem.args[0]];
-			$tag.setAttribute(lexem.args[0], lexem.args[1]);
-		}
-		else if(lexem.args[1] !== oldLexem.args[1]) // value has change
-			$tag.setAttribute(lexem.args[0], lexem.args[1]);
-	},
-	...
-
-	dif(tag, babelute, oldBabelute){
-		let count = 0;
-		babelute._lexems.forEach((lexem) => lexem.lexicon === 'html' && this[lexem.name](tag, lexem, oldBabelute._lexems[count++]));
-		return babelute;
-	}
-};
-```
-
-```javascript
-const removeEngine = {
-	tag($parent, lexem) {
-		const tag = lexem.tag;
-		$parent.removeChild(tag);
-		// let garbage collector do the job for children
-	},
-	class($tag, lexem /* className */) {
-		$tag.classList.remove(oldLexem.args[0]);
-	},
-	style($tag, lexem /* name, value  */ ) {
-		delete $tag.style[oldLexem.args[0]];
-	},
-	attr($tag, lexem /* name, value */ ) {
-		$tag.removeAttribute[oldLexem.args[0]];
-	},
-
-	...
-
-	remove($tag, babelute) {
-		babelute._lexems.forEach((lexem) => lexem.lexicon === 'html' && this[lexem.name](tag, lexem));
-		return babelute;
-	}
-};
-```
-A little bit of sugar :
-```javascript
-htmlLexicon.addAliases({
-	$render(domElement, oldBabelute = null) {
-		if(oldBabelute)
-			return difEngine.dif(domElement, this, oldBabelute);
-		return renderEngine.render(domElement, this);
-	},
-	$remove(domElement) {
-		return removeEngine.remove(domElement, this);
-	}
-})
-```
-
-Usage :
-
-```javascript
-const h = htmlLexicon.initializer();
-function render(state) {
-	return h.section(
-		h.class('my-class')
-		.h1(state.title)
-		.div(h.id('my-id'), state.content)
-		.button('fire !', h.click(state.handler))
-	);
-}
-
-const $root = document.getElementById('...');
-let oldBabelute, 
-	state = { title:'...', content:'...', handler:(e) => console.log('bouh', e) };
-oldBabelute = render(state).$render($root); // render
-
-...
-
-state = { title:'...', content:'...', handler:... };
-oldBabelute = render(state).$render($root, oldBabelute); // dif
-
-...
-
-oldBabelute.$remove($root);  // remove
-
-```
-
-Ok.. we've almost finished.
-
-
-#### 4.3.2 Structure differences
-
-So what about structure differences between diffing ?
-
-Most of classical DOM-Diffing algorithm make assomption that structure could change between rendering (which is obviously true in many cases).
-
-In our case, we could do something smarter... by simply adding two atoms (`.if(condition, babelute, elseBabelute)` and `.each(collection, (item) => doSomething(item))`) in htmlLexicon and by providing their implementations (also for DOM and HTMLString Engines).
-
-The idea is simple : if structure only change through those two words ('if' and 'each') : tags and other rendered stuffs will always be compared to "themselves" (constructed on previous render). __The sentences produced by render will always have same structure (aka same lexems), and only primitives values (aka arguments) will change__.
-
-
-So our diffing algorithm doesn't need to manage structure differences (in other place than .if and .each) and is the simplest form avaiable.
-
-And has other benefits as __inlining structure differences where they happend__ (in React by example, conditional structure or loops are made in pure js before JSX related final construction).
-
-__React example__ :
-```javascript
-const myNodes = collection.map((item) => <div>${ item.name }</div>)
-if(condition)
-	myNodes.push(<footer>${ ... }</footer>);
-const myStructure = <section><h1>${ ... }</h1>${ myNodes }</section>;
-```
-==> myStructure will be different depending on if condition and collection items.
-
-__Babelute example__ :
-```javascript
-const myStructure = h.section(
-	h.h1(...)
-	.each(collection, (item) => h.div(item.name))
-	.if(condition, h.footer(...))
-);
-```
-==> myStructure will be the same (same lexems) whatever condition and collection are. Only primitives values (aka arguments) will maybe change.
-
-It makes diffing really simpler...
-
-(see htsl-* for workable examples and current implementations of .if and .each)
-
-
-
-## 5. Internal AST Diffing
-
-
-Ok. We have a very simple but already powerful diffing algorithm. 
-
-How to make it lighter (even if it's already lightweight) ?
-
-Are we obliged to dif directly Virtual DOMElements (made of lexem here) ? The answer is : No !!
-
-And there is a concept provided by babelute lexicons that could help us to do so.
-
-In fact, we could dif the _template_ itself. In other words, we could dif the _program_ itself. 
-
-For this, we need to make distinction between _Program_ and _Internal Program_.
-
-__Program__ : The whole code. Everything.
-
-__Internal Program__ : The main internal program structure without worrying about how we produce primitives values and other details. What's really important. The Skeleton.
-
-
-_Under construction_ ... ;)
-
-
  See [htsl-dom-diffing-pragmatics](https://github.com/nomocas/htsl-dom-diffing-pragmatics) for real world example...
-
-
-### 5.1 First Level Concept
-
-### 5.2 Second Level Concept
-
-### 5.3 Build Internal AST
-
-### 5.4 Dif it
-
-## 6. Translation Targets
-
-Last but not least...
-
-Ok we have different kinds of outputs engine. We could express any html fragment. We know Dialects. We know .if and .each "tricks". And internal AST Diffing gives us one of the fastest and simplest approach to obtain full React-style one-way binding.
-
-In fact we know everything about HTML management.
-
-What could we do more? Simply use our HTML lexicons/dialects as translation targets for other DSLs.
-
-Imagine that we develop a DSL for something totally different than HTML, by example High Level Business related DSLs.
-
-With that DSL, you'll write sentences that will catch models (aka components functions) and data (aka components instances).

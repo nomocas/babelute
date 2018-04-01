@@ -231,12 +231,14 @@ Further reading :
 
 ### DSL Dialects
 
-Dialects are the corner stone of Semantic structure and the key to takle complexity.
+__Dialects and Composability__ are the corner stone of Semantic Structures and the key to takle world complexity.
 
-Wathever OO language you use, OOP (including Aspect Oriented Programmation) focus on behaviour. And inheritance (or class mixins) talk about methods (override, overload, super, ...). And so OO focus on how __encapsulate and structure behaviours__. Classes mostly talk about Implementation related things.
+Wathever OO language we use, OOP (including Aspect Oriented Programing) focus on behaviour. And inheritance (or class mixins) talk about methods (override, overload, super, ...). And so OO focus on how __encapsulate and structure behaviours__. Classes mostly talk about Implementation related things.
 
 __Real__ behaviours (in all their details) are always closely linked to technologies, languages and particular temporary needs (needs that will change quickly).
-And this is one reason of OO difficulties to takle most of our problems. They are condamned to play at behaviour level. Level which is itself condamned to evolve quickly and to respond to plenty of really different use cases in the same time. And trying to encapsulate a complex coherent behaviour (a class is __a bunch__ of functions that play together on same state) that will work in any cases (by extension), or that will follow easily any change, is obviously hard.
+And this is one reason of OO difficulties to takle most of our problems. They are condamned to play at behaviour level. Level which is itself condamned to evolve quickly and to respond to plenty of really different use cases over time. And trying to encapsulate a complex coherent behaviour linked to specific data (a class is __a bunch__ of functions that play together on same state) that will work in any cases, or that will follow easily any change, is obviously hard.
+
+And if we introduce inheritance tree, it make each classes interdependent, which make things even harder.
 
 Functional Programming show us another way : what if we use smaller bricks, by splitting every behaviour to its atomic pure functions, and to __compose__ complex behaviour by piping (left or right) those atomic bricks together on demand ? When changes in needs happend, we could easily re-compose things because it's made of __atomic independant pieces__. It's much more soft, and will obviously fit much wider needs.
 And we also gain big boost in Testability and Debugability.
@@ -247,12 +249,10 @@ Descriptive DSLs talk about Information, the state(s) of things - i.e. what thin
 
 The big point here is that Information Models, most of the time hidden in Code, are much more stable and transversal than what we __actualy__ need to do with them at a particular moment. 
 
-Think about any DB : what's important is the information encapsulated in it and not how it's really stored on the disk nor how we actually structure it... Is that a NoSQL Document or a plain old bunch of SQL tables ? Who cares apart developpers ? Certainly not the final user that only needs information. Information that should only reflect pure business related concepts. Concepts that will evolves only when the business itself will evolves. But even 10 years after, stored Information could be useful and reprocessed to obtain something else.
-
 Dialecting could be seen as an equivalent to Class Inheritance (and is implemented as this in Babelute's Lexicon). A dialect "inherit" from another language and complete it, or change specific meanings, by providing specific words. 
 
 But composing Information through dialecting is __much more easy__ than composing Behaviours through inheritance. Because Dialecting consist essentialy to __define Compounds Words__ which are themselves made (composed) __from other words from the same Lexicon__. And a Lexicon is primarily made of Atomic Concepts.
-Finally, we always produces a list of _atoms_. 
+Finally, we always handle a list of _atoms_. 
 
 It's much more as composing a painting, by putting freely pieces together, exactly as FP does, than extending complex objects that execute precisely something. 
 
