@@ -26,7 +26,6 @@ export default class FirstLevel extends Babelute {
 	 */
 	constructor(lexems) {
 		super(lexems);
-		this.__first_level_babelute__ = true;
 	}
 
 	/**
@@ -38,9 +37,12 @@ export default class FirstLevel extends Babelute {
 	static getFirstLevelMethod(lexiconName, lexemName) {
 		assert(typeof lexiconName === 'string', 'FirstLevel.getFirstLevelMethod(...) need a string (the lexicon name) as first argument');
 		assert(typeof lexemName === 'string', 'FirstLevel.getFirstLevelMethod(...) need a string (the lexem name) as second argument');
-		return function (...args) {
+		return function(...args) {
 			this._lexems.push(new Lexem(lexiconName, lexemName, args));
 			return this;
 		};
 	}
 }
+
+FirstLevel.prototype.__first_level_babelute__ = true;
+

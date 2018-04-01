@@ -37,12 +37,6 @@ export default class Babelute {
 		 * @type {Array}
 		 */
 		this._lexems = lexems || [];
-
-		/**
-		 * useful marker for fast instanceof replacement (frame/multiple-js-runtime friendly)
-		 * @type {Boolean}
-		 */
-		this.__babelute__ = true;
 	}
 
 	/**
@@ -174,6 +168,11 @@ export default class Babelute {
 }
 
 
+/**
+ * useful marker for fast instanceof replacement (frame/multiple-js-runtime friendly)
+ * @type {Boolean}
+ */
+Babelute.prototype.__babelute__ = true;
 
 /**
  * Create Babelute subclass
