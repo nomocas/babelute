@@ -38,33 +38,6 @@ function constanteVanilla() {
 	};
 }
 
-// curiosity : this is the faster 
-// about 40 mega ops/sec !  (same args)
-// 9 mega ops/sec (dif args)
-// function immediateVanilla2(model, data, query, pageInfos) {
-// 	return {
-// 		meta: {
-// 			"total-pages": pageInfos.totalPages
-// 		},
-// 		data: [{
-// 			id: 'foo1',
-// 			type: 'foo',
-// 			attributes: {
-// 				title: 'hello'
-// 			}
-// 		}, {
-// 			id: 'foo2',
-// 			type: 'foo',
-// 			attributes: {
-// 				title: 'world'
-// 			}
-// 		}],
-// 		links: {
-// 			self: "http://foo.com/bar/..../" + pageInfos.self
-// 		}
-// 	};
-// }
-
 function immediateObjectVanilla(model, data, query, pageInfos) {
 	return {
 		meta: {
