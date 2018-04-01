@@ -6,7 +6,7 @@ As Babelute is primarily aimed to handle Descriptive/Declarative DSLs, HTML lang
 
 - it's purely declarative.
 - basically, it's based a few Semantic Atoms : tag, attr, class, prop, data and style.
-- all other HTML object and concepts are based in those Atoms (a div is a tag, a component is a bunch of tag, ...)
+- all other HTML object and concepts are based on those Atoms (a div is a tag, a component is a bunch of tag, ...)
 - it gains from dialecting : HTML Dialects are a powerful way to construct reusable Components base.
 - it needs different pragmatics : mainly dom-output, string-output, dom-diffing, two-pass-string, ...
 - Atomic and FirstLevel Forms are both useful : FirstLevel will help us to "edit" and save our "html templates".
@@ -29,41 +29,44 @@ One Lexem = One call.
 ```javascript
 b.this(...).is().a(...).sentence(...)
 ```
+
 __Rem__ : `b` is an object, called `initializer` provided by babelute's Lexicon (the one of your DSL) which contains all DSL's lexems (functions) to start sentences with your DSL. Of course, it could be named freely.
 
 For HTML case, we should have :
 - tags (h1, section, p, ...) that could contains children (possible mix of tags and textNodes),
 - textNodes that only contain a string value,
 - and we should be able to assign to tags :
-	- classes, 
-	- attributes, 
-	- id, 
-	- properties (checked, disabled, ...), 
-	- styles,
-	- events,
-	- and data-*.
+  - classes,
+  - attributes,
+  - id,
+  - properties (checked, disabled, ...),
+  - styles,
+  - events,
+  - and data-*
 
 So, we could write things like :
+
 ```javascript
 h.h1('hello world') // write a h1 tag and add text-node in h1
 .section( // add section as nextSibling of h1
-	h.class('my-section')  // assign class to section
-	.p('some text') // add p children in section with a single textNode
+    h.class('my-section')  // assign class to section
+    .p('some text') // add p children in section with a single textNode
 );
 ```
 
 Another more complete example :
+
 ```javascript
 h.h1('hello world', h.id('my-title') /* assign id */)
 .section(
-	h.class('my-section') // assign class
-	.attr('myAttr', true) // assign attribute
-	.p('some text', h.style('min-height', '100px')) // assign style
-	.button('action time !', 
-		h.prop('disabled', true)  // assign property
-		.on('click', (e) => console.log('bam !', e)) // assign event handler
-	)
-	.footer(h.data('myVar', true), 'this is footer') // assign data-* property
+    h.class('my-section') // assign class
+    .attr('myAttr', true) // assign attribute
+    .p('some text', h.style('min-height', '100px')) // assign style
+    .button('action time !', 
+        h.prop('disabled', true)  // assign property
+        .on('click', (e) => console.log('bam !', e)) // assign event handler
+    )
+    .footer(h.data('myVar', true), 'this is footer') // assign data-* property
 );
 ```
 
@@ -77,6 +80,7 @@ Ok, it looks like any html structure could be expressed with this.
 How do we want to work with written sentences ?
 
 In case of DOM output, we could want to apply sentence directly on a DOM element :
+
 ```javascript
 var mySentence = h.div(...)...;
 myDomEngine.applyToDom($myRootElement, mySentence);
@@ -85,6 +89,7 @@ myDomEngine.applyToDom($myRootElement, mySentence);
 Any tags will be append to `$myRootElement`, and any classes, attr, etc. will also be assigned.
 
 In case of String output, we could directly transform sentence to string :
+
 ```javascript
 var mySentence = h.div(...)...;
 var myHTMLString = myStringEngine.htmlToString(mySentence);
@@ -115,10 +120,12 @@ A lexicon is where we'll store our lexems (aka div, p, class, attr, ...) as "Sem
 One DSL = One Lexicon.
 
 Creating your first lexicon :
+
 ```javascript
 import babelute  from 'babelute';
 const htmlLexicon = babelute.createLexicon('html');
 ```
+
 ### 3.1 Isolate Semantic Atoms
 
 ___Semantic Atoms___ are the minimal set of words that allow to express any other language's words.
@@ -171,9 +178,10 @@ A lexem descriptor is composed of three fields :
 Nothing more.
 
 In fact, for each added atoms (through `.addAtoms([...])`), the lexicon has added a default function that looks like :
+
 ```javascript
 lexicon.api[atomName] = function(...args) {
-	return this._append(lexiconName, atomName, args);
+    return this._append(lexiconName, atomName, args);
 };
 ```
 
@@ -317,7 +325,8 @@ const mySentence = h.div('foo');
 }
 ```
 
-Or an event : 
+Or an event :
+
 ```javascript
 const mySentence = h.click(e => ...);
 ```
@@ -344,22 +353,23 @@ const mySentence = h.div(h.strong('John Doe'), ' say hello');
 Much more readable... 
 
 But, the structure of mySentence has not change :
+
 ```javascript
 { // mySentence structure
 	_lexems:[{  // div lexem descriptor
-		lexicon:'html', 
-		name:'tag', 
+		lexicon:'html',
+		name:'tag',
 		args:[
 			'div',  // tagName
 			[ // children
 				{  // child sentence
 					_lexems:[{   // strong lexem descriptor
-						lexicon:'html', 
-						name:'tag', 
+						lexicon:'html',
+						name:'tag',
 						args:[
 							'strong',
 							['John Doe'] // children with one textnode
-						] 
+						]
 					}]
 				},
 				' say hello'  // text node value
@@ -391,7 +401,9 @@ htmlLexicon
 		return methods;
 	});
 ```
+
 Usage :
+
 ```javascript
 const h = htmlLexicon.initializer();
 const mySentence = h.section(
@@ -443,12 +455,12 @@ myHTMLDialect.addCompounds(h => {
 const h = myHTMLDialect.initializer();
 
 const mySentence = h.mySuperComponent({
-	headerText:'Foo bar zoo',
-	title:'Hello world', 
-	content:'lorem ipsum', 
-	footerText:'bla bla'
+    headerText:'Foo bar zoo',
+    title:'Hello world',
+    content:'lorem ipsum',
+    footerText:'bla bla'
 }, {
-	clickHandler: e => console.log('bouh', e)
+    clickHandler: e => console.log('bouh', e)
 });
 ```
 
@@ -519,13 +531,14 @@ const domEngine = {
 ```
 
 Final Usage :
+
 ```javascript
 const h = htmlLexicon.initializer();
 const mySentence = h.section(
-	h.class('my-class')
-	.h1('hello world')
-	.div(h.id('my-id'), 'lorem ipsum...')
-	.button('fire !', h.click((e) => console.log('bouh', e)))
+    h.class('my-class')
+    .h1('hello world')
+    .div(h.id('my-id'), 'lorem ipsum...')
+    .button('fire !', h.click((e) => console.log('bouh', e)))
 );
 
 const $myTag = document.getElementById('my-tag');
@@ -533,6 +546,7 @@ domEngine.toDOM(mySentence, $myTag);
 ```
 
 For convenience we could do :
+
 ```javascript
 // aliases are a third kind of method that we'll see by after. 
 // just use it for the moment when you want to add output related methods.
@@ -544,10 +558,10 @@ htmlLexicon.addAliases({
 });
 
 h.section(
-	h.class('my-class')
-	.h1('hello world')
-	.div(h.id('my-id'), 'lorem ipsum...')
-	.button('fire !', h.click((e) => console.log('bouh', e)))
+    h.class('my-class')
+    .h1('hello world')
+    .div(h.id('my-id'), 'lorem ipsum...')
+    .button('fire !', h.click((e) => console.log('bouh', e)))
 )
 .$toDOM(document.getElementById('...'));
 ```
@@ -573,7 +587,7 @@ import toSlugCase from 'to-slug-case'; // for data-* attributes
 import htmlSpecialChars from 'nomocas-utils/lib/string/html-special-chars'; // for safe string output
 
 const openTags = /br/, // should be completed
-	strictTags = /span|script|meta|div|i/;
+    strictTags = /span|script|meta|div|i/;
 
 // for tags string construction
 class TagDescriptor {
@@ -634,9 +648,9 @@ const stringEngine = {
 			value = args[1],
 			hasValue = typeof value !== 'undefined';
 		tag.attributes += ' ' + name + (hasValue ? ('="' + value + '"') : '');
-	},
-	attr(tag, args /* name, value */ ) {
-		const value = args[1];
+    },
+    attr(tag, args /* name, value */ ) {
+        const value = args[1];
 		tag.attributes += ' ' + args[0] + '="' + (typeof value === 'string' ? encodeHtmlSpecialChars(value) : value) + '"';
 	},
 	id(tag, args /* value */ ) {
@@ -656,23 +670,23 @@ export default stringEngine;
 ```
 
 Final Usage :
+
 ```javascript
 import stringEngine from 'your-html-string-pragmatics-engine';
 import htmlLexicon from 'your-html-lexicon';
 
 const h = htmlLexicon.initializer();
 const mySentence = h.section(
-	h.class('my-class')
-	.h1('hello world')
-	.div(h.id('my-id'), 'lorem ipsum...')
-	.button('fire !', h.click(e => console.log('bouh', e)))
+    h.class('my-class')
+    .h1('hello world')
+    .div(h.id('my-id'), 'lorem ipsum...')
+    .button('fire !', h.click(e => console.log('bouh', e)))
 );
 
 const htmlString = stringEngine.toHTMLString(mySentence);
 ```
 
 Great ! Now we're able to output same sentences to DOM or to HTML String.
-
 
 ### 4.3 Dif Engine
 
@@ -682,4 +696,4 @@ In fact it's really simple : we just need 3 dedicated engine : Render, Dif, Remo
 
 And as an engine is just a bunch of functions (the Atoms implementations) stored in a simple object, it should be easy now.
 
- See [htsl-dom-diffing-pragmatics](https://github.com/nomocas/htsl-dom-diffing-pragmatics) for real world example...
+See [htsl-dom-diffing-pragmatics](https://github.com/nomocas/htsl-dom-diffing-pragmatics) for real world example...
