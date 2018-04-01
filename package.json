@@ -17,6 +17,7 @@
     "karma": "NODE_ENV=production karma start",
     "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha test/*.js",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | coveralls",
+    "benchmark": "node_modules/.bin/babel-node --expose-gc benchmark/bench.js",
     "prepublish": "npm test",
     "release": "standard-version"
   },
