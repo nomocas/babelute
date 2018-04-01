@@ -171,26 +171,9 @@ export default class Babelute {
 	_translateLexemsThrough(lexicon, firstLevel = false) { // eslint-disable-line no-unused-vars
 		// will be implemented in Lexicon
 	}
-
-
-	// static extends(BaseClass, ...apis) {
-	// 	assert(BaseClass === Babelute || (BaseClass.prototype instanceof Babelute), 'Babelute.extends accepts only a Babelute Class (or subclass) as first argument');
-	// 	const B = function(...args) {
-	// 		BaseClass.apply(this, args);
-	// 	};
-	// 	B.prototype = Object.create(BaseClass.prototype);
-	// 	B.prototype.constructor = B;
-
-	// 	apis.forEach((api) => {
-	// 		for (var i in api) B.prototype[i] = api[i];
-	// 	});
-
-	// 	// Object.assign seems to bug when used on prototype (not investigate enough : so use plain old for-in syntax)
-	// 	// investigation gives : babel make prototype not enumerable
-
-	// 	return B;
-	// }
 }
+
+
 
 /**
  * Create Babelute subclass
